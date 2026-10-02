@@ -1,0 +1,19 @@
+# ---- stage 1: build the React dashboard ----
+node_modules
+dist
+
+# ---- stage 2: engine runtime ----
+.git
+.venv
+.idea
+.zcode
+ps
+tests
+docs
+.github
+.env
+**/__pycache__
+**/*.pyc
+data/db
+data/cache
+models

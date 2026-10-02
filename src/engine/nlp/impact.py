@@ -10,6 +10,7 @@ BASE_SEVERITY: dict[str, float] = {
 }
 
 MIN_IMPACT, MAX_IMPACT = 1.0, 10.0
+MAX_CORROBORATING_SOURCES = 3
 
 
 @dataclass(frozen=True)
@@ -27,7 +28,7 @@ def score_impact(event_label: str, sentiment_score: float,
     base = BASE_SEVERITY.get(event_label, BASE_SEVERITY["Other"])
     extremity = abs(max(-1.0, min(1.0, sentiment_score)))
     conviction = 0.75 + 0.5 * extremity
-    corroborating = max(0, min(n_sources - 1, 5))
+    corroborating = max(0, min(n_sources - 1, MAX_CORROBORATING_SOURCES))
     corroboration = 1.0 + 0.1 * corroborating
 
     raw = base * conviction * corroboration

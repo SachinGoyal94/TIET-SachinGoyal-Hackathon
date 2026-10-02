@@ -1,0 +1,15 @@
+services:
+  engine:
+    build: .
+    container_name: risk-engine
+    ports:
+      - "8000:8000"
+    volumes:
+      - engine-data:/app/data/db
+    environment:
+      RISK_BACKFILL_ON_START: "true"
+      # optional overrides, see .env.example
+    restart: unless-stopped
+
+volumes:
+  engine-data:

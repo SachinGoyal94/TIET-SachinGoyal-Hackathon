@@ -28,16 +28,19 @@ def _ensure_utc(ts: datetime) -> datetime:
 
 
 def _find_cluster(session, label: str, entity: str, published_at: datetime) -> Event | None:
+    """Most recent active cluster for (label, entity) whose first item falls
+    within the 24h window before this one. Anchoring on first_seen (instead
+    of rolling last_seen) bounds a cluster's lifetime to 24 hours."""
     stmt = (
         select(Event)
         .where(
             Event.event_label == label,
             Event.first_entity == entity,
             Event.is_active.is_(True),
-            Event.last_seen >= published_at - CLUSTER_WINDOW,
-            Event.first_seen <= published_at + CLUSTER_WINDOW,
+            Event.first_seen <= published_at,
+            Event.first_seen >= published_at - CLUSTER_WINDOW,
         )
-        .order_by(Event.last_seen.desc())
+        .order_by(Event.first_seen.desc())
         .limit(1)
     )
     return session.execute(stmt).scalar_one_or_none()

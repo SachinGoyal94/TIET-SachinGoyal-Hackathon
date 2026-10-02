@@ -178,7 +178,8 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.force:
-        settings.db_path.unlink(missing_ok=True)
+        for suffix in ("", "-wal", "-shm"):
+            settings.db_path.with_name(settings.db_path.name + suffix).unlink(missing_ok=True)
     elif has_data():
         log.info("database already has data, skipping backfill (use --force)")
         return

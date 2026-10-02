@@ -1,0 +1,4 @@
+# development-only extras (training, evaluation). Runtime does not need these.
+-r requirements.txt
+datasets
+accelerate

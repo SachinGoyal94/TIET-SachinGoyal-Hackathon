@@ -42,8 +42,9 @@ def test_cluster_merges_within_window():
         "Missile attacks halt tanker traffic hitting Boeing routes",
         "Conflict near key chokepoint sends Boeing supply costs higher",
     ]):
+        # chronological order: clusters only absorb items at or after first_seen
         items.append({"text": text, "source": "test",
-                      "published_at": now - timedelta(hours=k),
+                      "published_at": now - timedelta(hours=2 - k),
                       "event_hint": "Geopolitical", "use_model": False})
     results = [r for r in ingest_many(items) if r]
     assert len(results) == 3
