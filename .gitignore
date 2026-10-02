@@ -27,3 +27,6 @@ Thumbs.db
 
 # Model caches (baked into Docker image instead)
 models/
+
+# ZCode session artifacts
+.zcode/
