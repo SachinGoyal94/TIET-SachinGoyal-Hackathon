@@ -1,10 +1,5 @@
-"""FastAPI application factory: mounts the versioned API and, when a built
-frontend bundle is present, serves the React SPA from the same process so the
-whole platform runs as a single service (one port, one container)."""
-
-from __future__ import annotations
-
 import logging
+import threading
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -13,7 +8,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from src.engine import __version__
-from src.engine.api.routes import api_router, health_snapshot
+from src.engine.api.routes import api_router, auto_stress_check
 from src.engine.config import settings
 
 logging.basicConfig(
@@ -23,23 +18,62 @@ logging.basicConfig(
 logger = logging.getLogger("engine")
 
 
+def _startup_bootstrap() -> None:
+    """Runs in a background thread so the API answers immediately."""
+    try:
+        from src.engine.db import get_session
+        from src.engine.nlp import sentiment
+        from src.engine.scheduler import start
+
+        sentiment.load_model()
+        _set_flag("models_loaded", True)
+
+        if settings.backfill_on_start:
+            from src.scripts.backfill import has_data, main as backfill_main
+
+            if not has_data():
+                logger.info("empty database, running backfill (first boot)...")
+                backfill_main()
+            else:
+                logger.info("database already populated, skipping backfill")
+
+        _set_flag("rebalancer_ready", True)
+        _set_flag("stress_ready", True)
+        _set_flag("ready", True)
+        start()
+        logger.info("engine ready")
+    except Exception:
+        logger.exception("startup bootstrap failed")
+
+
+_flags: dict[str, bool] = {}
+
+
+def _set_flag(name: str, value: bool) -> None:
+    _flags[name] = value
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting %s v%s", settings.app_name, settings.version)
     settings.db_path.parent.mkdir(parents=True, exist_ok=True)
     settings.cache_dir.mkdir(parents=True, exist_ok=True)
-    app.state.ready = False
-    # Data seeding, model warm-up and scheduler startup are wired in later
-    # milestones; M1 only guarantees a green API surface.
-    app.state.ready = True
+    _flags.clear()
+    _flags.update({"ready": False, "models_loaded": False,
+                   "rebalancer_ready": False, "stress_ready": False})
+    app.state.flags = _flags
+
+    threading.Thread(target=_startup_bootstrap, name="bootstrap", daemon=True).start()
     yield
+    from src.engine.scheduler import stop
+
+    stop()
     logger.info("Engine shut down")
 
 
 app = FastAPI(title=settings.app_name, version=__version__, lifespan=lifespan)
 
-# CORS is only needed for the Vite dev server (http://localhost:5173) during
-# development; in production the SPA is served from this same origin.
+# CORS only matters for the Vite dev server; in prod the SPA shares this origin
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
@@ -50,17 +84,13 @@ app.add_middleware(
 
 @app.get("/health", include_in_schema=False, tags=["ops"])
 def health() -> dict:
-    """Plain ops healthcheck (used by Docker healthchecks / uptime probes)."""
-    return {"status": "ok", "version": __version__}
+    return {"status": "ok" if _flags.get("ready") else "initializing",
+            "version": __version__}
 
 
 app.include_router(api_router, prefix="/api")
 
-
-# --- Single-page app serving -------------------------------------------------
-# The React bundle (frontend/dist) is produced either by the Docker
-# multi-stage build or a local `npm run build`; when present, the engine
-# serves it so the jury reaches both UI and API on one port.
+# serve the built React bundle when present (single port for UI + API)
 _dist = settings.frontend_dist
 if (_dist / "assets").is_dir() and (_dist / "index.html").is_file():
     app.mount("/assets", StaticFiles(directory=_dist / "assets"), name="assets")
@@ -74,8 +104,4 @@ if (_dist / "assets").is_dir() and (_dist / "index.html").is_file():
 
     logger.info("Serving frontend bundle from %s", _dist)
 else:
-    logger.info("No frontend bundle found — API-only mode")
-
-
-def build_health_snapshot() -> dict:
-    return health_snapshot()
+    logger.info("No frontend bundle found, API-only mode")

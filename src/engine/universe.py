@@ -1,12 +1,3 @@
-"""Mock index universe — 14 liquid S&P 100 names across six sectors.
-
-This single definition drives entity matching in the NLP engine, the
-synthetic feed generator, and Module A's rebalancer anchor weights, so
-everything stays consistent across the platform.
-"""
-
-from __future__ import annotations
-
 from dataclasses import dataclass, field
 
 
@@ -37,15 +28,13 @@ UNIVERSE: tuple[Company, ...] = (
 
 SECTORS: tuple[str, ...] = tuple(sorted({c.sector for c in UNIVERSE}))
 
-# Sector -> member tickers
 SECTOR_MEMBERS: dict[str, list[str]] = {}
 for _c in UNIVERSE:
     SECTOR_MEMBERS.setdefault(_c.sector, []).append(_c.ticker)
 
 TICKERS: tuple[str, ...] = tuple(c.ticker for c in UNIVERSE)
 
-# Market-wide keyword aliases: text matching these (and no specific company)
-# produces market/sector-scoped signals used as sentiment spillover.
+# text mentioning these (and no company) becomes a market-scoped signal
 MARKET_ALIASES: tuple[str, ...] = (
     "the market", "stock market", "equities", "wall street", "S&P",
     "S&P 500", "federal reserve", "the fed", "central bank", "ecb",
