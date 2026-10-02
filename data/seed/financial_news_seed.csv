@@ -1,0 +1,75 @@
+text,event_label,polarity,ticker
+Apple shares surge after record quarterly earnings beat analyst expectations,Product Launch,1,AAPL
+Microsoft unveils next-generation cloud platform promising 30 percent cost reduction for enterprise clients,Product Launch,1,MSFT
+Nvidia announces breakthrough GPU architecture as demand for AI chips continues to outstrip supply,Product Launch,1,NVDA
+Google launches upgraded AI assistant integrating across workspace tools,Product Launch,1,GOOGL
+Amazon reports stronger than expected holiday season revenue driven by logistics improvements,Product Launch,1,AMZN
+Meta rolls out new advertising platform to positive early reception from marketers,Product Launch,1,META
+Boeing unveils fuel-efficient narrowbody aircraft securing record orders at Paris Air Show,Product Launch,1,BA
+Walmart expands same-day delivery network citing strong customer adoption,Product Launch,1,WMT
+Apple stock slips as new product event fails to impress investors,Product Launch,-1,AAPL
+Meta app update plagued by bugs forcing company to roll back release,Product Launch,-1,META
+Goldman Sachs in advanced talks to acquire boutique asset manager for 3 billion dollars,Merger/Acquisition,1,GS
+JPMorgan to acquire payments startup expanding digital wallet capabilities,Merger/Acquisition,1,JPM
+Exxon agrees to buy pioneering shale producer in 12 billion dollar deal,Merger/Acquisition,1,XOM
+Microsoft nears deal to acquire cybersecurity firm strengthening defense stack,Merger/Acquisition,1,MSFT
+Bank of America merger talks collapse amid regulatory concerns,Merger/Acquisition,-1,BAC
+Antitrust regulators move to block Boeing supplier merger citing competition risks,Merger/Acquisition,-1,BA
+Amazon acquisition of grocery chain under scrutiny by competition watchdog,Merger/Acquisition,-1,AMZN
+Goldman Sachs deal-making unit faces setback as targeted acquisition walks away,Merger/Acquisition,-1,GS
+Federal Reserve signals extended pause on interest rates citing stable inflation,Macroeconomic,1,MARKET
+Treasury yields stabilize as inflation print lands in line with expectations,Macroeconomic,1,MARKET
+Central bank governor strikes constructive tone on soft landing for the economy,Macroeconomic,1,MARKET
+Unemployment claims fall to five decade low signaling resilient labor market,Macroeconomic,1,MARKET
+CPI comes in hotter than expected fueling fears of prolonged rate hikes,Macroeconomic,-1,MARKET
+Recession warnings mount as leading indicators turn negative for third month,Macroeconomic,-1,MARKET
+Federal Reserve hikes interest rates by 50 basis points warning of more tightening ahead,Macroeconomic,-1,MARKET
+GDP contraction in the eurozone weighs on global growth outlook,Macroeconomic,-1,MARKET
+Escalating conflict in the Middle East disrupts shipping lanes and lifts oil prices,Geopolitical,-1,MARKET
+Sanctions package targets major energy exporter rattling global supply chains,Geopolitical,-1,MARKET
+Trade tensions escalate as tariff wall expands to cover advanced semiconductors,Geopolitical,-1,MARKET
+Missile strike near key port facility raises insurance costs for global shippers,Geopolitical,-1,MARKET
+Border tensions ease after diplomatic breakthrough lifting regional market sentiment,Geopolitical,1,MARKET
+Peace agreement signed freeing captured grain exports and calming food inflation,Geopolitical,1,MARKET
+OPEC ministers agree to modest output increase to stabilize crude markets,Geopolitical,1,MARKET
+Naval convoy security operation restores transit through chokepoint strait,Geopolitical,1,MARKET
+Nvidia supplier capacity expands as export restrictions are partially lifted,Geopolitical,1,NVDA
+Moody's upgrades JPMorgan outlook citing fortress balance sheet and strong capital,Credit Event,1,JPM
+Goldman Sachs credit spreads tighten to decade lows after strong refinancing,Credit Event,1,GS
+Bank of America refinances maturing debt at favorable terms reassuring bondholders,Credit Event,1,BAC
+Regional lender defaults on unsecured debt sending shockwaves through banking sector,Credit Event,-1,MARKET
+Rating agencies downgrade Apple supplier chain companies on weakening cash flows,Credit Event,-1,AAPL
+Walmart supplier files for chapter 11 protection straining receivables,Credit Event,-1,WMT
+Coca-Cola bottling partner faces debt restructuring as leverage climbs,Credit Event,-1,KO
+Nvidia bondholders brace for covenant review amid aggressive expansion spending,Credit Event,-1,NVDA
+Chevron issues statement confirming strong liquidity position amid market rumors,Credit Event,1,CVX
+Exxon beats production guidance as new offshore platform reaches capacity,Macroeconomic,1,XOM
+Coca-Cola raises full year guidance on resilient consumer demand,Macroeconomic,1,KO
+Walmart posts seventh consecutive quarter of comparable sales growth,Macroeconomic,1,WMT
+Boeing delivery numbers improve as production lines stabilize,Macroeconomic,1,BA
+Apple faces softening iPhone demand in China according to channel checks,Macroeconomic,-1,AAPL
+Microsoft cloud growth decelerates for the third consecutive quarter,Macroeconomic,-1,MSFT
+Alphabet advertising revenue misses estimates as digital spend tightens,Macroeconomic,-1,GOOGL
+Amazon warns of thinner margins as fulfillment costs climb,Macroeconomic,-1,AMZN
+Meta loses daily users in key market following policy changes,Macroeconomic,-1,META
+Goldman Sachs revenue falls as trading desks see quiet volumes,Macroeconomic,-1,GS
+JPMorgan raises dividend after stress test results clear all hurdles,Macroeconomic,1,JPM
+Bank of America expands branch network betting on retail deposit growth,Macroeconomic,1,BAC
+Exxon posts record refining margins in quarterly results,Macroeconomic,1,XOM
+Chevron boosts shareholder returns with new buyback program,Macroeconomic,1,CVX
+Nvidia datacenter revenue triples on insatiable AI infrastructure demand,Macroeconomic,1,NVDA
+Apple announces largest buyback in corporate history alongside strong results,Macroeconomic,1,AAPL
+Wall Street drifts sideways as investors await inflation data,Macroeconomic,0,MARKET
+Markets closed mixed ahead of central bank meeting this week,Macroeconomic,0,MARKET
+Trading volumes light as quarter-end window dressing winds down,Macroeconomic,0,MARKET
+Analysts remain divided on the direction of mega-cap technology shares,Macroeconomic,0,MARKET
+Alphabet pilots autonomous delivery fleet in two additional cities,Product Launch,1,GOOGL
+Chevron starts up new renewable diesel plant expanding energy transition portfolio,Product Launch,1,CVX
+Microsoft teams with chipmaker to build custom AI silicon for datacenters,Product Launch,1,MSFT
+JPMorgan launches AI-driven treasury management suite for corporate clients,Product Launch,1,JPM
+Apple suppliers ramp production ahead of anticipated headset launch,Product Launch,1,AAPL
+Amazon drone delivery program grounded by regulator pending safety review,Product Launch,-1,AMZN
+Walmart checkout automation rollout stalled by technical glitches,Product Launch,-1,WMT
+Nvidia chip launch delayed by manufacturing yield issues,Product Launch,-1,NVDA
+Coca-Cola rebrand flop sparks backlash on social media,Product Launch,-1,KO
+Boeing air taxi partnership targets urban mobility market with first routes next year,Product Launch,1,BA

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-feature-settings: "tnum" 1; /* tabular numbers for financial data */
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-surface-700/60 bg-surface-900/80 shadow-lg shadow-black/20;
+  }
+  .card-title {
+    @apply px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+  .kpi-value {
+    @apply text-2xl font-semibold text-slate-100;
+  }
+  .pill {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+}

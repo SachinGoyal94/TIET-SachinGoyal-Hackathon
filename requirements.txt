@@ -1,0 +1,15 @@
+# Financial Risk Intelligence Platform — engine dependencies (pinned)
+# Python 3.11 · tested on Windows 11 (dev) and python:3.11-slim (Docker)
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+pydantic==2.13.5
+pydantic-settings==2.15.0
+SQLAlchemy==2.1.2
+APScheduler==3.11.3
+httpx==0.28.1
+torch==2.14.1
+transformers==5.18.0
+pandas==3.0.6
+numpy==2.4.6
+yfinance==1.7.0
+pytest==9.1.1
