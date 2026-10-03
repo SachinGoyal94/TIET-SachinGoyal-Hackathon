@@ -1,11 +1,15 @@
 {
-  "id": "/finbert-finetune",
-  "languages": ["python"],
+  "id": "sachingoyal27/finbert-finetune",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": ["ankurzing/sentiment-analysis-for-financial-news"],
+  "dataset_sources": [
+    "ankurzing/sentiment-analysis-for-financial-news"
+  ],
   "competition_sources": [],
-  "kernel_sources": []
+  "kernel_sources": [],
+  "code_file": "finbert_finetune_kernel.py",
+  "language": "python",
+  "title": "FinBERT Fine-tune Financial Sentiment"
 }
