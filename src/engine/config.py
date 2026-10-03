@@ -31,6 +31,11 @@ class Settings(BaseSettings):
     # fine-tuned weights produced by the Kaggle training kernel; used when present
     finetuned_dir: Path = REPO_ROOT / "models" / "finbert-ft"
 
+    # per-entity extraction layer (llama.cpp GGUF). "auto" enables it when the
+    # model file exists; "off" disables it entirely
+    entity_extractor: str = "auto"
+    entity_extractor_model: Path = REPO_ROOT / "models" / "Qwen3-4B-Instruct-2507-Q4_K_M.gguf"
+
     @property
     def active_sentiment_model(self) -> str:
         if (self.finetuned_dir / "config.json").is_file():

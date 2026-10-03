@@ -1,13 +1,13 @@
 {
-  "id": "sachingoyal27/modernbert-finetune",
-  "title": "ModernBERT Fine-tune",
+  "id": "sachingoyal27/gdelt-history-fetch",
+  "title": "GDELT History Fetch",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
-  "enable_gpu": true,
+  "enable_gpu": false,
   "enable_internet": true,
-  "dataset_sources": ["ankurzing/sentiment-analysis-for-financial-news"],
+  "dataset_sources": [],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "modernbert_finetune_kernel.py"
+  "code_file": "gdelt_history_fetch.py"
 }

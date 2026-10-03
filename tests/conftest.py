@@ -14,7 +14,9 @@ def _stub_sentiment(monkeypatch):
     """Unit tests never load real models; accuracy is measured separately
     by the fine-tuning script's eval."""
     import src.engine.nlp.sentiment as sentiment
+    import src.engine.nlp.entity_sentiment as entity_sentiment
 
     monkeypatch.setattr(sentiment, "score_batch",
                         lambda texts, batch_size=64: [0.0] * len(texts))
     monkeypatch.setattr(sentiment, "score_sentiment", lambda text: 0.0)
+    monkeypatch.setattr(entity_sentiment, "is_configured", lambda: False)
