@@ -112,13 +112,18 @@ Optional extras: fine-tuning (`pip install -r requirements-dev.txt` then
 
 ## 5. Key Results & Domain Impact
 
-- **Sentiment accuracy** on the labeled Kaggle corpus: see
-  [docs/sentiment_metrics.json](docs/sentiment_metrics.json) (fine-tuned model;
-  base FinBERT number in `data/cache/sentiment_eval_*.json`).
+- **Sentiment evaluation** ([docs/sentiment_metrics.json](docs/sentiment_metrics.json)):
+  on a 483-row held-out split of the labeled Kaggle corpus, base FinBERT scores
+  **89.4% accuracy (0.892 macro F1)** and our fine-tuned variant **89.0% (0.880)**.
+  The takeaway: base FinBERT is already well-calibrated to financial headlines, so the
+  shipped image uses base weights; the full fine-tuning pipeline (Kaggle GPU kernel,
+  135s on a P100) is in the repo for recalibration on new data.
 - **Impact validation** (event study): correlation between Impact Scores and realized
-  1-day ticker moves — `data/cache/impact_validation.json`.
+  1-day ticker moves — run `python -m src.scripts.validate_impact`
+  (writes `data/cache/impact_validation.json`).
 - **Strategy backtest**: sentiment-tilted index vs cap-weighted baseline over the demo
-  window — `data/cache/rebalance_backtest.json`.
+  window — run `python -m src.scripts.backtest_rebalancer`
+  (writes `data/cache/rebalance_backtest.json`).
 - The full pipeline (5,000+ items) completes in minutes on a laptop and every output is
   auditable: entity matched, sentiment, event type, and the impact breakdown.
 
