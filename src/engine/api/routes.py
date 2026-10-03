@@ -151,6 +151,7 @@ def rebalance_history(hours: int = 168) -> dict:
 
 class StressRequest(BaseModel):
     event_id: int | None = None
+    scenario: str | None = None
 
 
 AUTO_TRIGGER_LABEL = "Geopolitical"
@@ -202,6 +203,16 @@ def portfolio() -> dict:
 
 @api_router.post("/stress/run", tags=["module-b"])
 def stress_run(req: StressRequest) -> dict:
+    if req.scenario:
+        from src.engine.modules.scenarios import SCENARIOS
+
+        if req.scenario not in SCENARIOS:
+            raise HTTPException(status_code=404, detail="unknown scenario")
+        result = _run_and_store(None, req.scenario,
+                                SCENARIOS[req.scenario]["description"],
+                                10.0, "scenario")
+        return result
+
     with get_session() as s:
         if req.event_id is not None:
             ev = s.get(Event, req.event_id)
@@ -218,6 +229,34 @@ def stress_run(req: StressRequest) -> dict:
                 raise HTTPException(status_code=409, detail="no events to stress")
         ev_id, label, headline, impact = ev.id, ev.event_label, ev.headline, ev.max_impact
     return _run_and_store(ev_id, label, headline, impact, "manual")
+
+
+@api_router.get("/stress/scenarios", tags=["module-b"])
+def stress_scenarios() -> dict:
+    from src.engine.modules.scenarios import SCENARIOS
+
+    return {
+        "count": len(SCENARIOS),
+        "scenarios": [
+            {"name": name, "family": s["family"], "description": s["description"],
+             "source": s["source"], "shocks": s["shocks"]}
+            for name, s in SCENARIOS.items()
+        ],
+    }
+
+
+class ReverseStressRequest(BaseModel):
+    scenario: str
+
+
+@api_router.post("/stress/reverse", tags=["module-b"])
+def stress_reverse(req: ReverseStressRequest) -> dict:
+    from src.engine.modules.stress import reverse_stress
+
+    try:
+        return reverse_stress(load_portfolio(), req.scenario)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="unknown scenario")
 
 
 def auto_stress_check() -> dict | None:

@@ -11,6 +11,9 @@ from __future__ import annotations
 
 import random
 
+from src.engine.modules import credit
+from src.engine.modules.scenarios import SCENARIOS, get_scenario
+
 # base shocks at the high band (impact >= 8)
 SHOCK_MATRIX: dict[str, dict] = {
     "Geopolitical":       {"equity_pct": -0.10, "rates_bps": 200, "spread_bps": 150, "fx_pct": 0.02},
@@ -49,7 +52,7 @@ def shocks_for(event_label: str, impact: float) -> dict:
     }
 
 
-def _price_position(pos: dict, shocks: dict) -> float:
+def _price_position(pos: dict, shocks: dict, band_scale: float = 1.0) -> float:
     """P&L in currency units for one position under the shock vector."""
     notional = float(pos.get("notional") or pos.get("value") or 0.0)
     kind = pos["asset_class"]
@@ -60,15 +63,28 @@ def _price_position(pos: dict, shocks: dict) -> float:
     if kind == "bond":
         dy = shocks["rates_bps"] / 1e4
         if pos.get("sub_type") == "corporate":
-            dy += shocks["spread_bps"] / 1e4
+            widening = shocks["spread_bps"]
+            # credit engine: expected downgrade under stress widens spreads further
+            rating = pos.get("rating", "BBB")
+            widening += credit.spread_widening_bps(rating, credit.expected_rating(rating))
+            dy += widening / 1e4
         duration = pos.get("duration", 0.0)
         convexity = pos.get("convexity", 0.0)
         dp = -duration * dy + 0.5 * convexity * dy * dy
         return notional * dp
 
     if kind == "loan":
-        # loans reprice with spread duration; widening is a valuation hit
-        return -notional * (shocks["spread_bps"] / 1e4) * LOAN_SPREAD_DURATION
+        # valuation hit via spread duration, plus a stressed provision from
+        # the credit engine (Vasicek conditional PD vs the rating's base PD)
+        widening = shocks["spread_bps"]
+        rating = pos.get("rating", "BBB")
+        widening += credit.spread_widening_bps(rating, credit.expected_rating(rating))
+        valuation = -notional * (widening / 1e4) * LOAN_SPREAD_DURATION
+        base_pd = float(pos.get("pd", 0.02) or 0.02)
+        lgd = float(pos.get("lgd", 0.6) or 0.6)
+        stressed = credit.stressed_pd(base_pd, band_scale)
+        provision = -notional * max(0.0, stressed - base_pd) * lgd
+        return valuation + provision
 
     if kind == "derivative":
         sub = pos.get("sub_type")
@@ -82,10 +98,21 @@ def _price_position(pos: dict, shocks: dict) -> float:
     return 0.0
 
 
-def run_stress(portfolio: dict, event_label: str, impact: float) -> dict:
-    """Deterministic shock scenario plus a Monte Carlo P&L distribution."""
+def run_stress(portfolio: dict, event_label: str, impact: float,
+               scenario: str | None = None) -> dict:
+    """Deterministic shock scenario plus a Monte Carlo P&L distribution.
+
+    Either triggered by an event (event_label + impact -> shock matrix) or by
+    a named scenario from the library (scenario name overrides the shocks).
+    """
     positions = portfolio["positions"]
-    shocks = shocks_for(event_label, impact)
+    if scenario:
+        lib = get_scenario(scenario)
+        shocks = {**lib["shocks"], "band_scale": 1.0}
+        shocks["equity_pct"] = round(shocks["equity_pct"], 5)
+    else:
+        shocks = shocks_for(event_label, impact)
+    band_scale = shocks.get("band_scale", 1.0)
 
     value_before = 0.0
     value_after = 0.0
@@ -94,7 +121,7 @@ def run_stress(portfolio: dict, event_label: str, impact: float) -> dict:
 
     for pos in positions:
         notional = float(pos.get("notional") or pos.get("value") or 0.0)
-        pnl = _price_position(pos, shocks)
+        pnl = _price_position(pos, shocks, band_scale)
         # loans/derivatives enter the book at market value ~ notional for
         # reporting, but bonds/equities carry their own value field
         base_value = float(pos.get("value", notional))
@@ -117,11 +144,12 @@ def run_stress(portfolio: dict, event_label: str, impact: float) -> dict:
     pnl = value_after - value_before
     rows.sort(key=lambda r: r["pnl"])
 
-    mc = _monte_carlo(positions, event_label, impact)
+    mc = _monte_carlo_positions(positions, shocks)
 
-    return {
-        "event_label": event_label,
+    result = {
+        "event_label": scenario or event_label,
         "impact_score": impact,
+        "scenario": scenario,
         "shocks": shocks,
         "value_before": round(value_before, 0),
         "value_after": round(value_after, 0),
@@ -137,22 +165,26 @@ def run_stress(portfolio: dict, event_label: str, impact: float) -> dict:
         "risk_indicators": _risk_indicators(positions),
         "monte_carlo": mc,
     }
+    if portfolio.get("capital"):
+        result["capital"] = _capital_view(portfolio["capital"], result)
+    return result
 
 
-def _monte_carlo(positions: list[dict], event_label: str, impact: float) -> dict:
-    """P&L distribution from perturbed shock vectors (common + idiosyncratic noise)."""
-    base = SHOCK_MATRIX.get(event_label, DEFAULT_SHOCKS)
-    scale = band_multiplier(impact)
+def _monte_carlo_positions(positions: list[dict], base_shocks: dict) -> dict:
+    """MC around a named scenario's shock vector."""
     pnls: list[float] = []
     rng = random.Random(42)
     for _ in range(MC_DRAWS):
         shocks = {}
-        for key, unit in (("equity_pct", "pct"), ("rates_bps", "bps"),
-                          ("spread_bps", "bps"), ("fx_pct", "pct")):
+        for key in ("equity_pct", "rates_bps", "spread_bps", "fx_pct"):
             z = rng.gauss(0, 1) * 0.7 + rng.gauss(0, 1) * 0.3
-            noise = 1.0 + MC_DISPERSION * z
-            shocks[key] = base[key] * scale * max(noise, 0.0)
-        pnls.append(sum(_price_position(p, shocks) for p in positions))
+            shocks[key] = base_shocks[key] * max(1.0 + MC_DISPERSION * z, 0.0)
+        pnls.append(sum(_price_position(p, shocks, base_shocks.get("band_scale", 1.0))
+                        for p in positions))
+    return _mc_stats(pnls)
+
+
+def _mc_stats(pnls: list[float]) -> dict:
     pnls.sort()
     n = len(pnls)
     var95 = -pnls[int(0.05 * n)]
@@ -165,6 +197,62 @@ def _monte_carlo(positions: list[dict], event_label: str, impact: float) -> dict
         "median_pnl": round(pnls[n // 2], 0),
         "p95_pnl": round(pnls[int(0.95 * n) - 1], 0),
     }
+
+
+def _capital_view(capital: dict, result: dict) -> dict:
+    """Regulatory-style CET1 flow: start capital + retained earnings change.
+
+    CET1_end = CET1_start + PPNR (annual, scaled by scenario) + total P&L;
+    RWA held flat (Fed practice). Depletion in bps is the headline number.
+    """
+    start_cet1 = float(capital["cet1_capital"])
+    rwa = float(capital["rwa"])
+    ppnr = float(capital.get("annual_ppnr", 0.0)) * float(capital.get("horizon_years", 1.0))
+    end_cet1 = start_cet1 + ppnr + result["pnl"]
+    return {
+        "cet1_start": round(start_cet1, 0),
+        "ppnr": round(ppnr, 0),
+        "total_losses": round(result["pnl"], 0),
+        "cet1_end": round(end_cet1, 0),
+        "ratio_start_pct": round(start_cet1 / rwa * 100, 2),
+        "ratio_end_pct": round(max(end_cet1, 0.0) / rwa * 100, 2),
+        "depletion_bps": round((start_cet1 - end_cet1) / rwa * 10000, 0),
+        "breach": end_cet1 / rwa < capital.get("min_ratio", 0.07),
+    }
+
+
+def reverse_stress(portfolio: dict, scenario: str, lo: float = 0.5,
+                   hi: float = 8.0, tol: float = 0.01) -> dict:
+    """Solve for the shock multiplier at which CET1 breaches its minimum.
+
+    Binary search over a scalar scaling of the scenario's shocks; returns the
+    breach multiple and the CET1 ratio there.
+    """
+    capital = portfolio.get("capital")
+    positions = portfolio["positions"]
+    if not capital:
+        raise ValueError("portfolio has no capital block")
+
+    def breach_at(scale: float) -> tuple[bool, float]:
+        lib = get_scenario(scenario)
+        shocks = {k: v * scale for k, v in lib["shocks"].items()}
+        pnl = sum(_price_position(p, shocks, 1.0) for p in positions)
+        end = float(capital["cet1_capital"]) + float(capital.get("annual_ppnr", 0.0)) + pnl
+        ratio = end / float(capital["rwa"])
+        return ratio < capital.get("min_ratio", 0.07), ratio
+
+    if not breach_at(hi)[0]:
+        return {"scenario": scenario, "breach_multiple": None,
+                "note": "scenario does not breach even at %.1fx" % hi}
+    while hi - lo > tol:
+        mid = (lo + hi) / 2
+        if breach_at(mid)[0]:
+            hi = mid
+        else:
+            lo = mid
+    breached, ratio = breach_at(hi)
+    return {"scenario": scenario, "breach_multiple": round(hi, 2),
+            "cet1_ratio_at_breach_pct": round(ratio * 100, 2)}
 
 
 def _risk_indicators(positions: list[dict]) -> dict:
