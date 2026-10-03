@@ -21,12 +21,12 @@ W, H = 15.5, 10.0
 
 BOXES: dict[str, tuple[float, float, float, float]] = {
     # (x, y, w, h) in axes coords
-    "src1": (0.4, 8.35, 2.8, 1.1),
-    "src2": (3.4, 8.35, 2.8, 1.1),
-    "src3": (6.4, 8.35, 2.8, 1.1),
-    "ingest": (1.6, 6.6, 6.4, 1.0),
-    "engine": (1.6, 4.55, 6.4, 1.45),
-    "db": (3.4, 3.05, 2.8, 0.95),
+    "src1": (0.4, 8.45, 2.9, 1.2),
+    "src2": (3.5, 8.45, 2.9, 1.2),
+    "src3": (6.6, 8.45, 2.9, 1.2),
+    "ingest": (1.6, 6.7, 6.4, 1.05),
+    "engine": (1.6, 4.6, 6.4, 1.5),
+    "db": (3.4, 3.0, 2.8, 1.0),
     "modA": (9.0, 5.4, 2.9, 1.6),
     "modB": (12.2, 5.4, 2.9, 1.6),
     "api": (1.6, 1.55, 6.4, 1.0),
@@ -38,11 +38,11 @@ def box(ax, key, title, lines, edge=EDGE):
     x, y, w, h = BOXES[key]
     rect = plt.Rectangle((x, y), w, h, facecolor=BOX, edgecolor=edge, linewidth=1.6)
     ax.add_patch(rect)
-    ax.text(x + w / 2, y + h - 0.32, title, ha="center", va="center",
+    ax.text(x + w / 2, y + h - 0.30, title, ha="center", va="center",
             fontsize=12.5, fontweight="bold", color=TEXT)
     body = "\n".join(lines)
-    ax.text(x + w / 2, y + (h - 0.55) / 2, body, ha="center", va="center",
-            fontsize=9.2, color=SUB, linespacing=1.55)
+    ax.text(x + w / 2, y + (h - 0.52) / 2, body, ha="center", va="center",
+            fontsize=9.0, color=SUB, linespacing=1.5)
 
 
 def arrow(ax, x1, y1, x2, y2, color=SUB, label=None, lx=0, ly=0):

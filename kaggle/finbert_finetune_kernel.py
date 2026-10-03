@@ -3,6 +3,7 @@
 # Push with:     kaggle kernels push -p kaggle/
 # Output:        /kaggle/working/finbert-ft/ (model) + metrics.json
 
+import glob
 import json
 import random
 
@@ -19,26 +20,22 @@ BASE = "ProsusAI/finbert"
 LABEL_MAP = {"negative": 0, "neutral": 1, "positive": 2}
 ID2LABEL = {v: k for k, v in LABEL_MAP.items()}
 
-INPUT_PATHS = [
-    "/kaggle/input/sentiment-analysis-for-financial-news/all-data.csv",
-]
-
 
 def load_rows():
     import csv
 
-    for path in INPUT_PATHS:
-        try:
-            with open(path, encoding="latin-1") as f:
-                rows = []
-                for line in f:
-                    parts = line.strip().split(",", 1)
-                    if len(parts) == 2 and parts[0].strip().lower() in LABEL_MAP:
-                        rows.append({"text": parts[1].strip().strip('"'), "label": parts[0].strip().lower()})
-                print(f"loaded {len(rows)} rows from {path}")
+    candidates = glob.glob("/kaggle/input/**/all-data.csv", recursive=True)
+    print("input candidates:", candidates)
+    for path in candidates:
+        with open(path, encoding="latin-1") as f:
+            rows = []
+            for line in f:
+                parts = line.strip().split(",", 1)
+                if len(parts) == 2 and parts[0].strip().lower() in LABEL_MAP:
+                    rows.append({"text": parts[1].strip().strip('"'), "label": parts[0].strip().lower()})
+            print(f"loaded {len(rows)} rows from {path}")
+            if rows:
                 return rows
-        except FileNotFoundError:
-            continue
     raise SystemExit("dataset not found")
 
 

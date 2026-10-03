@@ -1,5 +1,5 @@
 {
-  "id": "sachingoyal27/finbert-finetune",
+  "id": "sachingoyal27/finbert-fine-tune-financial-sentiment",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": true,
