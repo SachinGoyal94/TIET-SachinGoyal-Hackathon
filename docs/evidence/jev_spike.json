@@ -1,0 +1,45 @@
+{
+  "model": "jev (closed System One decision model, accessed via hosted API)",
+  "task": "3-way financial headline sentiment, choice question",
+  "rows": 242,
+  "split": "identical eval rows as the Laya spike (test split, seed 42)",
+  "baseline_finbert_base": {
+    "accuracy": 0.8944,
+    "macro_f1": 0.892
+  },
+  "laya_zero_shot": {
+    "accuracy": 0.7314,
+    "macro_f1": 0.7176
+  },
+  "jev": {
+    "accuracy": 0.7686,
+    "macro_f1": 0.7825,
+    "per_class_f1": {
+      "negative": 0.9,
+      "neutral": 0.8043,
+      "positive": 0.6434
+    },
+    "confusion": {
+      "negative": {
+        "negative": 27,
+        "neutral": 4,
+        "positive": 0
+      },
+      "neutral": {
+        "negative": 1,
+        "neutral": 113,
+        "positive": 30
+      },
+      "positive": {
+        "negative": 1,
+        "neutral": 20,
+        "positive": 46
+      }
+    },
+    "mean_confidence": 0.5894
+  },
+  "latency": {
+    "avg_ms_per_decision_incl_network": 2838.2
+  },
+  "access": "hosted decision API (third-party gateway); not deployable in the keyless local submission, benchmarked for evaluation completeness"
+}
