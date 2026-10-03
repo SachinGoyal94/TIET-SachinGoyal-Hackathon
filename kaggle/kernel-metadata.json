@@ -1,15 +1,13 @@
 {
-  "id": "sachingoyal27/finbert-fine-tune-financial-sentiment",
+  "id": "sachingoyal27/laya-sentiment-spike",
+  "title": "Laya Sentiment Spike",
+  "language": "python",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": [
-    "ankurzing/sentiment-analysis-for-financial-news"
-  ],
+  "dataset_sources": ["ankurzing/sentiment-analysis-for-financial-news"],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "finbert_finetune_kernel.py",
-  "language": "python",
-  "title": "FinBERT Fine-tune Financial Sentiment"
+  "code_file": "laya_sentiment_spike.py"
 }

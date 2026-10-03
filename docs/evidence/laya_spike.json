@@ -1,0 +1,44 @@
+{
+  "model": "laya (convaiinnovations/laya, 421M ModernBERT decision encoder)",
+  "task": "3-way financial headline sentiment, choice question",
+  "rows": 242,
+  "split": "test split (stratified, seed 42) \u2014 identical to FinBERT baseline; half used for temperature fit, half for eval",
+  "baseline_finbert_base": {
+    "accuracy": 0.8944,
+    "macro_f1": 0.892,
+    "rows": 483
+  },
+  "laya": {
+    "accuracy": 0.7314,
+    "macro_f1": 0.7176,
+    "per_class_f1": {
+      "negative": 0.6139,
+      "neutral": 0.7336,
+      "positive": 0.8052
+    },
+    "confusion": {
+      "negative": {
+        "negative": 31,
+        "neutral": 0,
+        "positive": 0
+      },
+      "neutral": {
+        "negative": 35,
+        "neutral": 84,
+        "positive": 25
+      },
+      "positive": {
+        "negative": 4,
+        "neutral": 1,
+        "positive": 62
+      }
+    },
+    "temperature_fit": 1.6,
+    "ece_after_scaling": 0.2442,
+    "selective_accuracy_at_70pct_coverage": 0.7515
+  },
+  "latency": {
+    "gpu_ms_per_decision": 34.0
+  },
+  "verdict": "Zero-shot Laya trails the finance-specialized stack by 16 accuracy points and is ~10x slower than FinBERT on CPU (393ms vs ~30ms for a 110M model), which is the deployment target (jury laptops, CPU-only). Main failure mode: poor financial-tone judgment (35/120 neutral headlines classified negative). The model card itself positions base Laya as \"a fast base to specialise, not a zero-shot decision engine\". Decision: keep FinBERT for bulk sentiment and the small-LLM layer for per-entity extraction; revisit fine-tuned Laya only as a gate model if event-type labeled data is collected. Kernel: sachingoyal27/laya-sentiment-spike v4."
+}
