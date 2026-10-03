@@ -16,10 +16,11 @@ def _get_pipeline():
             if _pipeline is None:
                 from transformers import pipeline as hf_pipeline
 
-                logger.info("Loading sentiment model %s", settings.sentiment_model)
+                model_id = settings.active_sentiment_model
+                logger.info("Loading sentiment model %s", model_id)
                 _pipeline = hf_pipeline(
                     "text-classification",
-                    model=settings.sentiment_model,
+                    model=model_id,
                     truncation=True,
                     max_length=512,
                 )

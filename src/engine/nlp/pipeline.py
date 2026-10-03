@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import dataclass, field
 
+from src.engine.config import settings
 from src.engine.nlp import entities, events, impact, sentiment
 
 
@@ -49,6 +50,7 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
     """Batched analysis (backfill path). Each item: {text, event_hint?, use_model?}."""
     items = [dict(i, text=(i.get("text") or "").strip()) for i in items]
     sentiments = sentiment.score_batch([i["text"] for i in items])
+    sent_version = "finbert-ft-v1" if "finbert-ft" in settings.active_sentiment_model else "finbert-v0"
     signals: list[RiskSignal] = []
     for item, s in zip(items, sentiments):
         text = item["text"]
@@ -68,7 +70,7 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
             impact_breakdown=imp,
             entities=entities.match_entities(text),
             model_versions={
-                "sentiment": "finbert-v0",
+                "sentiment": sent_version,
                 "events": "nli-lexicon-v0" if item.get("use_model") else "lexicon-v0",
                 "impact": "composite-v0",
             },

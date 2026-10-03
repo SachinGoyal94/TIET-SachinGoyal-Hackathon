@@ -28,6 +28,15 @@ class Settings(BaseSettings):
     sentiment_model: str = "ProsusAI/finbert"
     event_model: str = "typeform/distilbert-base-uncased-mnli"
 
+    # fine-tuned weights produced by the Kaggle training kernel; used when present
+    finetuned_dir: Path = REPO_ROOT / "models" / "finbert-ft"
+
+    @property
+    def active_sentiment_model(self) -> str:
+        if (self.finetuned_dir / "config.json").is_file():
+            return str(self.finetuned_dir)
+        return self.sentiment_model
+
     gdelt_poll_minutes: int = 15
     synthetic_feed_minutes: int = 5
     rebalance_minutes: int = 5

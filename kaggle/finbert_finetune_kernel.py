@@ -12,6 +12,7 @@ import torch
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
+    DataCollatorWithPadding,
     Trainer,
     TrainingArguments,
 )
@@ -102,7 +103,8 @@ def main():
         fp16=torch.cuda.is_available(),
     )
     trainer = Trainer(model=model, args=args, train_dataset=train_ds,
-                      eval_dataset=test_ds, compute_metrics=metrics)
+                      eval_dataset=test_ds, compute_metrics=metrics,
+                      data_collator=DataCollatorWithPadding(tokenizer))
     trainer.train()
 
     eval_result = trainer.evaluate()
