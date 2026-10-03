@@ -79,6 +79,7 @@ class Event(Base):
     event_label: Mapped[str] = mapped_column(String(32))
     headline: Mapped[str] = mapped_column(Text)
     first_entity: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    first_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
     first_seen: Mapped[datetime] = mapped_column(TZDateTime, default=utcnow)
     last_seen: Mapped[datetime] = mapped_column(TZDateTime, default=utcnow, index=True)
     n_sources: Mapped[int] = mapped_column(Integer, default=1)

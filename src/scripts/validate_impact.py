@@ -65,12 +65,17 @@ def next_move(dates: list[str], closes: list[float], after_utc: datetime) -> flo
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--days", type=int, default=120)
+    parser.add_argument("--source", type=str, default=None,
+                        help="restrict to one article source, e.g. 'gdelt' for live news")
     args = parser.parse_args()
 
     closes = load_closes(args.days)
 
     with get_session() as s:
-        events = s.execute(select(Event).order_by(Event.first_seen)).scalars().all()
+        stmt = select(Event).order_by(Event.first_seen)
+        if args.source:
+            stmt = stmt.where(Event.first_source == args.source)
+        events = s.execute(stmt).scalars().all()
 
     pairs: list[tuple[float, float]] = []
     for ev in events:
@@ -101,6 +106,7 @@ def main() -> None:
         return pearson(ra, rb)
 
     result = {
+        "source_filter": args.source or "all",
         "events_matched": len(pairs),
         "pearson": round(pearson(impacts, moves), 3),
         "spearman": round(spearman(impacts, moves), 3),
