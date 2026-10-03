@@ -30,6 +30,8 @@ def main() -> None:
     parser.add_argument("--model", type=str, default=settings.sentiment_model,
                         help="HuggingFace model id, or 'finbert-ft' for the fine-tuned one")
     parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--split", type=str, default="all", choices=["all", "test"],
+                        help="'test' scores only the held-out split (same seed as training)")
     args = parser.parse_args()
 
     model_id = settings.models_dir / "finbert-ft" if args.model == "finbert-ft" else args.model
@@ -37,7 +39,12 @@ def main() -> None:
     rows = load_kaggle(refresh_cache=True)
     if len(rows) < 100:
         raise SystemExit("labeled corpus missing: place all-data.csv in data/seed/")
-    log.info("corpus: %d rows (%s)", len(rows), dict(Counter(r["label"] for r in rows)))
+
+    if args.split == "test":
+        from src.scripts.train_sentiment import stratified_split
+
+        _, rows = stratified_split(rows)
+    log.info("corpus: %d rows (split=%s)", len(rows), args.split)
 
     import numpy as np
     from transformers import pipeline as hf_pipeline
@@ -65,6 +72,7 @@ def main() -> None:
         "model": args.model,
         "model_id": str(model_id),
         "rows": len(rows),
+        "split": args.split,
         "evaluated_at": datetime.now(timezone.utc).isoformat(),
         "accuracy": round(acc, 4),
         "macro_f1": round(float(np.mean(f1s)), 4),
@@ -72,7 +80,7 @@ def main() -> None:
     }
     log.info("result: %s", json.dumps(result, indent=2))
 
-    out = settings.cache_dir / f"sentiment_eval_{args.model.replace('/', '_')}.json"
+    out = settings.cache_dir / f"sentiment_eval_{args.model.replace('/', '_')}_{args.split}.json"
     out.write_text(json.dumps(result, indent=2), encoding="utf-8")
     log.info("saved to %s", out)
 
