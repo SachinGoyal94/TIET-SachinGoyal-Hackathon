@@ -1,0 +1,12 @@
+{
+  "events_matched": 125,
+  "pearson": -0.112,
+  "spearman": -0.129,
+  "mean_move_by_band": {
+    "1-4": 0.0143,
+    "4-6": 0.0157,
+    "6-8": 0.0151,
+    "8-10": 0.0108
+  },
+  "interpretation": "Correlation is ~0 on the seeded demo window because synthetic headline timestamps are random and deliberately uncorrelated with real price moves. The event-study harness is the deliverable: point it at a week of live GDELT history to measure the real relationship."
+}

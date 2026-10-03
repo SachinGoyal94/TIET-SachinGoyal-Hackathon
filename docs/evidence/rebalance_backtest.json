@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-10-03T12:18:42.048160+00:00",
+  "strategy": {
+    "days": 21,
+    "total_return": 0.0053,
+    "annualized_return": 0.0657,
+    "annualized_vol": 0.0943,
+    "sharpe": 0.722,
+    "max_drawdown": -0.0178
+  },
+  "cap_weighted_baseline": {
+    "days": 21,
+    "total_return": 0.0227,
+    "annualized_return": 0.3098,
+    "annualized_vol": 0.1104,
+    "sharpe": 2.501,
+    "max_drawdown": -0.0165
+  },
+  "note": "short demo window over seeded history; treat as illustrative, not as production evidence",
+  "interpretation": "On synthetic history the sentiment tilt adds noise (no real signal exists), so it trails cap-weight. The backtest harness is the deliverable; run after accumulating live GDELT signals for a true strategy-vs-baseline read."
+}
