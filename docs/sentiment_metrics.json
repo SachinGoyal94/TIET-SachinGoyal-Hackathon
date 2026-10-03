@@ -1,17 +1,12 @@
 {
-  "description": "Sentiment model comparison on the Kaggle 'Sentiment Analysis for Financial News' corpus (Malo et al. 2014). Test split: 483 held-out rows, stratified, seed 42.",
-  "base_finbert": {
-    "model": "ProsusAI/finbert",
-    "accuracy_test": 0.8944,
-    "macro_f1_test": 0.892,
-    "accuracy_full_corpus": 0.889
-  },
-  "fine_tuned": {
-    "model": "finbert-ft (FinBERT + 3 epochs on 4,363 rows, Kaggle P100)",
-    "accuracy_test": 0.8903,
-    "macro_f1_test": 0.88,
-    "kernel": "sachingoyal27/finbert-fine-tune-financial-sentiment"
-  },
-  "conclusion": "Base FinBERT is already well-calibrated to financial headlines (it was originally trained on this corpus), so the shipped Docker image uses base weights. The fine-tuning pipeline (src/scripts/train_sentiment.py, kaggle/ kernel) is included for reproducibility and for recalibration on new data.",
-  "note": "Full-corpus fine-tuned accuracy (93.7%) is training-set-inflated and deliberately not used as a headline metric."
+  "description": "Sentiment model bake-off on the Kaggle 'Sentiment Analysis for Financial News' corpus (Malo et al. 2014). All accuracy/F1 numbers are on the identical held-out test split: 483 rows, stratified, seed 42.",
+  "results": [
+    {"model": "FinBERT base (ProsusAI, 110M)", "accuracy": 0.8944, "macro_f1": 0.892, "note": "shipped in the platform"},
+    {"model": "FinBERT fine-tuned (3 epochs, Kaggle P100)", "accuracy": 0.8903, "macro_f1": 0.88, "note": "no gain: base already trained on this corpus"},
+    {"model": "ModernBERT-large fine-tuned (395M, 3 epochs, Kaggle T4)", "accuracy": 0.8861, "macro_f1": 0.8709, "note": "newer architecture, no gain on this corpus"},
+    {"model": "Jev 1.13 (closed System One model, zero-shot via hosted API)", "accuracy": 0.7686, "macro_f1": 0.7825, "note": "weak on positive class; not deployable keyless"},
+    {"model": "Laya zero-shot (421M System One model)", "accuracy": 0.7314, "macro_f1": 0.7176, "note": "weak financial-tone judgment; 10x slower on CPU"}
+  ],
+  "conclusion": "FinBERT base wins the bake-off and ships as the core scorer. Five models evaluated on identical data; the two fine-tuned variants land within noise of the base, and both System One decision models trail by 12-16 points. Evaluation artifacts: kaggle/ kernels, data/cache/sentiment_eval_*.json, docs/evidence/laya_spike.json, docs/evidence/jev_spike.json.",
+  "caveat": "Differences among the top three are within noise (483 rows, stderr ~1.4pp); the System One gap is real and large."
 }

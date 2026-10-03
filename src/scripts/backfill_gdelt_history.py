@@ -13,6 +13,7 @@ Usage: python -m src.scripts.backfill_gdelt_history --days 90 [--tickers AAPL,MS
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import time
 from datetime import datetime, timedelta, timezone
@@ -27,57 +28,61 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-7s %(na
 log = logging.getLogger("gdelt-hist")
 
 DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
-FETCH_SLEEP = 1.5  # informal GDELT throttling; be polite
+FETCH_SLEEP = 5.5  # GDELT: one request per 5 seconds
 MAX_RECORDS = 250
+THROTTLE_MSG = "Please limit requests to one every 5 seconds"
 
 
 def fetch_day(client: httpx.Client, query: str, day: datetime) -> list[dict]:
     start = day.strftime("%Y%m%d") + "000000"
     end = day.strftime("%Y%m%d") + "235959"
-    try:
-        resp = client.get(
-            DOC_URL,
-            params={
-                "query": f"{query} sourcelang:english",
-                "mode": "ArtList",
-                "maxrecords": str(MAX_RECORDS),
-                "format": "json",
-                "startdatetime": start,
-                "enddatetime": end,
-                "sort": "datedesc",
-            },
-            timeout=30.0,
-        )
-        if resp.status_code == 429:
-            log.warning("rate limited, sleeping 30s")
-            time.sleep(30)
-            return fetch_day(client, query, day)
-        resp.raise_for_status()
-        payload = resp.json()
-    except (httpx.HTTPError, ValueError) as exc:
-        log.warning("fetch failed for %s %s: %s", query[:40], day.date(), exc)
-        return []
-
-    items = []
-    for art in payload.get("articles", []):
-        title = (art.get("title") or "").strip()
-        url = art.get("url")
-        if not title or not url:
-            continue
-        seen = art.get("seendate", "")
+    for attempt in range(3):
         try:
-            published = datetime.strptime(seen, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
-        except ValueError:
-            published = day.replace(hour=12, tzinfo=timezone.utc)
-        items.append({
-            "text": title,
-            "source": "gdelt_hist",
-            "published_at": published,
-            "url": url,
-            "external_id": f"gdelt-{url}",
-            "use_model": False,
-        })
-    return items
+            resp = client.get(
+                DOC_URL,
+                params={
+                    "query": f"{query} sourcelang:english",
+                    "mode": "ArtList",
+                    "maxrecords": str(MAX_RECORDS),
+                    "format": "json",
+                    "startdatetime": start,
+                    "enddatetime": end,
+                    "sort": "datedesc",
+                },
+                timeout=30.0,
+            )
+            body = resp.text
+            if THROTTLE_MSG in body:
+                log.warning("throttled, sleeping 30s (%s %s)", query[:30], day.date())
+                time.sleep(30)
+                continue
+            resp.raise_for_status()
+            payload = json.loads(body)
+        except (httpx.HTTPError, ValueError) as exc:
+            log.warning("fetch failed for %s %s: %s", query[:40], day.date(), exc)
+            return []
+
+        items = []
+        for art in payload.get("articles", []):
+            title = (art.get("title") or "").strip()
+            url = art.get("url")
+            if not title or not url:
+                continue
+            seen = art.get("seendate", "")
+            try:
+                published = datetime.strptime(seen, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
+            except ValueError:
+                published = day.replace(hour=12, tzinfo=timezone.utc)
+            items.append({
+                "text": title,
+                "source": "gdelt_hist",
+                "published_at": published,
+                "url": url,
+                "external_id": f"gdelt-{url}",
+                "use_model": False,
+            })
+        return items
+    return []
 
 
 def main() -> None:

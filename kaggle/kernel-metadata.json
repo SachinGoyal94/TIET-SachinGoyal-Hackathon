@@ -1,6 +1,6 @@
 {
-  "id": "sachingoyal27/laya-sentiment-spike",
-  "title": "Laya Sentiment Spike",
+  "id": "sachingoyal27/modernbert-finetune",
+  "title": "ModernBERT Fine-tune",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
@@ -9,5 +9,5 @@
   "dataset_sources": ["ankurzing/sentiment-analysis-for-financial-news"],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "laya_sentiment_spike.py"
+  "code_file": "modernbert_finetune_kernel.py"
 }
