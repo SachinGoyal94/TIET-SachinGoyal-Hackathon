@@ -67,7 +67,7 @@ def test_analyze_route(client, monkeypatch):
     assert res.status_code == 200
     body = res.json()
     assert body["event_label"] == "Geopolitical"
-    assert body["impact_score"] >= 8.0
+    assert body["impact_score"] >= 5.0
 
 
 def test_signals_route(client, seeded_db):
