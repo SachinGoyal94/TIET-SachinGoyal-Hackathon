@@ -1,0 +1,15 @@
+{
+  "task": "per-entity sentiment on SEntFiN 1.0 multi-entity headlines",
+  "rows": 400,
+  "entity_judgments": 907,
+  "per_entity_llm": {
+    "accuracy": 0.7244,
+    "macro_f1": 0.748
+  },
+  "finbert_headline_baseline": {
+    "accuracy": 0.5976,
+    "macro_f1": 0.5973,
+    "note": "one shared headline label applied to every entity - the approach the per-entity layer replaces"
+  },
+  "interpretation": "SEntFiN 1.0 benchmark (400 multi-entity headlines, 907 human-labeled entity judgments, fixed seed-42 sample): the per-entity extraction layer (Qwen3-4B-Instruct, JSON output) scores 72.4% accuracy / 0.748 macro F1, vs 59.8% / 0.597 for the headline-level shared score it replaces (+12.7pp). Human annotator agreement on this task is ~69% (Sinha et al. 2022), so the layer operates at the practical ceiling. This is why one score per headline is not enough: multi-entity headlines carry opposite signals for different companies."
+}

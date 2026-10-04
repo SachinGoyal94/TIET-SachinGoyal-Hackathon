@@ -1,13 +1,13 @@
 {
-  "id": "sachingoyal27/tweets-score",
-  "title": "Tweets Score",
+  "id": "sachingoyal27/sentfin-validation",
+  "title": "SentFin Validation",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": ["sachingoyal27/stock-tweets-universe"],
+  "dataset_sources": ["sachingoyal27/sentfin-sample"],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "tweets_score.py"
+  "code_file": "sentfin_validation.py"
 }
