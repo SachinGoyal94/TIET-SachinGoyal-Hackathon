@@ -1,0 +1,63 @@
+{
+  "source": "Lending Club corpus (wordsforthewise/lending-club), 2007-2018",
+  "risk_free_assumption_pct": 1.5,
+  "grade_to_rating_mapping": {
+    "A": "AA",
+    "B": "A",
+    "C": "BBB",
+    "D": "BB",
+    "E": "B",
+    "F": "CCC",
+    "G": "CCC"
+  },
+  "calibration": {
+    "AA": {
+      "lc_grade": "A",
+      "loans": 235193,
+      "mean_int_rate_pct": 7.113,
+      "spread_bps_est": 561,
+      "realized_default_rate_pct": 6.044,
+      "pd_est": 0.0604
+    },
+    "A": {
+      "lc_grade": "B",
+      "loans": 393102,
+      "mean_int_rate_pct": 10.679,
+      "spread_bps_est": 918,
+      "realized_default_rate_pct": 13.396,
+      "pd_est": 0.134
+    },
+    "BBB": {
+      "lc_grade": "C",
+      "loans": 382323,
+      "mean_int_rate_pct": 14.019,
+      "spread_bps_est": 1252,
+      "realized_default_rate_pct": 22.443,
+      "pd_est": 0.2244
+    },
+    "BB": {
+      "lc_grade": "D",
+      "loans": 201657,
+      "mean_int_rate_pct": 17.71,
+      "spread_bps_est": 1621,
+      "realized_default_rate_pct": 30.38,
+      "pd_est": 0.3038
+    },
+    "B": {
+      "lc_grade": "E",
+      "loans": 94192,
+      "mean_int_rate_pct": 21.107,
+      "spread_bps_est": 1961,
+      "realized_default_rate_pct": 38.431,
+      "pd_est": 0.3843
+    },
+    "CCC": {
+      "lc_grade": "G",
+      "loans": 9326,
+      "mean_int_rate_pct": 27.542,
+      "spread_bps_est": 2604,
+      "realized_default_rate_pct": 49.668,
+      "pd_est": 0.4967
+    }
+  }
+}

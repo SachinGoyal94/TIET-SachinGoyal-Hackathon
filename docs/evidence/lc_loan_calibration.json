@@ -1,0 +1,35 @@
+{
+  "description": "Loan-book credit parameters calibrated from real borrower outcomes: the Lending Club corpus (1.35M scored loans, 2007-2018, with grades, interest rates and default outcomes).",
+  "realized_default_experience_pct": {
+    "A": 6.0,
+    "B": 13.4,
+    "C": 22.4,
+    "D": 30.4,
+    "E": 38.4,
+    "F": 45.1,
+    "G": 49.7
+  },
+  "mean_interest_rate_pct": {
+    "A": 7.1,
+    "B": 10.7,
+    "C": 14.0,
+    "D": 17.7,
+    "E": 21.1,
+    "F": 24.9,
+    "G": 27.5
+  },
+  "wired_into_portfolio": {
+    "L011 SME Lending Pool US-7": {
+      "pd": 0.075,
+      "spread_bps": 1250,
+      "basis": "LC C-grade cohort (1-year equivalent of 22.4% lifetime over ~3y)"
+    },
+    "L012 SME Lending Pool EU-3": {
+      "pd": 0.105,
+      "spread_bps": 1620,
+      "basis": "LC D-grade cohort (30.4% lifetime over ~3y)"
+    }
+  },
+  "kept_agency_anchored": "Corporate loan and bond positions retain agency-style 1-year PDs - LC consumer-grade experience is not representative of wholesale corporate credit.",
+  "note": "LC default rates are lifetime rates of completed 3y loans; the SME pools convert to approximate annual PDs. Generation script: kaggle/lc_calibrate.py (Kaggle CPU, ~40s)."
+}

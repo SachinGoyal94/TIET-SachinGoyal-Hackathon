@@ -148,11 +148,12 @@
       "name": "SME Lending Pool US-7",
       "notional": 145000000,
       "rating": "BB",
-      "spread_bps": 395,
-      "pd": 0.026,
+      "spread_bps": 1250,
+      "pd": 0.075,
       "lgd": 0.55,
       "sector": "Consumer",
-      "region": "US"
+      "region": "US",
+      "pd_source": "Lending Club C-grade calibration (1.35M real loans)"
     },
     {
       "id": "L012",
@@ -161,11 +162,12 @@
       "name": "SME Lending Pool EU-3",
       "notional": 98000000,
       "rating": "BB",
-      "spread_bps": 375,
-      "pd": 0.024,
+      "spread_bps": 1620,
+      "pd": 0.105,
       "lgd": 0.55,
       "sector": "Consumer",
-      "region": "EU"
+      "region": "EU",
+      "pd_source": "Lending Club D-grade calibration (1.35M real loans)"
     },
     {
       "id": "L013",
