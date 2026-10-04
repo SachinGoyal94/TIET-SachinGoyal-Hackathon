@@ -1,0 +1,27 @@
+{
+  "description": "Module B reverification: functional verification battery found and fixed four bugs in the credit engine and stress stack.",
+  "bugs_found_and_fixed": [
+    "Transition matrix rows did not sum to 1.0 (AAA 0.993) - Markov powers drifted; rows now normalized",
+    "Migration widening was inactive: integer-notch rounding turned every expected downgrade into 0bps; replaced with fractional interpolation between rating-spread rows (BB now widens 13bps, B 34bps from expected migration alone)",
+    "Reverse stress lower bound (0.5x) missed the true COVID breach boundary (~0.25x); floor moved to 0.0 - corrected boundary 0.25x, CET1 7.0% at breach",
+    "Swap DV01s were ~10x understated in portfolio.json (e.g. $400M 5Y swap: $19k/bp vs correct ~$184k/bp); recomputed as notional x duration x 0.0001 - hedges now realistic (COVID derivative P&L: -69.2M with proper hedges)",
+    "stressed_pd z-formula simplified (z_eff = 1.5 + 1.2 x band_scale)"
+  ],
+  "corrected_covid_replay": {
+    "pnl": -644958726,
+    "pnl_pct": -16.386,
+    "cet1": "13.33% -> 0.0% (depletion 2287bps, breach)",
+    "derivative_pnl": -69230000
+  },
+  "reverse_stress_corrected": {
+    "scenario": "covid_march_2020",
+    "breach_multiple": 0.25,
+    "cet1_ratio_at_breach_pct": 7.0
+  },
+  "verified_clean": [
+    "sovereign bond repricing matches duration+convexity exactly",
+    "Vasicek PD monotonic across z",
+    "Monte Carlo deterministic (seeded)",
+    "47 tests green"
+  ]
+}

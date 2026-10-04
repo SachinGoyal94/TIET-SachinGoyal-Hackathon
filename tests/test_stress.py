@@ -34,11 +34,21 @@ def test_shocks_scale_with_impact():
 def test_bond_duration_math():
     from src.engine.modules.stress import _price_position
 
-    pos = {"asset_class": "bond", "sub_type": "corporate", "notional": 1000000,
+    pos = {"asset_class": "bond", "sub_type": "sovereign", "notional": 1000000,
            "duration": 5.0, "convexity": 0.0}
     shocks = {"equity_pct": 0.0, "rates_bps": 100, "spread_bps": 0, "fx_pct": 0.0}
     pnl = _price_position(pos, shocks)
     assert pnl == pytest.approx(-50000.0)  # -D * dy * value = -5 * 0.01 * 1M
+
+
+def test_corporate_bond_migration_widening():
+    from src.engine.modules.stress import _price_position
+
+    pos = {"asset_class": "bond", "sub_type": "corporate", "notional": 1000000,
+           "duration": 5.0, "convexity": 0.0, "rating": "BB"}
+    shocks = {"equity_pct": 0.0, "rates_bps": 0, "spread_bps": 0, "fx_pct": 0.0}
+    pnl = _price_position(pos, shocks)
+    assert pnl < 0  # migration widening bites for lower-rated names
 
 
 def test_equity_shock_math():

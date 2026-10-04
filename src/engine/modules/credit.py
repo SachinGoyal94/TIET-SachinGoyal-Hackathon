@@ -37,6 +37,12 @@ SPREAD_BY_RATING_BPS: dict[str, float] = {
 BASEL_CORR_CAP = 0.24
 
 
+for _r in TRANSITION:
+    _s = sum(TRANSITION[_r].values())
+    if abs(_s - 1.0) > 1e-12:
+        TRANSITION[_r] = {k: v / _s for k, v in TRANSITION[_r].items()}
+
+
 def matrix_power(years: int) -> dict[str, dict[str, float]]:
     """Multi-year transition matrix via Markov powers."""
     def matmul(a, b):
@@ -89,10 +95,11 @@ def norm_cdf(x: float) -> float:
     return NormalDist().cdf(x)
 
 
-def stressed_pd(pd: float, band_scale: float, z: float = 2.33) -> float:
-    """Scenario-scaled conditional PD: the Vasicek stress quantile scales with
-    the scenario band so high-impact events push deeper into the tail."""
-    return vasicek_pd(pd, z=min(3.5, 1.5 + 1.2 * band_scale * (z / 2.33)))
+def stressed_pd(pd: float, band_scale: float) -> float:
+    """Scenario-scaled conditional PD: the Vasicek stress quantile grows with
+    the scenario band (z_eff = 1.5 + 1.2 x band_scale), so high-impact events
+    push deeper into the tail. band_scale=1.0 -> z_eff 2.7."""
+    return vasicek_pd(pd, z=min(3.5, 1.5 + 1.2 * band_scale))
 
 
 def base_rating(rating: str) -> str:
@@ -107,13 +114,22 @@ def base_rating(rating: str) -> str:
 
 
 def spread_widening_bps(rating: str, notches_down: float) -> float:
-    """Spread widening from an expected downgrade, via the rating-spread table."""
+    """Spread widening from an expected downgrade: fractional interpolation
+    between neighboring rating rows of the spread table, capped at CCC."""
     rating = base_rating(rating)
     start = RATING_ORDER.index(rating)
-    new_idx = min(len(RATING_ORDER) - 2, start + notches_down)  # cap at CCC
-    new_rating = RATING_ORDER[round(new_idx)]
-    widening = SPREAD_BY_RATING_BPS[new_rating] - SPREAD_BY_RATING_BPS[rating]
-    return max(0.0, float(widening))
+    new_idx = min(len(RATING_ORDER) - 2, start + notches_down)
+    lo = int(np_floor(new_idx))
+    hi = min(lo + 1, len(RATING_ORDER) - 2)
+    frac = new_idx - lo
+    new_spread = (SPREAD_BY_RATING_BPS[RATING_ORDER[lo]] * (1 - frac)
+                  + SPREAD_BY_RATING_BPS[RATING_ORDER[hi]] * frac)
+    return max(0.0, float(new_spread - SPREAD_BY_RATING_BPS[rating]))
+
+
+def np_floor(x: float) -> float:
+    import math
+    return math.floor(x)
 
 
 def expected_loss(notional: float, pd: float, lgd: float) -> float:

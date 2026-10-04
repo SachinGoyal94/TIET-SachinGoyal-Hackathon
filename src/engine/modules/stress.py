@@ -221,7 +221,7 @@ def _capital_view(capital: dict, result: dict) -> dict:
     }
 
 
-def reverse_stress(portfolio: dict, scenario: str, lo: float = 0.5,
+def reverse_stress(portfolio: dict, scenario: str, lo: float = 0.0,
                    hi: float = 8.0, tol: float = 0.01) -> dict:
     """Solve for the shock multiplier at which CET1 breaches its minimum.
 
