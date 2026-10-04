@@ -50,7 +50,7 @@ def main():
     print(f"training rows: {len(df)}", flush=True)
 
     rng = __import__("random").Random(42)
-    per_class = 2000
+    per_class = 850
     parts = []
     for lab in LABELS:
         sub = df[df["label"] == lab]
@@ -68,9 +68,9 @@ def main():
         "label": [LABELS.index(l) for l in train_df["label"]],
     })
 
-    model = SetFitModel.from_pretrained("sentence-transformers/paraphrase-mpnet-base-v2")
+    model = SetFitModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
     args = TrainingArguments(
-        batch_size=32,
+        batch_size=16,
         num_epochs=2,
         body_learning_rate=2e-5,
         head_learning_rate=1e-2,
@@ -90,7 +90,7 @@ def main():
     agree = sum(1 for r in records if r["setfit"] == r["true"])
     metrics = {
         "task": "6-label event classification on hand-labeled gold (380 headlines)",
-        "training": "SetFit (paraphrase-mpnet-base-v2) on 20k class-balanced "
+        "training": "SetFit (all-MiniLM-L6-v2) on ~5.6k class-balanced "
                     "pipeline-labeled headlines (weak labels, gold excluded)",
         "setfit": {
             "accuracy": round(agree / len(records), 4),

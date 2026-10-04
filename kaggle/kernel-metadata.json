@@ -1,13 +1,13 @@
 {
-  "id": "sachingoyal27/lc-calibrate",
-  "title": "LC Calibrate",
+  "id": "sachingoyal27/setfit-train",
+  "title": "SetFit Train",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
-  "enable_gpu": false,
+  "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": ["wordsforthewise/lending-club"],
+  "dataset_sources": ["sachingoyal27/setfit-event-train"],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "lc_calibrate.py"
+  "code_file": "setfit_train.py"
 }
