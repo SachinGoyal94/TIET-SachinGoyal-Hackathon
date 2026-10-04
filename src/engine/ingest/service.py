@@ -179,4 +179,5 @@ def _persist(session, text: str, source: str, published_at: datetime,
         impact_score=signal.impact_score,
         cluster_max_impact=event.max_impact,
         entities=[e.name for e in signal.entities],
+        per_entity=signal.per_entity,
     )

@@ -58,6 +58,7 @@ export interface AnalyzeResult {
   impact_score: number;
   cluster_max_impact: number;
   entities: string[];
+  per_entity?: Record<string, number>;
 }
 
 export interface TickerInfo {

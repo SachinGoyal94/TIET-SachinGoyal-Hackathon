@@ -121,6 +121,15 @@ export default function RiskEngine() {
                 {analyze.data.entities.length ? analyze.data.entities.join(", ") : "market-wide"}
                 <span className="ml-1 text-xs text-slate-500">({analyze.data.cluster_action})</span>
               </div>
+              {analyze.data.per_entity && Object.keys(analyze.data.per_entity).length > 0 && (
+                <div className="mt-1 text-xs">
+                  {Object.entries(analyze.data.per_entity).map(([t, v]) => (
+                    <span key={t} className={`mr-2 font-medium ${v > 0.15 ? "text-emerald-400" : v < -0.15 ? "text-rose-400" : "text-slate-400"}`}>
+                      {t} {v > 0 ? "+" : ""}{v.toFixed(2)}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
