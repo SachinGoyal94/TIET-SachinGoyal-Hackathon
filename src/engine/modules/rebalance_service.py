@@ -1,7 +1,10 @@
 """Live rebalance state: aggregates recent signals into current weights.
 
-Shared by the scheduler tick and the /api/rebalance endpoints so the API
-always reports exactly what the last tick stored.
+Signal convention matches the validated walk-forward backtest: per-ticker
+sentiment is the impact-weighted daily mean (decaying 0.6 toward neutral on
+no-news days), z-scored over a trailing 60-session window as 70% level +
+30% change. Shared by the scheduler tick and the /api/rebalance endpoints
+so the API always reports exactly what the last tick stored.
 """
 
 from __future__ import annotations
@@ -12,14 +15,11 @@ from sqlalchemy import select
 
 from src.engine.db import Signal, Weight, get_session
 from src.engine.market_data import daily_volatility, market_cap_weights
-from src.engine.modules.rebalancer import (
-    blend_ticker_scores,
-    compute_targets,
-    decayed_sentiment,
-)
-from src.engine.universe import SECTOR_MEMBERS, TICKERS
+from src.engine.modules.rebalancer import compute_targets, zscore_level_and_change
+from src.engine.universe import TICKERS
 
-LOOKBACK_HOURS = 48
+Z_WINDOW_DAYS = 60
+NO_NEWS_DECAY = 0.6
 
 
 def _anchor() -> dict[str, float]:
@@ -30,29 +30,43 @@ def _anchor() -> dict[str, float]:
 
 
 def current_sentiments() -> tuple[dict[str, float], dict[str, float]]:
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=LOOKBACK_HOURS)
-    company: dict[str, list[tuple[float, float]]] = {t: [] for t in TICKERS}
-    sector: dict[str, list[tuple[float, float]]] = {}
+    """(z_scores, raw_scores) per ticker.
 
+    Raw: impact-weighted daily mean of company signals, decaying toward
+    neutral on no-news days (the backtest's convention). Z: that daily series
+    z-scored over the trailing window as 70% level + 30% change.
+    """
+    since = datetime.now(timezone.utc) - timedelta(days=Z_WINDOW_DAYS + 7)
     with get_session() as s:
         rows = s.execute(
-            select(Signal).where(
-                Signal.analyzed_at >= cutoff,
-                Signal.scope.in_(["company", "sector"]),
-            )
-        ).scalars().all()
+            select(Signal.entity, Signal.analyzed_at, Signal.sentiment_score,
+                   Signal.impact_score)
+            .where(Signal.scope == "company", Signal.entity.in_(TICKERS),
+                   Signal.analyzed_at >= since)
+        ).all()
 
-    now = datetime.now(timezone.utc)
-    for sig in rows:
-        age = (now - sig.analyzed_at).total_seconds() / 3600
-        if sig.scope == "company" and sig.entity in company:
-            company[sig.entity].append((age, sig.sentiment_score))
-        elif sig.scope == "sector":
-            sector.setdefault(sig.entity, []).append((age, sig.sentiment_score))
+    daily = {}
+    for entity, analyzed, sentiment, impact in rows:
+        day = analyzed.date()
+        w = max(impact, 0.5)
+        t, v = daily.setdefault((day, entity), (0.0, 0.0))
+        daily[(day, entity)] = (t + w, v + sentiment * w)
+    daily_mean = {k: v / w for k, (w, v) in daily.items()}
 
-    company_scores = {t: decayed_sentiment(v) for t, v in company.items()}
-    sector_scores = {k: decayed_sentiment(v) for k, v in sector.items()}
-    return company_scores, sector_scores
+    today = datetime.now(timezone.utc).date()
+    levels: dict[str, list[float]] = {t: [] for t in TICKERS}
+    raw: dict[str, float] = {t: 0.0 for t in TICKERS}
+    for offset in range(Z_WINDOW_DAYS, -1, -1):
+        day = today - timedelta(days=offset)
+        for t in TICKERS:
+            if (day, t) in daily_mean:
+                raw[t] = daily_mean[(day, t)]
+            else:
+                raw[t] *= NO_NEWS_DECAY
+            levels[t].append(raw[t])
+
+    z = zscore_level_and_change(levels, raw)
+    return z, raw
 
 
 def prev_weights() -> dict[str, float] | None:
@@ -68,24 +82,23 @@ def prev_weights() -> dict[str, float] | None:
 
 def rebalance_tick() -> dict[str, float]:
     """Compute and store one rebalance snapshot. Returns the new weights."""
-    company_scores, sector_scores = current_sentiments()
-    scores = blend_ticker_scores(company_scores, sector_scores)
+    z_scores, raw = current_sentiments()
     vols = daily_volatility()
     prev = prev_weights()
     anchor = _anchor()
-    targets = compute_targets(scores, anchor, vols, prev)
+    targets = compute_targets(z_scores, anchor, vols, prev)
 
     now = datetime.now(timezone.utc)
     with get_session() as s:
         for t, w in targets.items():
             s.add(Weight(ts=now, ticker=t, weight=w,
                          anchor_weight=anchor[t],
-                         sentiment_used=company_scores.get(t, 0.0)))
+                         sentiment_used=raw.get(t, 0.0)))
     return targets
 
 
 def weights_snapshot() -> dict:
-    """Current weights plus deltas and the sentiment behind them."""
+    """Current weights plus deltas and the raw sentiment behind them."""
     with get_session() as s:
         latest_ts = s.execute(
             select(Weight.ts).order_by(Weight.ts.desc()).limit(1)
@@ -93,7 +106,7 @@ def weights_snapshot() -> dict:
         if latest_ts is None:
             return {"ts": None, "weights": []}
         rows = s.execute(select(Weight).where(Weight.ts == latest_ts)).scalars().all()
-    company_scores, _ = current_sentiments()
+    _, raw = current_sentiments()
     return {
         "ts": latest_ts,
         "weights": [
@@ -102,7 +115,7 @@ def weights_snapshot() -> dict:
                 "weight": r.weight,
                 "anchor_weight": r.anchor_weight,
                 "delta": round(r.weight - r.anchor_weight, 5),
-                "sentiment": company_scores.get(r.ticker, 0.0),
+                "sentiment": raw.get(r.ticker, 0.0),
             }
             for r in sorted(rows, key=lambda r: r.weight, reverse=True)
         ],

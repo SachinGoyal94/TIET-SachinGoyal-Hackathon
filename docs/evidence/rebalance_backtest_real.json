@@ -55,5 +55,6 @@
     "NVDA": 205.7
   },
   "note": "walk-forward, point-in-time signals; vol-managed variant rescales 20d realized vol to the 20% target (capped at 1.5x gross).",
-  "solver_note": "The cap-renormalization solver was replaced with a water-filling bisection (exact convergence) after reverification found the iterative version collapsed to equal weights when the cap bound on multiple names. Backtest impact is minor (-20.99% vs -21.73% strategy return; conclusions unchanged) but the solver is now exact."
+  "solver_note": "The cap-renormalization solver was replaced with a water-filling bisection (exact convergence) after reverification found the iterative version collapsed to equal weights when the cap bound on multiple names. Backtest impact is minor (-20.99% vs -21.73% strategy return; conclusions unchanged) but the solver is now exact.",
+  "live_alignment_note": "The live rebalance path now executes the validated configuration: impact-weighted daily sentiment (0.6 decay on no-news days) z-scored over a 60-session window as 70% level + 30% change, fed directly to compute_targets. Verified: identical inputs produce identical weights through both paths (max diff 0.0). Note: the sector spillover term was dropped - it was dead code in the validated backtest chain."
 }
