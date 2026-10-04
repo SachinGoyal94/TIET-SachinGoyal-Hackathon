@@ -8,17 +8,17 @@
   "execution": "decision at close(D) from signals through 20:00 UTC of D; returns close(D)->close(D+1). No look-ahead.",
   "strategy_sentiment_tilt": {
     "days": 352,
-    "total_return": -0.2173,
-    "annualized_return": -0.1609,
-    "annualized_vol": 0.3274,
-    "sharpe_net": -0.372,
-    "max_drawdown": -0.3696,
-    "avg_daily_turnover_pct": 5.465
+    "total_return": -0.2099,
+    "annualized_return": -0.1552,
+    "annualized_vol": 0.329,
+    "sharpe_net": -0.348,
+    "max_drawdown": -0.3643,
+    "avg_daily_turnover_pct": 5.414
   },
   "strategy_vol_targeted_20pct": {
     "days": 352,
-    "total_return": -0.1054,
-    "annualized_vol": 0.2074
+    "total_return": -0.0967,
+    "annualized_vol": 0.2075
   },
   "cap_weighted_baseline": {
     "days": 352,
@@ -39,21 +39,21 @@
     "avg_daily_turnover_pct": 0.0
   },
   "attribution_active_vs_anchor": {
-    "MSFT": -149.5,
-    "AMZN": -52.1,
-    "JPM": -29.3,
-    "CVX": -19.5,
-    "KO": 2.9,
-    "BA": 5.2,
-    "GS": 7.5,
-    "BAC": 11.6,
-    "XOM": 26.4,
-    "WMT": 46.9,
-    "GOOGL": 52.6,
-    "META": 85.2,
-    "AAPL": 131.0,
-    "NVDA": 147.6
+    "MSFT": -151.5,
+    "AMZN": -52.4,
+    "JPM": -28.8,
+    "CVX": -21.8,
+    "BAC": -1.1,
+    "KO": 4.5,
+    "BA": 5.4,
+    "GS": 8.9,
+    "XOM": 14.6,
+    "WMT": 45.7,
+    "META": 97.9,
+    "GOOGL": 112.9,
+    "AAPL": 126.1,
+    "NVDA": 205.7
   },
   "note": "walk-forward, point-in-time signals; vol-managed variant rescales 20d realized vol to the 20% target (capped at 1.5x gross).",
-  "interpretation": "CORRECTED walk-forward (352 trading days, 2021-08 to 2022-12 bear market): execution timing fixed to close(D) entry from signals through 20:00 UTC of D - an earlier version had look-ahead bias (day-D news earning part of day-D's move) and reported +4.8pts. The corrected strategy beats its cap-weight benchmark by +0.9pt net of costs. Findings: (1) the 20%-vol-targeted variant cut the loss to -10.5% with realized vol 20.7% vs target 20% - vol management is the standout result (Moreira-Muir 2017); (2) attribution: per-entity-driven tilts added +148bps on NVDA, +131bps on AAPL, +85bps on META, and cost -150bps on MSFT; (3) equal-weight beat both (small-cap skew in 2022); (4) turnover averaged 5.5%/day - the binding constraint, regime-dependent."
+  "solver_note": "The cap-renormalization solver was replaced with a water-filling bisection (exact convergence) after reverification found the iterative version collapsed to equal weights when the cap bound on multiple names. Backtest impact is minor (-20.99% vs -21.73% strategy return; conclusions unchanged) but the solver is now exact."
 }

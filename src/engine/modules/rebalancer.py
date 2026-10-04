@@ -73,20 +73,28 @@ def decayed_sentiment(signals: list[tuple[float, float]], half_life_hours: float
 
 
 def _renormalize_with_cap(weights: dict[str, float], cap: float) -> dict[str, float]:
-    w = dict(weights)
-    for _ in range(50):
-        excess = sum(v - cap for v in w.values() if v > cap)
-        if excess <= 1e-9:
-            break
-        w = {t: min(v, cap) for t, v in w.items()}
-        free_idx = [t for t, v in w.items() if v < cap - 1e-12]
-        free_total = sum(w[t] for t in free_idx)
-        if not free_idx or free_total <= 0:
-            break
-        for t in free_idx:
-            w[t] = min(cap, w[t] * (free_total + excess) / free_total)
-    total = sum(w.values())
-    return {t: v / total for t, v in w.items()}
+    """Scale to sum 1 with a per-name cap, via water-filling: bisect the
+    scaling factor until sum(min(w_i * lam, cap)) == 1. Converges whenever
+    len(weights) * cap >= 1."""
+    total = sum(weights.values())
+    if total <= 0 or cap * len(weights) < 1.0:
+        n = len(weights)
+        return {t: 1.0 / n for t in weights}
+
+    def scaled_sum(lam: float) -> float:
+        return sum(min(v / total * lam, cap) for v in weights.values())
+
+    lo, hi = 1.0, 1.0
+    while scaled_sum(hi) < 1.0 and hi < 1e12:
+        hi *= 2
+    for _ in range(80):
+        lam = (lo + hi) / 2
+        if scaled_sum(lam) < 1.0:
+            lo = lam
+        else:
+            hi = lam
+    lam = (lo + hi) / 2
+    return {t: min(v / total * lam, cap) for t, v in weights.items()}
 
 
 def _sector_neutralize(weights: dict[str, float], anchor: dict[str, float],
