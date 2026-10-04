@@ -1,9 +1,9 @@
 import json
 import logging
+import os
+import queue
 import threading
 from dataclasses import dataclass
-
-from llama_cpp import Llama
 
 from src.engine.config import settings
 from src.engine.universe import BY_TICKER
@@ -29,6 +29,18 @@ FEWSHOT = (
     "\"sentiment\": \"negative\", \"event_type\": \"Geopolitical\", \"impact\": \"high\"}, "
     "{\"name\": \"Apple\", \"sentiment\": \"positive\", \"event_type\": \"Product Launch\", "
     "\"impact\": \"low\"}]}<|im_end|>\n"
+    "<|im_start|>user\nHeadline: Missile strikes halt tanker traffic through key strait, "
+    "crude jumps<|im_end|>\n<|im_start|>assistant\n{\"entities\": [{\"name\": \"MARKET\", "
+    "\"sentiment\": \"negative\", \"event_type\": \"Geopolitical\", \"impact\": \"severe\"}]}<|im_end|>\n"
+    "<|im_start|>user\nHeadline: Apple beats earnings estimates on strong iPhone demand<|im_end|>\n"
+    "<|im_start|>assistant\n{\"entities\": [{\"name\": \"Apple\", \"sentiment\": \"positive\", "
+    "\"event_type\": \"Macroeconomic\", \"impact\": \"medium\"}]}<|im_end|>\n"
+    "<|im_start|>user\nHeadline: Federal Reserve hikes rates 50 basis points warning of more "
+    "tightening<|im_end|>\n<|im_start|>assistant\n{\"entities\": [{\"name\": \"MARKET\", "
+    "\"sentiment\": \"negative\", \"event_type\": \"Macroeconomic\", \"impact\": \"high\"}]}<|im_end|>\n"
+    "<|im_start|>user\nHeadline: Goldman Sachs in advanced talks to acquire boutique asset "
+    "manager<|im_end|>\n<|im_start|>assistant\n{\"entities\": [{\"name\": \"Goldman Sachs\", "
+    "\"sentiment\": \"positive\", \"event_type\": \"Merger/Acquisition\", \"impact\": \"medium\"}]}<|im_end|>\n"
 )
 
 
@@ -41,26 +53,46 @@ class EntitySentiment:
 
 
 _lock = threading.Lock()
-_model = None
+_worker_started = False
+_jobs: "queue.Queue[tuple]" = queue.Queue()
 
 
 def is_configured() -> bool:
     return settings.entity_extractor != "off" and settings.entity_extractor_model.is_file()
 
 
-def _get_model():
-    global _model
-    if _model is None:
-        with _lock:
-            if _model is None:
-                logger.info("Loading entity extractor %s", settings.entity_extractor_model.name)
-                _model = Llama(
-                    model_path=str(settings.entity_extractor_model),
-                    n_ctx=1024,
-                    n_threads=max(4, __import__("os").cpu_count() - 2),
-                    verbose=False,
-                )
-    return _model
+def _load_model():
+    from llama_cpp import Llama
+
+    logger.info("Loading entity extractor %s", settings.entity_extractor_model.name)
+    return Llama(
+        model_path=str(settings.entity_extractor_model),
+        n_ctx=1024,
+        n_threads=max(4, (os.cpu_count() or 8) - 2),
+        verbose=False,
+    )
+
+
+def _worker_loop():
+    """Single owner thread for the LLM: llama.cpp is not safe for concurrent
+    calls on one context, so every extraction job runs serialized here."""
+    model = _load_model()
+    while True:
+        text, magnitude, candidates, out_q = _jobs.get()
+        try:
+            out_q.put(_run_extraction(model, text, magnitude, candidates))
+        except Exception as exc:  # noqa: BLE001 — a bad job must not kill the worker
+            logger.warning("extraction job failed: %s", exc)
+            out_q.put([])
+
+
+def _ensure_worker():
+    global _worker_started
+    with _lock:
+        if not _worker_started:
+            threading.Thread(target=_worker_loop, name="entity-extractor",
+                             daemon=True).start()
+            _worker_started = True
 
 
 def _parse_json(text: str) -> dict | None:
@@ -92,7 +124,14 @@ def extract(text: str, magnitude: float = 0.5,
     """
     if not text.strip():
         return []
-    model = _get_model()
+    _ensure_worker()
+    out_q: "queue.Queue" = queue.Queue()
+    _jobs.put((text, magnitude, candidates, out_q))
+    return out_q.get()
+
+
+def _run_extraction(model, text: str, magnitude: float,
+                    candidates: list[str] | None) -> list[EntitySentiment]:
     scope = (f" Only discuss these companies if mentioned: {', '.join(candidates)}. "
              "If none of them or no specific company is discussed, use name \"MARKET\"."
              if candidates else

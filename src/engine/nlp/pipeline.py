@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import hashlib
+import math
 import logging
+from collections import Counter
 from dataclasses import dataclass, field
 
 from src.engine.config import settings
@@ -92,9 +94,10 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
             },
         )
 
-        # extraction is opt-out: the live path gets it, the backfill disables it
-        if extractor_on and item.get("extract_entities", True) \
-                and any(m.ticker for m in matches):
+        # live orchestration: the LLM is primary (event label + per-entity
+        # direction), FinBERT supplies conviction, the blend is the fallback
+        # when the extractor is off or fails
+        if extractor_on and item.get("extract_entities", True):
             try:
                 candidates = [m.name for m in matches if m.ticker]
                 per_entity = entity_sentiment.extract(
@@ -105,10 +108,33 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
                     for m in matches
                     if m.ticker and m.name.lower() in by_name
                 }
-                if signal.per_entity:
+                if per_entity:
+                    votes = Counter(e.event_label for e in per_entity)
+                    llm_label = votes.most_common(1)[0][0]
+                    # specific beats generic: the LLM leans "Other" on earnings
+                    # and ops headlines; the blend's specific label is stronger
+                    if llm_label == "Other" and cls.label != "Other":
+                        signal.model_versions["events"] = "lexicon-v0"
+                    else:
+                        if llm_label != cls.label:
+                            logger.info("event label %s -> %s by LLM (live primary)",
+                                        cls.label, llm_label)
+                        cls.label = llm_label
+                        signal.event_label = llm_label
+                        signal.event_confidence = max(cls.confidence, 0.5)
+                        signal.model_versions["events"] = "llm-primary-v0"
                     signal.model_versions["sentiment"] += "+llm-entity"
+
+                conviction = max(abs(s),
+                                 max((abs(v) for v in signal.per_entity.values()),
+                                     default=0.0))
+                imp = impact.score_impact(cls.label,
+                                          math.copysign(conviction, s or 1.0),
+                                          n_sources=1)
+                signal.impact_score = imp.score
+                signal.impact_breakdown = imp
             except Exception:
-                logger.warning("entity extraction failed, using shared score",
+                logger.warning("LLM extraction failed, blend label stands",
                                exc_info=True)
 
         signals.append(signal)
