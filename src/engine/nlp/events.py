@@ -27,7 +27,10 @@ _ZS_TEMPLATE = {
     "Other": "a routine corporate or administrative matter",
 }
 
-# finance-specific keyword votes, one regex group per label
+# Finance-specific keyword votes, one regex group per label. Term selection
+# follows the categories of the Loughran-McDonald Master Dictionary (LMcD),
+# the standard sentiment word list for financial texts
+# (Loughran & McDonald, Journal of Finance 2011; https://sraf.nd.edu).
 _LEXICON: dict[str, tuple[str, ...]] = {
     "Geopolitical": (
         r"war", r"invasion", r"sanction", r"tariff", r"embargo", r"missile",

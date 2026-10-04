@@ -133,6 +133,17 @@ text in, risk signal out, positions re-tilted, book re-priced, and the P&L-at-ri
 quantified with VaR/ES — the same workflow pattern (signal → scenario → capital view)
 used in market-risk and ICAAP/CCAR-style stress testing, scaled to a hackathon build.
 
+## Methodology References
+
+- **Loughran-McDonald Master Dictionary** — category reference for the event-classification lexicon (Loughran & McDonald, *Journal of Finance* 2011; sraf.nd.edu)
+- **S&P Global Ratings** — "Default, Transition, and Recovery: 2024 Annual Global Corporate Default and Rating Transition Study" (transition matrix source; spglobal.com/ratings)
+- **Federal Reserve** — DFAST 2025 severely adverse scenario and stress-test results (federalreserve.gov); **EBA** — 2025 EU-wide stress test scenario (eba.europa.eu)
+- **Damodaran** — default spreads by rating (pages.stern.nyu.edu/~adamodar)
+- **Malo et al. (2014)** — Financial PhraseBank corpus (sentiment evaluation set)
+- **Sinha et al. (2022)** — SEntFiN 1.0, entity-aware financial sentiment (per-entity validation set)
+- **FNSPID** — Dong et al., 2024, financial news dataset (historical corpus; zdong104.github.io/FNSPID)
+- **Basel Committee on Banking Supervision** — IRB PD formula and LCR framework (bis.org)
+
 ## Notes & Limitations
 
 - The stress-test trigger rule is intentionally simple (Geopolitical, impact > 7) and the
