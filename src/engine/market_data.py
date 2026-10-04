@@ -108,3 +108,23 @@ def daily_volatility(days: int = 60) -> dict[str, float] | None:
         var = sum((r - mean) ** 2 for r in returns) / max(len(returns) - 1, 1)
         vols[ticker] = max((var ** 0.5) * (252 ** 0.5), 0.05)
     return vols or None
+
+
+def vix_regime_lookup() -> float | None:
+    """Latest VIX close for the impact regime factor; None if unavailable."""
+    cached = _read_cache("vix_regime.json", 12)
+    if cached is not None:
+        return cached["vix"] if isinstance(cached, dict) else cached
+    try:
+        import yfinance as yf
+
+        frame = yf.download("^VIX", period="5d", interval="1d",
+                            progress=False, auto_adjust=False)
+        close = frame["Close"].squeeze().dropna()
+        if len(close):
+            val = round(float(close.iloc[-1]), 2)
+            _write_cache("vix_regime.json", val)
+            return val
+    except Exception as exc:
+        logger.warning("VIX lookup unavailable: %s", exc)
+    return None

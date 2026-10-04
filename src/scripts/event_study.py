@@ -169,6 +169,7 @@ def main() -> None:
             "impact": ev.max_impact, "sentiment": ev.avg_sentiment,
             "sector_ar": sector_ar, "market_ar": market_ar, "car_01": sector_car1,
             "sign_agree": signed_agree,
+            "date": ev.last_seen.strftime("%Y-%m-%d"),
         })
 
     if not rows:
@@ -235,7 +236,7 @@ def main() -> None:
         with open(args.export_rows, "w", newline="", encoding="utf-8") as f:
             w = _csv.DictWriter(f, fieldnames=["ticker", "label", "impact",
                                                "sentiment", "sector_ar", "market_ar",
-                                               "car_01", "sign_agree"],
+                                               "car_01", "sign_agree", "date"],
                                 extrasaction="ignore")
             w.writeheader()
             w.writerows(rows)

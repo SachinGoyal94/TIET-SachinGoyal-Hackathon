@@ -66,6 +66,10 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
     sentiments = sentiment.score_batch([i["text"] for i in items])
     sent_version = "finbert-ft-v1" if "finbert-ft" in settings.active_sentiment_model else "finbert-v0"
 
+    from src.engine.market_data import vix_regime_lookup
+
+    vix = vix_regime_lookup()
+
     extractor_on = entity_sentiment.is_configured()
 
     signals: list[RiskSignal] = []
@@ -76,7 +80,7 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
             event_hint=item.get("event_hint"),
             use_model=bool(item.get("use_model", False)),
         )
-        imp = impact.score_impact(cls.label, s, n_sources=1)
+        imp = impact.score_impact(cls.label, s, n_sources=1, vix=vix)
         matches = entities.match_entities(text)
         signal = RiskSignal(
             text=text,
@@ -130,7 +134,7 @@ def analyze_batch(items: list[dict]) -> list[RiskSignal]:
                                      default=0.0))
                 imp = impact.score_impact(cls.label,
                                           math.copysign(conviction, s or 1.0),
-                                          n_sources=1)
+                                          n_sources=1, vix=vix)
                 signal.impact_score = imp.score
                 signal.impact_breakdown = imp
             except Exception:

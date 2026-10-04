@@ -20,3 +20,7 @@ def _stub_sentiment(monkeypatch):
                         lambda texts, batch_size=64: [0.0] * len(texts))
     monkeypatch.setattr(sentiment, "score_sentiment", lambda text: 0.0)
     monkeypatch.setattr(entity_sentiment, "is_configured", lambda: False)
+
+    import src.engine.market_data as market_data
+
+    monkeypatch.setattr(market_data, "vix_regime_lookup", lambda: None)

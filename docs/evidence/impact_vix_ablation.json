@@ -1,0 +1,15 @@
+{
+  "description": "VIX regime factor ablation on 19,872 real events (FNSPID 2009-2023): impact scaled by a VIX-band multiplier (>=40: 1.25, >=30: 1.15, >=25: 1.08, <15: 0.92).",
+  "impact_ic_progression": {
+    "hand_set_severities (v1)": 0.066,
+    "calibrated severities (v2)": 0.0816,
+    "calibrated + VIX regime (v3)": 0.0982
+  },
+  "ablation_result": "IC improved 0.0816 -> 0.0982 with the VIX factor (approx z=2.34 on n=19,872) - adopted into the engine, gated on VIX data availability with factor 1.0 fallback.",
+  "vix_bands_at_events": {
+    "<15": 6519,
+    "15-25": 9424,
+    "25-35": 3172,
+    ">=35": 757
+  }
+}
