@@ -1,0 +1,2668 @@
+{
+ "meta": {
+  "description": "Hand-labeled gold set for event-classification evaluation: 380 FNSPID headlines stratified across the six labels, hand-labeled as ground truth (seed 42). Pipeline agreement 59.2% - the baseline SetFit must beat.",
+  "note": "hand_label = ground truth; pipe_label = the deployed pipeline label for the same headline"
+ },
+ "gold": [
+  {
+   "id": 46207,
+   "title": "Validea Peter Lynch Strategy Daily Upgrade Report - 2/8/2022",
+   "ext": "fnspid-109518530122533",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 66948,
+   "title": "US STOCKS-S&P 500, Nasdaq rise as investors await debt ceiling talks",
+   "ext": "fnspid-120027115454417",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 9861,
+   "title": "Barclays Downgrades Nvidia, Likes Skyworks, Cirrus And Others",
+   "ext": "fnspid-170305051724899",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 76206,
+   "title": "Stocks Slump and Bond Yields Climb on Fed Jitters",
+   "ext": "fnspid-181188718247273",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 40527,
+   "title": "GLOBAL MARKETS-World stocks post record highs as bond yields ease",
+   "ext": "fnspid-156735184296609",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 37604,
+   "title": "Eight big banks must face U.S. cities' allegations of municipal bond collusion",
+   "ext": "fnspid-198764827755640",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 22635,
+   "title": "Benzinga's Top Upgrades, Downgrades For March 8, 2019",
+   "ext": "fnspid-170564334028659",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 82431,
+   "title": "Dell Technologies (DELL) Aids Customers With New Upgrades",
+   "ext": "fnspid-150842570521758",
+   "pipe_label": "Credit Event",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 11151,
+   "title": "Alternative Investments to Replace Bonds in Your Portfolio",
+   "ext": "fnspid-270845132420912",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 72515,
+   "title": "US STOCKS-U.S. stocks rises on Amazon boost; bond yields fall",
+   "ext": "fnspid-57254170783942",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 23212,
+   "title": "KeyBanc Downgrades Criteo On Google Cookie Policy Overhang",
+   "ext": "fnspid-88580095677725",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 29552,
+   "title": "5 Stocks That Look Impressive After Broker Rating Upgrades",
+   "ext": "fnspid-91834849456355",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 34039,
+   "title": "Banks pursue Luckin Coffee chairman's assets after loan default",
+   "ext": "fnspid-276422190333007",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 79387,
+   "title": "Walmart to upgrade 1,400 stores with $9 billion investment",
+   "ext": "fnspid-244834118274801",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7164,
+   "title": "Wells Fargo Downgrades NVIDIA Corporation to Market Perform",
+   "ext": "fnspid-32642765992291",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 30908,
+   "title": "RBC Capital Downgrades Exxon Mobil to Underperform, Lowers Price Target to $40",
+   "ext": "fnspid-229633809521268",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 23539,
+   "title": "Benzinga's Top Upgrades, Downgrades For April 8, 2019",
+   "ext": "fnspid-84289990879686",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 31083,
+   "title": "Stock Market Wrap-Up: Oil Breaks $20; Bond Yields Plunge as Stocks Swoon",
+   "ext": "fnspid-96622911992468",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 9736,
+   "title": "Why This Notable Analyst Downgraded Shares Of Coca-Cola, Left Pepsi Shares At Neutral",
+   "ext": "fnspid-182164712776190",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 5637,
+   "title": "J.P. Morgan Upgrades NVIDIA Corporation To Neutral (NVDA)",
+   "ext": "fnspid-165881229207322",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 74862,
+   "title": "Bankrupt Lordstown Motors proposes zero payment for Foxconn shares",
+   "ext": "fnspid-48717850924137",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 66789,
+   "title": "GLOBAL MARKETS-Wall Street ends higher, dollar climbs on solid data, debt ceiling progress",
+   "ext": "fnspid-179250956026182",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 51587,
+   "title": "Apple: The iPhone Upgrade Cycle Is Underappreciated, Says 5-Star Analyst",
+   "ext": "fnspid-169191485922840",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 40604,
+   "title": "Validea David Dreman Strategy Daily Upgrade Report - 4/16/2021",
+   "ext": "fnspid-34128697122027",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 56199,
+   "title": "UK finance minister seeks to stem bond rout with Monday plan announcement",
+   "ext": "fnspid-99435285907857",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 72447,
+   "title": "3 Momentum Anomaly Stocks to Buy Amid Fitch-Induced Selloff",
+   "ext": "fnspid-26312191955890",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 76284,
+   "title": "Lower Bond Yields Spark Mild Recovery in Stocks",
+   "ext": "fnspid-204047558663243",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 31876,
+   "title": "Mountain Capital Investment Advisors, Inc Buys iShares Short Maturity Bond, iShares ...",
+   "ext": "fnspid-57521733723480",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 66416,
+   "title": "SocGen beats estimates as bond trading offsets retail banking slump",
+   "ext": "fnspid-68771265168550",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 49181,
+   "title": "US STOCKS-Wall Street slides as higher bond yields hit growth stocks",
+   "ext": "fnspid-41506159879436",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 10526,
+   "title": "UPDATE: Tigress Downgrades SAM To Neutral, Maintains Neutral On KO & PEP, Maintains Underperform On BUD",
+   "ext": "fnspid-33639999876666",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 25830,
+   "title": "Keefe Bruyette & Woods Upgrades Bank of America to Outperform, Raises Price Target to $36",
+   "ext": "fnspid-180806542223610",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 48324,
+   "title": "Why Nvidia and Other Semiconductor Companies Keep Getting Downgraded",
+   "ext": "fnspid-84672835512709",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 59494,
+   "title": "Bed Bath & Beyond (BBBY) Stock Surges Despite Bankruptcy Risk",
+   "ext": "fnspid-207200987942105",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 67029,
+   "title": "US STOCKS-S&P 500, Nasdaq rise amid fresh round of debt talks; Micron slides",
+   "ext": "fnspid-229631022369972",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 14151,
+   "title": "Benzinga's Top Upgrades, Downgrades For June 13, 2017",
+   "ext": "fnspid-231813629968467",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 8520,
+   "title": "UPDATE: Bank Of America Upgrades NVIDIA",
+   "ext": "fnspid-163506537051165",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 67699,
+   "title": "US STOCKS-Wall St set to open lower ahead of debt ceiling deal vote",
+   "ext": "fnspid-75383331899341",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 25298,
+   "title": "Bonds Are Driving The Purchase Of Everything",
+   "ext": "fnspid-271876524186252",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 40109,
+   "title": "US STOCKS-Nasdaq slumps as bond yield surge hurts tech valuations",
+   "ext": "fnspid-228045516240212",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 14537,
+   "title": "Good News For Those With Student Loan Debt: Your Creditor May Have Lost The Paperwork",
+   "ext": "fnspid-161926515196657",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7460,
+   "title": "Susquehanna Upgrades NVIDIA Corporation to Neutral, Raises PT to $14.00",
+   "ext": "fnspid-244367963969087",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 42295,
+   "title": "Exxon Starts U.S Shale Gas Properties Sale To Reduce Debt",
+   "ext": "fnspid-219382760750826",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 43356,
+   "title": "China's bond markets slump again as new Evergrande deadline passes",
+   "ext": "fnspid-88653203363382",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 29793,
+   "title": "Benzinga's Top Upgrades, Downgrades For February 3, 2020",
+   "ext": "fnspid-241095006725721",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 28565,
+   "title": "Bank Of America, Goldman Sachs Shares Unaffected Midday As Hearing CFRA Upgrades BofA To Buy, Downgrades Goldman To Sell",
+   "ext": "fnspid-225536616943476",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 68672,
+   "title": "BBVA, Bank of Cyprus launch first AT1 euro bonds since Credit Suisse rescue",
+   "ext": "fnspid-122692409519753",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 19761,
+   "title": "As Coke Shakes Up Energy Drink Category, Monster Earns A Downgrade",
+   "ext": "fnspid-227051753338798",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 67645,
+   "title": "US STOCKS-Shares mixed, Nvdia surge offset by jitters over debt ceiling vote",
+   "ext": "fnspid-210477850297178",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 19299,
+   "title": "Sears Bankruptcy, Retail Sales In Focus As Holiday Shopping Approaches",
+   "ext": "fnspid-140308865414976",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 73225,
+   "title": "Moody's Downgrades 10 Banks: Here's What Investors Need to Know",
+   "ext": "fnspid-23429604129977",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 17992,
+   "title": "Validea Peter Lynch Strategy Daily Upgrade Report - 7/18/2018",
+   "ext": "fnspid-228582347291667",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 67689,
+   "title": "US STOCKS-Wall St falls on Fed hike jitters ahead of debt ceiling vote",
+   "ext": "fnspid-178824255977775",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 30990,
+   "title": "Coca-Cola shares are trading lower as equities fall amid the global coronavirus outbreak. Morgan Stanley also reportedly downgraded the company's stock from Overweight to Equal-Weight and lowered its price target from $65 to $52.",
+   "ext": "fnspid-230539189603764",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 28405,
+   "title": "Nvidia Has One Of The Best Opportunities To Maintain High Multiple, Morgan Stanley Says In Upgrade",
+   "ext": "fnspid-235759615576972",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 73491,
+   "title": "Stocks Slide on China Concerns and Recent Rise in Global Bond Yields",
+   "ext": "fnspid-47850402094735",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 9698,
+   "title": "Canaccord Genuity Upgrades NVIDIA to Buy, Raises to $35.00",
+   "ext": "fnspid-166448627087155",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 15907,
+   "title": "Bank Of America's Long-Term Ratings Upgraded By Moody's, Outlook Stable",
+   "ext": "fnspid-25164176023150",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 10607,
+   "title": "Topeka Capital Upgrades NVIDIA to Buy",
+   "ext": "fnspid-82016362666217",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 7915,
+   "title": "Benzinga's Top Downgrades",
+   "ext": "fnspid-180132472904116",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 67610,
+   "title": "US STOCKS-Nasdaq boosted by Nvidia, tentative debt deal cheer",
+   "ext": "fnspid-135929589636868",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 67921,
+   "title": "US STOCKS-Wall Street ends up on jobs data, debt default averted",
+   "ext": "fnspid-30558532166059",
+   "pipe_label": "Credit Event",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 18325,
+   "title": "Benzinga's Top Upgrades, Downgrades For August 15, 2018",
+   "ext": "fnspid-194281880540219",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 13232,
+   "title": "Southwestern Energy's Reserve Base Strong, High Debt a Drag",
+   "ext": "fnspid-139165697749733",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 35281,
+   "title": "Coronavirus pain drives Big Oil's dash for record debt",
+   "ext": "fnspid-45193719155656",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 19304,
+   "title": "Sears Files For Bankruptcy (Wall Street Breakfast Podcast)",
+   "ext": "fnspid-120835935122756",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 64122,
+   "title": "India's Reliance, Adani among 49 bidders for debt-ridden Future Retail",
+   "ext": "fnspid-240749896470299",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 6180,
+   "title": "Bank of America Downgrades Nvidia from Buy to Neutral, Maintains PO at $16.5",
+   "ext": "fnspid-178088847949531",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 16987,
+   "title": "Confirming Morgan Stanley Upgrades NVIDIA to Overweight, Maintains Price Target At $258.00",
+   "ext": "fnspid-245570471402158",
+   "pipe_label": "Credit Event",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 5250,
+   "title": "Jim Says Concern Over Greek Debt Excessive; Buy Healthy Stock",
+   "ext": "fnspid-166066128299821",
+   "pipe_label": "Credit Event",
+   "hand_label": "Other"
+  },
+  {
+   "id": 24266,
+   "title": "Shares of several financial companies are trading lower following a tweet from President Trump which hinted at additional tariffs on China and China indicated it may back out of upcoming trade negotiations.",
+   "ext": "fnspid-85592940436720",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 62365,
+   "title": "This Top Warren Buffett Stock Is Capturing a Potentially Massive Opportunity",
+   "ext": "fnspid-119920461230956",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 64218,
+   "title": "Guru Fundamental Report for MSFT - Warren Buffett",
+   "ext": "fnspid-130520214167273",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 83007,
+   "title": "This Warren Buffett Favorite Soared Nearly 50% This Year. Is It Too Late to Buy?",
+   "ext": "fnspid-13770855209866",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 79076,
+   "title": "OPEC+ members send less oil to U.S., adding to tight supply outlook",
+   "ext": "fnspid-181858344564053",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 60101,
+   "title": "Warren Buffett Just Beat the S&P 500 by the Widest Margin Since 2007. Can He Do It Again in 2023?",
+   "ext": "fnspid-143590007717915",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 11375,
+   "title": "Warren Buffett's 86th Birthday: A Look Back At 75 Years Of Investing Genius",
+   "ext": "fnspid-231037806505645",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 46778,
+   "title": "The Best Warren Buffett Stocks to Buy With $300 Right Now",
+   "ext": "fnspid-148306380586521",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 40875,
+   "title": "Warren Buffett's 3 Highest-Yielding Dividend Stocks",
+   "ext": "fnspid-219444092229228",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7024,
+   "title": "Warren Buffett on CNBC's Squawk Box Says IBM 'Not as Bulletproof as Coca-Cola'",
+   "ext": "fnspid-96935536917391",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 35616,
+   "title": "3 Investing Lessons You Should Learn From Warren Buffett",
+   "ext": "fnspid-180183536195531",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 69387,
+   "title": "This Warning Could Mean Big Trouble Is Ahead for Oil Stocks by 2030",
+   "ext": "fnspid-95276673541423",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 63328,
+   "title": "Nvidia's New Software Will Help Chipmakers Produce Even More Powerful AI",
+   "ext": "fnspid-127881291637084",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 53440,
+   "title": "Nvidia: Despite Gaming Weakness, Risk-Reward Attractive Right Now, Says Top Analyst",
+   "ext": "fnspid-40196117341096",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 46925,
+   "title": "GLOBAL MARKETS-Stocks slip, oil blasts past $110 as Russia sanctions bite",
+   "ext": "fnspid-262995988736151",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 67748,
+   "title": "India makes tobacco warnings mandatory for streaming sites",
+   "ext": "fnspid-248376272527985",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 62813,
+   "title": "Guru Fundamental Report for MSFT - Warren Buffett",
+   "ext": "fnspid-44106120517184",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 80109,
+   "title": "3 Things Warren Buffett's Top 5 Stocks All Have in Common",
+   "ext": "fnspid-260957772281312",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 69614,
+   "title": "Oracle adds generative AI to its human resources software",
+   "ext": "fnspid-266171993174737",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 8898,
+   "title": "3 Warren Buffett Stocks for Retirement Investors",
+   "ext": "fnspid-161908086364800",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 17734,
+   "title": "OPEC Accord Prompts a Rally in Oil Prices: 5 Top Gainers",
+   "ext": "fnspid-88857233433298",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 73533,
+   "title": "Warren Buffett Detailed Fundamental Analysis - AAPL",
+   "ext": "fnspid-45764503530344",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 75019,
+   "title": "What Do Billionaires David Tepper, Ken Griffin, and Warren Buffett Have in Common? Their Companies Own This Unstoppable AI Stock.",
+   "ext": "fnspid-208331748668008",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6556,
+   "title": "Is Warren Buffett Becoming a Trader?",
+   "ext": "fnspid-112561886442564",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 58922,
+   "title": "Warren Buffett's 3 Most Intriguing Tech Investments",
+   "ext": "fnspid-174927533851422",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 78003,
+   "title": "US STOCKS-S&P 500, Nasdaq fall with data, geopolitics offsets strong results",
+   "ext": "fnspid-129629007750102",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 8743,
+   "title": "You Should Buy This Classic Warren Buffett Stock Instead of His Used Cadillac",
+   "ext": "fnspid-32593331829634",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8799,
+   "title": "Warren Buffett's Best Dividend Stocks",
+   "ext": "fnspid-134522918954281",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 58927,
+   "title": "3 Top Warren Buffett Stocks for 2023",
+   "ext": "fnspid-80281041334318",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 37195,
+   "title": "Coca-Cola Stock Outlook: Correction Followed By Rewards",
+   "ext": "fnspid-114121996079976",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 28504,
+   "title": "Shares of several oil and gas companies are trading lower on global macro concerns after Trump implied a US-China trade deal may not occur until 2020.",
+   "ext": "fnspid-157303746296103",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 66974,
+   "title": "Warren Buffett Boosts Occidental Stake, Adds 3.46 Million Shares",
+   "ext": "fnspid-84453138821247",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 26231,
+   "title": "Shares of several large-cap companies are trading higher with the broader market on renewed optimism surrounding US-China trade talks after Donald Trump announced earlier in the week that he would delay additional tariffs on Chinese goods until December.",
+   "ext": "fnspid-201844306829520",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 79124,
+   "title": "1 Simple Reason Warren Buffett Prefers to Buy Apple Rather Than Tesla Stock",
+   "ext": "fnspid-41309597922192",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 34682,
+   "title": "Shares of several industrial companies are trading lower as equities sell off following recent rally. Stocks have rallied over the past week amid optimism towards the US economy reopening and investors have potentially taken some profits following run up.",
+   "ext": "fnspid-174477392955476",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 63664,
+   "title": "Oil stocks rally after OPEC+ announces output cut",
+   "ext": "fnspid-168450457795712",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 50619,
+   "title": "3 Warren Buffett Stocks to Buy Before the Next Bull Market",
+   "ext": "fnspid-231901260251260",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 82965,
+   "title": "Meet the 1 Stock Warren Buffett Is Virtually Guaranteed to Be Buying Throughout 2024",
+   "ext": "fnspid-145530635381061",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 73236,
+   "title": "MSFT Quantitative Stock Analysis - Warren Buffett",
+   "ext": "fnspid-220495275814385",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 62644,
+   "title": "Guru Fundamental Report for MSFT - Warren Buffett",
+   "ext": "fnspid-9023328620956",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 50334,
+   "title": "Representing 40% of Warren Buffett's Portfolio, Here Is Why Apple Is a Great Stock to Own Today",
+   "ext": "fnspid-137275438326148",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 69932,
+   "title": "The 3 Best Warren Buffett Stocks in the 1st Half of 2023: Are They Buys Now?",
+   "ext": "fnspid-227166607319931",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 73678,
+   "title": "These Are the ONLY 7 Warren Buffett Stocks to Consider in August 2023",
+   "ext": "fnspid-64839645703587",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 19701,
+   "title": "Bank of America CEO Says Impact On Loan Book From Tariffs Will Not Be Material",
+   "ext": "fnspid-193398433962064",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 53729,
+   "title": "Warren Buffett's 6 Highest-Yielding Dividend Stocks",
+   "ext": "fnspid-79267940262134",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 49672,
+   "title": "FSIS Warns Against Plumrose USA's RTE Ham Product",
+   "ext": "fnspid-133193167008557",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 68911,
+   "title": "Khashoggi's widow sues Israeli spyware company NSO over phone hacking",
+   "ext": "fnspid-62980063547121",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9314,
+   "title": "ABA Sues San Francisco for Health Warning on Ads Law - Analyst Blog",
+   "ext": "fnspid-77128019535663",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 58071,
+   "title": "U.S. Chamber of Commerce warns against draft EU plan to exclude non-EU cloud vendors",
+   "ext": "fnspid-33287311878838",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 34574,
+   "title": "Airbus warns it may sue airlines over undelivered jets -paper",
+   "ext": "fnspid-49776963565869",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 18482,
+   "title": "UPDATE: Google's Statement In Response To President Trump Says That 'Search Is Not Used To Set A Political Agenda And We Don't Bias Our Results Toward Any Political Ideology'",
+   "ext": "fnspid-19908401045744",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 22260,
+   "title": "Does Warren Buffett Still Believe In Wells Fargo?",
+   "ext": "fnspid-195524396780671",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 58464,
+   "title": "59% of Warren Buffett's Portfolio Is Invested in Just 3 Stocks",
+   "ext": "fnspid-22315603258613",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 20783,
+   "title": "Boeing (BA) Inks $240M Deal to Aid Missile Defense System",
+   "ext": "fnspid-217610796480824",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Credit Event"
+  },
+  {
+   "id": 48157,
+   "title": "Starbucks: Howard Schultz\u2019 End Game",
+   "ext": "fnspid-21305200078986",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10457,
+   "title": "Mid-Day Market Update: VMware Surges On Earnings Beat; Flexsteel Shares Tumble",
+   "ext": "fnspid-128148761314629",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 82435,
+   "title": "79% of Warren Buffett's $363 Billion Portfolio Is Invested in Just 6 Stocks",
+   "ext": "fnspid-54765194547655",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 62823,
+   "title": "94% of Warren Buffett's $321 Billion Portfolio Is Invested in Only 4 Sectors",
+   "ext": "fnspid-220394981167770",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5401,
+   "title": "Warren Buffett, Growth Investor?",
+   "ext": "fnspid-128350354992168",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 78161,
+   "title": "Stocks Rally on Slightly Reduced Geopolitical Risks in the Middle East",
+   "ext": "fnspid-52229789657569",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 30342,
+   "title": "Warren Buffett Continues to Curb Long-Held Wells Fargo Stake",
+   "ext": "fnspid-257898007114739",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 41699,
+   "title": "Warren Buffett's 3 Favorite Robinhood Stocks",
+   "ext": "fnspid-270849190177530",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 23403,
+   "title": "Boeing software re-activated before Ethiopian crash",
+   "ext": "fnspid-181868814306384",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 13912,
+   "title": "Warren Buffett Buys Apple Inc, Bank of New York Mellon Corp, Sells International Business ...",
+   "ext": "fnspid-16780009197232",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 64918,
+   "title": "Guru Fundamental Report for MSFT - Warren Buffett",
+   "ext": "fnspid-162326113692360",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 83152,
+   "title": "3 Industry Stalwarts You Can Buy and Forget About",
+   "ext": "fnspid-67822139003477",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 82729,
+   "title": "Warren Buffett Is Raking In Nearly $3.5 Billion in Annual Dividend Income From Just 4 Stocks",
+   "ext": "fnspid-58627128314328",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 63470,
+   "title": "This Is Warren Buffett's No. 1 Stock to Buy During a Bear Market",
+   "ext": "fnspid-153368410820180",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Other"
+  },
+  {
+   "id": 26013,
+   "title": "Shares of oil & gas companies are trading lower after the US added an additional tariff on $300 billion worth of Chinese goods. China allowed its currency to further devalue against the dollar and said that it would not purchase any agricultural products.",
+   "ext": "fnspid-64492528102032",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Geopolitical"
+  },
+  {
+   "id": 52876,
+   "title": "Wary shoppers muddy outlook for tech, auto firms in Asia",
+   "ext": "fnspid-138096495607493",
+   "pipe_label": "Geopolitical",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 14719,
+   "title": "Petrobras' 2Q'17 Earnings To Surge Backed By Higher Price Realizations And Cost Savings",
+   "ext": "fnspid-220378684985837",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 6605,
+   "title": "Morning Earnings Roundup: Better Investing at Goldman Sachs",
+   "ext": "fnspid-245645996466666",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 8016,
+   "title": "NVIDIA Corporation Reports Q2 EPS of $0.30 vs $0.20 Est; Revenue of $1.10B vs $1.10B Est",
+   "ext": "fnspid-46164794933364",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 14648,
+   "title": "BP Stuns The Market With Its 2Q'17 Results; Likely To Remain At Lower End Of Capex Guidance",
+   "ext": "fnspid-49300964933376",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 10122,
+   "title": "BGC Partners, Inc. (BGCP) Ex-Dividend Date Scheduled for February 29, 2016",
+   "ext": "fnspid-253766076434042",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 20224,
+   "title": "Greenhill & Co., Inc. (GHL) Ex-Dividend Date Scheduled for December 04, 2018",
+   "ext": "fnspid-135334938922044",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 23716,
+   "title": "This Bank Stock Just Blew Away Earnings Expectations",
+   "ext": "fnspid-217635933681981",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 13468,
+   "title": "Waddell & Reed Financial, Inc. (WDR) Ex-Dividend Date Scheduled for April 06, 2017",
+   "ext": "fnspid-134831578807898",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10474,
+   "title": "Earnings Reaction History: The Coca-Cola Company, 20.0% Follow-Through Indicator, 1.6% Sensitive",
+   "ext": "fnspid-90757700919176",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 12079,
+   "title": "Cott Corporation (COT) Ex-Dividend Date Scheduled for November 23, 2016",
+   "ext": "fnspid-37675095271286",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 12177,
+   "title": "How the Dow's Top Dividend-Paying Stocks Have Fared in 2016",
+   "ext": "fnspid-252472719797791",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 18429,
+   "title": "HollyFrontier Corporation (HFC) Ex-Dividend Date Scheduled for August 22, 2018",
+   "ext": "fnspid-261191710772592",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6673,
+   "title": "These Stocks Should Cut Their Dividends",
+   "ext": "fnspid-204625411017442",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 21515,
+   "title": "Chevron (CVX) Earnings Expected to Grow: What to Know Ahead of Next Week's Release",
+   "ext": "fnspid-172277135608352",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 9647,
+   "title": "Anheuser-Busch Inbev SA (BUD) Ex-Dividend Date Scheduled for November 06, 2015",
+   "ext": "fnspid-36181603657505",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 20034,
+   "title": "First Midwest (FMBI) Dividend Up: Is the Stock Worth a Look?",
+   "ext": "fnspid-110493393942456",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 15494,
+   "title": "Will FEMSA's (FMX) Upside on Sturdy Q3 Earnings Sustain?",
+   "ext": "fnspid-84819437894449",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 8679,
+   "title": "From Coca-Cola To Tesla, Here Are The 68 Most Important Earnings Expectations For The Week",
+   "ext": "fnspid-255022765645392",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 7969,
+   "title": "US Stock Futures Up Ahead Of McDonald's, Coca-Cola Earnings",
+   "ext": "fnspid-52915360118696",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 15605,
+   "title": "Earnings Scheduled For November 9, 2017",
+   "ext": "fnspid-60239309402270",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 14138,
+   "title": "Coca-Cola Company (KO) Ex-Dividend Date Scheduled for June 13, 2017",
+   "ext": "fnspid-128188202609325",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 17318,
+   "title": "Earnings Scheduled For May 10, 2018",
+   "ext": "fnspid-173896320838571",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 21150,
+   "title": "4 Top Bank Stocks to Buy Ahead of Q4 Earnings",
+   "ext": "fnspid-226903987344743",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 24487,
+   "title": "NVIDIA Sees Q2 Adj. Gross Margins 59.5% +/- 50 Bps",
+   "ext": "fnspid-392616629186",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 7059,
+   "title": "Top 4 Large-Cap Stocks In The Beverages-Soft Drinks Industry With The Highest Profit Margin",
+   "ext": "fnspid-241872748025544",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 22274,
+   "title": "Get Paid While You Wait: 3 Top Dividend Stocks in Banking",
+   "ext": "fnspid-166338850865354",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 11974,
+   "title": "Mid-Day Market Update: Crude Oil Down Over 3%; NVIDIA Shares Jump On Earnings Beat",
+   "ext": "fnspid-231791316139382",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 21450,
+   "title": "CVX Dividend Yield Pushes Past 4%",
+   "ext": "fnspid-117998326345333",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7272,
+   "title": "Earnings Expectations For The Week Of October 14: Financials, Tech and Consumer Goods",
+   "ext": "fnspid-72034479975198",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 10075,
+   "title": "Coca-Cola Raises Qtr. Dividend from $0.33 to $0.35/Share",
+   "ext": "fnspid-26746743372881",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 9236,
+   "title": "Poll: Big Bank Earnings Week...Who Ya Got?",
+   "ext": "fnspid-72867077838739",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 19602,
+   "title": "Earnings Scheduled For October 30, 2018",
+   "ext": "fnspid-190972459388671",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 7993,
+   "title": "Ambev S.A. (ABEV) Ex-Dividend Date Scheduled for July 29, 2014",
+   "ext": "fnspid-153875183843842",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10418,
+   "title": "3 Steady-Eddie Dividend Stocks to Trust",
+   "ext": "fnspid-112332802219652",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8013,
+   "title": "Coca-Cola Bottling Co. (COKE) Beats on Q2 Earnings & Revenues - Analyst Blog",
+   "ext": "fnspid-258908493688155",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 19545,
+   "title": "Chevron (CVX) Q3 Earnings Preview: What's Shaping Up?",
+   "ext": "fnspid-269889106659341",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 7211,
+   "title": "Coca-Cola Enterprises, Inc. (CCE) Ex-Dividend Date Scheduled for September 04, 2013",
+   "ext": "fnspid-52562967499084",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6550,
+   "title": "NVIDIA Guides Q3 Revenue $1.15-1.25B vs $1.23B Est",
+   "ext": "fnspid-215984430735230",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 11536,
+   "title": "3 Dividend Stocks That Could Get Slammed When the Fed Raises Rates",
+   "ext": "fnspid-205079005521710",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 23530,
+   "title": "March To Freedom Fund 1st Quarter Update: 12%+ Portfolio Growth And 31% Increase In Dividends",
+   "ext": "fnspid-71314007347598",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 16280,
+   "title": "Pre-Market Earnings Report for January 17, 2018 : BAC, GS, USB, ASML, SCHW, FAST",
+   "ext": "fnspid-1084020604896",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 9809,
+   "title": "B. Riley on Semi Industry Into '16: 'Ample fuel to build on CY15's record M&A (31+ deals), dividend pay-outs ($16.0B+), and buy-backs ($31.0B+)'",
+   "ext": "fnspid-61107340418939",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 18119,
+   "title": "Daily Dividend Report: SCHW, MCK, CVX, CMCSA, GILD",
+   "ext": "fnspid-15095858378141",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8690,
+   "title": "Mid-Afternoon Market Update: NASDAQ Gains Over 1%; Amkor Technology Shares Surge On Strong Earnings Report",
+   "ext": "fnspid-97866230115840",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 20552,
+   "title": "Boeing Raises Quarterly Dividend By 20%, Authorizes $20 Bln Share Buyback",
+   "ext": "fnspid-30065084001320",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 5330,
+   "title": "Kinder Morgan: Juicy Dividend and Steady Business (KMP)",
+   "ext": "fnspid-145117424892457",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 24711,
+   "title": "ExxonMobil Says Plans On Track To More Than Double Earnings, Cash Flow Potential By 2025",
+   "ext": "fnspid-258511563002057",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 18389,
+   "title": "Investment Technology Group, Inc. (ITG) Ex-Dividend Date Scheduled for August 20, 2018",
+   "ext": "fnspid-91111442340849",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 19945,
+   "title": "Nvidia Gets Burned On Earnings: This Chart Shows More Pain Ahead",
+   "ext": "fnspid-252937493767263",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 25966,
+   "title": "Zacks Earnings Trends Highlights: Caterpillar, JPMorgan and CSX",
+   "ext": "fnspid-263850328435401",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 11703,
+   "title": "Marketplace Roundtable: Diving Into Dividend Investing",
+   "ext": "fnspid-206451344958597",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 22394,
+   "title": "Coca-Cola Option Alert: Jun 21 $42 Puts Sweep (47) near the Bid: 2603 @ $0.68 vs 31429 OI; Earnings 4/23 Before Open [est] Ref=$44.575",
+   "ext": "fnspid-38031444622953",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 16668,
+   "title": "6 Notable Dividend Stocks Boost Payouts, Including Coca-Cola (KO)",
+   "ext": "fnspid-61231223383167",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 8092,
+   "title": "Cott Corporation (COT) Ex-Dividend Date Scheduled for August 26, 2014",
+   "ext": "fnspid-88724833412743",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8283,
+   "title": "Earnings Scheduled For October 21, 2014",
+   "ext": "fnspid-174514658306616",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 7724,
+   "title": "Earnings Scheduled For April 15, 2014",
+   "ext": "fnspid-242476794318653",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 7706,
+   "title": "Compania Cervecerias Unidas, S.A. (CCU) Ex-Dividend Date Scheduled for April 09, 2014",
+   "ext": "fnspid-133290809303903",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7535,
+   "title": "Form 8-K from NVIDIA Shows Accelerated Buyback Plan,Will Make Upfront Payment 4500M, Will Receive 20.6M Shares",
+   "ext": "fnspid-123651022129711",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 18341,
+   "title": "Upcoming Earnings: Tech Giant Nvidia Unveils New GPUs Ahead Of Q2 Results",
+   "ext": "fnspid-276122808081029",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 10772,
+   "title": "Raymond James Financial, Inc. (RJD) Ex-Dividend Date Scheduled for June 10, 2016",
+   "ext": "fnspid-192671125586186",
+   "pipe_label": "Macroeconomic",
+   "hand_label": "Other"
+  },
+  {
+   "id": 40760,
+   "title": "Rail shippers pick sides as CP, CN bid for Kansas City Southern",
+   "ext": "fnspid-166919780352760",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 36729,
+   "title": "China's Guolian Securities to acquire Sinolink Securities",
+   "ext": "fnspid-125536344794102",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 28274,
+   "title": "How Google's Fitbit Acquisition Is Already Posing Some Problems",
+   "ext": "fnspid-21533166766038",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 43416,
+   "title": "Biden to cite progress unsnarling supply chain in meeting with labor, industry",
+   "ext": "fnspid-220586896623306",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 20910,
+   "title": "EU clears Coca-Cola acquisition of Costa Coffee chain",
+   "ext": "fnspid-209668486200167",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 5266,
+   "title": "Coke (KO) Acquires North American Unit Of Bottler",
+   "ext": "fnspid-51971600747056",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 80475,
+   "title": "Chevron reviewing options for East Texas assets after shale acquisitions",
+   "ext": "fnspid-41467440188212",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 78221,
+   "title": "Is AMD's Artificial Intelligence (AI) Acquistion Enough to Catch Nvidia?",
+   "ext": "fnspid-274539191865952",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 37730,
+   "title": "China's tech industry relieved by Biden win - but not relaxed",
+   "ext": "fnspid-175392703738319",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 65783,
+   "title": "Ecuadorean oil blocks get bids from Chinese, Canadian drillers",
+   "ext": "fnspid-79329897271751",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 63429,
+   "title": "Exxon acquires more land for carbon storage in the Gulf of Mexico",
+   "ext": "fnspid-255375482046363",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 15926,
+   "title": "First American Announces Agreement to Acquire Bank of America's Lien Release Business Operations and Assets, Terms Not Disclosed",
+   "ext": "fnspid-84971673785248",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 58280,
+   "title": "Biden to visit Taiwan's TSMC chip plant in Arizona, hail supply chain fixes",
+   "ext": "fnspid-245254228511466",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 27837,
+   "title": "Google Invades Apple's Wearables Territory With Fitbit Acquisition",
+   "ext": "fnspid-84404362478376",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 18402,
+   "title": "PepsiCo Acquires SodaStream For $3.2 billion",
+   "ext": "fnspid-140408036299270",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 18641,
+   "title": "Why the Costa Buyout Is Just One Piece of Coca-Cola's Ongoing Transformation",
+   "ext": "fnspid-166145473864935",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 26306,
+   "title": "Technology Sector Update for 08/20/2019: AAPL,GS,MA,MAXR,BIDU,FN",
+   "ext": "fnspid-184862692930498",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5624,
+   "title": "The Coca-Cola Company Acquires Remaining Portion of Honest Tea",
+   "ext": "fnspid-213532726474203",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 37349,
+   "title": "ANALYSIS-Green is the color of money for funds betting on a Biden win",
+   "ext": "fnspid-90033084198563",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 40396,
+   "title": "U.S. Senate readying legislation on semiconductors, Biden says",
+   "ext": "fnspid-67111515687536",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 64690,
+   "title": "CMA Probing Into Proposed Acquisition Of IRobot By Amazon",
+   "ext": "fnspid-161254353754143",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 24079,
+   "title": "Sainsbury's, Walmart And Asda Mutually Agree To Terminate Proposed Merger",
+   "ext": "fnspid-104346813979135",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 59097,
+   "title": "BC Partners to acquire account-based marketing firm Madison Logic",
+   "ext": "fnspid-40112531132894",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 39107,
+   "title": "Big U.S. oil drillers have federal permits to mute effect of any Biden ban",
+   "ext": "fnspid-10778251149816",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 68874,
+   "title": "Varo Energy acquires second biogas firm in 2023",
+   "ext": "fnspid-261877018574371",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 8701,
+   "title": "Should SodaStream Investors Rule Out a Pepsi Merger?",
+   "ext": "fnspid-266630228443247",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 36040,
+   "title": "EXCLUSIVE-China pushes First Capital merger in drive to take on Wall St - sources",
+   "ext": "fnspid-66240401753127",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 61410,
+   "title": "MORNING BID AMERICAS-Interminable anxiety",
+   "ext": "fnspid-258411910290176",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 39718,
+   "title": "Walmart and Oracle's Bid to Acquire TikTok is Dead. Now What?",
+   "ext": "fnspid-207957847796605",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 70432,
+   "title": "US Foods (USFD) Expands Reach With Renzi Foodservice Buyout",
+   "ext": "fnspid-254897759273566",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 61066,
+   "title": "MORNING BID AMERICAS-Powell confesses 'This time it's different'",
+   "ext": "fnspid-18698371442637",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 52156,
+   "title": "Soccer-AC Milan investor can obtain documents in bid to block Elliott sale",
+   "ext": "fnspid-105312337865371",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 61436,
+   "title": "Here's the Latest on Microsoft's Acquisition of Activision Blizzard",
+   "ext": "fnspid-88295017700513",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 60883,
+   "title": "EU's Breton urges rethink on cross-border telecoms mergers",
+   "ext": "fnspid-24600325614371",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 73813,
+   "title": "TotalEnergies (TTE) & INPEX to Acquire Australian Gas Field",
+   "ext": "fnspid-246414567034991",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 36386,
+   "title": "Walmart Teams With Microsoft In Bid For TikTok",
+   "ext": "fnspid-41896997308039",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 70271,
+   "title": "JetBlue Ends Alliance With American, Chance Of Spirit Merger?",
+   "ext": "fnspid-193426708514364",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 9681,
+   "title": "Coca-Cola's European Bottler Merger Gets EU Antitrust Nod",
+   "ext": "fnspid-175954513471789",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 7937,
+   "title": "Monster Beverage Mentioned by Jim Cramer on Mad Money as Potential Takeover Target",
+   "ext": "fnspid-275769715371909",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 74337,
+   "title": "Norway's Equinor acquires a stake in U.S. Bayou Bend CCS project",
+   "ext": "fnspid-219062428377681",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 68853,
+   "title": "ANALYSIS-Vodafone and Hutchison's UK mobile merger faces tough test yet",
+   "ext": "fnspid-167673436078347",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 69789,
+   "title": "Overstock.com (OSTK) Acquires Bed Bath & Beyond Brand and IP",
+   "ext": "fnspid-63448947723620",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 46195,
+   "title": "U.S. Justice Department opposes Boeing 737 MAX families bid over plea deal",
+   "ext": "fnspid-93505691190541",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 80947,
+   "title": "Congo opposition candidates drop presidential bids to back Katumbi",
+   "ext": "fnspid-22562145650540",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 71146,
+   "title": "U.S. antitrust enforcers tackle digital platforms in new merger guidelines",
+   "ext": "fnspid-70893064970177",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 69941,
+   "title": "EXCLUSIVE-Microsoft faces EU antitrust probe after remedies fall short, sources say",
+   "ext": "fnspid-144539894860111",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 43500,
+   "title": "UK intervenes in bid by U.S. aviation firm Parker for Meggitt",
+   "ext": "fnspid-77760823999914",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 40598,
+   "title": "Biden White House's secret weapon on infrastructure: small businesses",
+   "ext": "fnspid-11956932171996",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 16410,
+   "title": "Dr. Pepper Stock Soars After Keurig Merger Announcement",
+   "ext": "fnspid-156404964762432",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 27670,
+   "title": "More US State Attorneys General Join Facebook Antitrust Probe",
+   "ext": "fnspid-159743276813488",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 26519,
+   "title": "'Google is facing another EU antitrust probe \u2014 this time over its jobs search tool' -CNBC From Yesterday",
+   "ext": "fnspid-279124791633483",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 79866,
+   "title": "Central Garden & Pet's (CENT) TDBBS Buyout to Fuel Growth",
+   "ext": "fnspid-673093896915",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 7543,
+   "title": "Mid-Afternoon Market Update: Actavis Acquisition of Forest Labs Dominates Headlines as Markets Remain Mixed",
+   "ext": "fnspid-221630162154890",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 5438,
+   "title": "The Coca-Cola Company Obtains Regulatory Clearance for Acquisition of CCE",
+   "ext": "fnspid-184607953902511",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 20191,
+   "title": "This Day In Market History: Exxon-Mobil Merger Creates Largest Company In The World",
+   "ext": "fnspid-279835026455650",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 24911,
+   "title": "Merger Boosts the Long-Term Fortunes of the New Raytheon Stock",
+   "ext": "fnspid-7633771669780",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 15375,
+   "title": "Nvidia Option Alert: Oct 27 $207.5 Calls Sweep (48) at the Bid: 1274 @ $0.443 vs 535 OI; Ref=$193.45",
+   "ext": "fnspid-143247881032351",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 14787,
+   "title": "Noteworthy Thursday Option Activity: BID, LVS, KO",
+   "ext": "fnspid-99612408626665",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Other"
+  },
+  {
+   "id": 39945,
+   "title": "ANALYSIS-Air leasing mega-merger would rebuild ruined Irish empire",
+   "ext": "fnspid-139957024678481",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 8961,
+   "title": "Hearing Renewed Unconfirmed Takeover Chatter of Coca-Cola Buyout of Keurig Green Mountain",
+   "ext": "fnspid-69587866034415",
+   "pipe_label": "Merger/Acquisition",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 79931,
+   "title": "Infosys (INFY) Unveils Its New Proximity Center in Bulgaria",
+   "ext": "fnspid-239951876900937",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 27072,
+   "title": "Coca-Cola Says Its First Coke-Branded Energy Drink Will Launch In US In 2020",
+   "ext": "fnspid-109344240320932",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 58181,
+   "title": "Paramount's (PARA) Pluto TV AVOD Service Launches in Canada",
+   "ext": "fnspid-280337747211398",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 68179,
+   "title": "Dow Stocks Like Microsoft, Apple, Disney, and Verizon Reveal Two Sides of the Market",
+   "ext": "fnspid-99359861194796",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 41974,
+   "title": "Walmart Launches Justice Brand\u2019s Comeback",
+   "ext": "fnspid-114154295843466",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 80705,
+   "title": "Boeing, U.S. Launch Initiative To Advance Sustainable Aviation Fuel",
+   "ext": "fnspid-40360498381863",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 7196,
+   "title": "Coca Cola Launches First Herbal Drink - Analyst Blog",
+   "ext": "fnspid-180753071195078",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 46545,
+   "title": "Intel delays launch of standalone desktop graphics chips to Q2",
+   "ext": "fnspid-32579731711552",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 65481,
+   "title": "VettaFi Voices On: Smart Beta and Equal-Weight ETFs",
+   "ext": "fnspid-78610681722801",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 47595,
+   "title": "Nvidia unveils latest chips, technology to speed up AI computing",
+   "ext": "fnspid-224334196101612",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 34124,
+   "title": "Musk's SpaceX set for debut astronaut mission, renewing NASA's crewed launch program",
+   "ext": "fnspid-266065038432630",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 56271,
+   "title": "Apple Unveils New IPad Pros, IPad And Apple TV 4K",
+   "ext": "fnspid-264108593845445",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 54361,
+   "title": "Should Goldman Sachs ActiveBeta U.S. Large Cap Equity ETF (GSLC) Be on Your Investing Radar?",
+   "ext": "fnspid-36304788783218",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 36049,
+   "title": "Amazon to launch online drug sales in Indian city",
+   "ext": "fnspid-52444552318363",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 58244,
+   "title": "GM's BrightDrop signs first customer in Canada, unveils country's first large EV factory",
+   "ext": "fnspid-13731794945710",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 15558,
+   "title": "Wells Fargo Launches Robo-Advisor To Attract Young Investors",
+   "ext": "fnspid-44799983056071",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 69247,
+   "title": "3 Low-Beta Stocks Suited Nicely for Risk-Averse Investors",
+   "ext": "fnspid-160890143756224",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 44116,
+   "title": "LNG industry launches 'carbon neutral\u2019 framework",
+   "ext": "fnspid-32816127952099",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 83105,
+   "title": "Next-Generation Retail: 7 Stocks Innovating in E-Commerce",
+   "ext": "fnspid-163255168473320",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 82192,
+   "title": "Verizon (VZ) Launches Exclusive Low-Cost Streaming Bundle",
+   "ext": "fnspid-26773294563784",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 77034,
+   "title": "Visa launches $100 mln venture fund for generative AI startups",
+   "ext": "fnspid-182959744886092",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 30551,
+   "title": "Boeing Unveils Future Attack Reconnaissance Aircraft Design",
+   "ext": "fnspid-192401508121657",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 21635,
+   "title": "Close Update: Dovish Fed Launches Dow to Eight-Week High",
+   "ext": "fnspid-167502567455093",
+   "pipe_label": "Product Launch",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 48668,
+   "title": "Arm unveils new processor, systems to help speed up connected device development",
+   "ext": "fnspid-278569142964891",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 32523,
+   "title": "Amazon Pilots Online Screening Of New Sellers During Pandemic",
+   "ext": "fnspid-153538668450446",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 54620,
+   "title": "White House unveils principles for Big Tech reform",
+   "ext": "fnspid-68922584074175",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 39551,
+   "title": "Goldman Sachs unveils Marcus Invest robo-adviser in consumer push",
+   "ext": "fnspid-28440046885154",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 75586,
+   "title": "Direxion rolls out Nvidia-focused ETFs for bulls and bears",
+   "ext": "fnspid-219661898368637",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 43914,
+   "title": "Nvidia launches new products to plug cars, factories into its Omniverse",
+   "ext": "fnspid-41257569170500",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 55939,
+   "title": "AVID Launches Pro Tools Intro Artist for New Music Makers",
+   "ext": "fnspid-40745966254847",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 77133,
+   "title": "HMD starts making Nokia phones in Europe, launches 5G smartphone",
+   "ext": "fnspid-110486943826986",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 19006,
+   "title": "Google To Begin Beta Testing Of Project Stream, Starting With 'Assassin's Creed Odyssey'",
+   "ext": "fnspid-12488313889942",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 66283,
+   "title": "Google expected to unveil its answer to Microsoft's AI search challenge",
+   "ext": "fnspid-169648075215877",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 48155,
+   "title": "Airbus cuts A330 orders, reveals Russia delivery U-turn",
+   "ext": "fnspid-227943614096264",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 17373,
+   "title": "Global X Launches AI, Big Data ETF",
+   "ext": "fnspid-15977974337297",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 68866,
+   "title": "Is Meta Still a Buy After Apple\u2019s Vision Pro Launch?",
+   "ext": "fnspid-228738601369140",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 20420,
+   "title": "Google CEO Sundar Pichai, Giving Testimony In Front Of Senate Judiciary Committee, Says Co. Has No Plans To Launch In China",
+   "ext": "fnspid-203283118825514",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9137,
+   "title": "Coca-Cola Company (KO) Unveils PlantBottle at World Expo - Analyst Blog",
+   "ext": "fnspid-248430072008839",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 46360,
+   "title": "12 Companies NASA Says Are Go for Launch",
+   "ext": "fnspid-38963819903963",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 51083,
+   "title": "AMD Launches New Ryzen Series to Address Trending Markets",
+   "ext": "fnspid-8707785501753",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 34332,
+   "title": "Goldman Sachs Delaying Launch of Robo-Advisor",
+   "ext": "fnspid-21812716064278",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 41357,
+   "title": "Investment firm Engine No. 1 prepares to launch Transform 500 ETF after Exxon win",
+   "ext": "fnspid-28850923252353",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 49529,
+   "title": "Argo launches non-commercial driverless vehicles in Miami, Austin",
+   "ext": "fnspid-102721909728829",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 72763,
+   "title": "Hedge fund Viking reopens flagship fund after decade -sources",
+   "ext": "fnspid-183979704279558",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 81658,
+   "title": "Petroperu aims to launch minority share offer in coming years, chairman says",
+   "ext": "fnspid-232061176608910",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 47233,
+   "title": "EXCLUSIVE-Deutsche Telekom launches $20 bln auction of mobile towers",
+   "ext": "fnspid-105338373383501",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 30004,
+   "title": "WhatsApp Payments To Launch In India, BofA Says Monetization Will Take Time",
+   "ext": "fnspid-83692841908890",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 12134,
+   "title": "Intel, Nvidia to Announce New Platforms for CES 2017 -DigiTimes",
+   "ext": "fnspid-144815026678381",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 37059,
+   "title": "Leaked Documents Reveal ExxonMobil Plans to Increase Carbon Emissions 17% by 2025",
+   "ext": "fnspid-204063711592822",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 20682,
+   "title": "What Does Parsley Energy's 2019 Capital Budget Plan Reveal?",
+   "ext": "fnspid-257452066142742",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 23970,
+   "title": "Amazon, Google Reports Official YouTube Apps Will Launch On Fire TV, Prime Video App Coming To Chromecast, Android TV",
+   "ext": "fnspid-199704177067875",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 54543,
+   "title": "Comcast (CMCSA) Paramount JV SkyShowtime Set for Sep 20 Launch",
+   "ext": "fnspid-128889706825390",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 27084,
+   "title": "Coca-Cola Plans To Launch Energy Drink In U.S. Next Year",
+   "ext": "fnspid-167003025790632",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 56085,
+   "title": "Microsoft (MSFT) Rolls Out New Surface Products: Key Takeaways",
+   "ext": "fnspid-197673539449879",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 51375,
+   "title": "Apple (AAPL) Likely to Launch New Macs With Four M2 Chip Variants",
+   "ext": "fnspid-122530774205757",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 57024,
+   "title": "AI chip startup SiMa.ai launches auto business with former Bosch, Mercedes executive",
+   "ext": "fnspid-101277355780096",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 30562,
+   "title": "Google Announces Second Stadia Games Studio, 'Division 2' Launch",
+   "ext": "fnspid-141087578355235",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 37795,
+   "title": "Walmart Launches New Pet Care Services - Quick Facts",
+   "ext": "fnspid-223864915001128",
+   "pipe_label": "Product Launch",
+   "hand_label": "Product Launch"
+  },
+  {
+   "id": 39761,
+   "title": "Australian regional airline Rex to launch more flights in competition with Qantas, Virgin",
+   "ext": "fnspid-129350411549088",
+   "pipe_label": "Product Launch",
+   "hand_label": "Other"
+  },
+  {
+   "id": 51418,
+   "title": "Britain launches public consultations on Meggitt-Parker deal",
+   "ext": "fnspid-56131818446747",
+   "pipe_label": "Product Launch",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 9865,
+   "title": "XLF ETF Down Almost 9% In The First 8 Days Of 2016; Baird Sees Buying Opportunity",
+   "ext": "fnspid-241346659769028",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5914,
+   "title": "Technical Set-Up - Death Cross 08-12-2011",
+   "ext": "fnspid-4272022270263",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9939,
+   "title": "Coca-Cola, TGI Group Announce Strategic Investment in Nigeria's Chi Limited",
+   "ext": "fnspid-126885844509288",
+   "pipe_label": "Other",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 5562,
+   "title": "7 Big Brands, 7 Big Stocks",
+   "ext": "fnspid-71343208281648",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8534,
+   "title": "Can Coca-Cola's Compete With Silicon Valley's Food Movement?",
+   "ext": "fnspid-68118206427155",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10183,
+   "title": "Stock Market News for March 09, 2016",
+   "ext": "fnspid-183715102772669",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6768,
+   "title": "After Hours Most Active for Jan 24, 2013 : MSFT, QQQ, AMGN, NOK, SBUX, PFE, MRK, BAC, HIG, NWSA, KO, INTC",
+   "ext": "fnspid-54654037785263",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5280,
+   "title": "Forget Buy and Hold. Periodic Rebalancing Is the New Discipline",
+   "ext": "fnspid-227659536154832",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7816,
+   "title": "Consumer Stocks Mixed This Afternoon; Keurig Green Mountain Jumps Nearly 10% After Coca-Cola Adds to Ownership Stake",
+   "ext": "fnspid-200027224163721",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10096,
+   "title": "Consider An Equal-Weight Approach To This Hot Sector's ETFs",
+   "ext": "fnspid-44614735026399",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10476,
+   "title": "Consumer Sector Update for 04/20/2016: DISH, KO, CVS, DIS, MCD, WMT",
+   "ext": "fnspid-56373919293383",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9637,
+   "title": "13 Stocks Jim Cramer Is Looking At",
+   "ext": "fnspid-93613625603028",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9404,
+   "title": "XLP, PG, KO, PM: Large Outflows Detected at ETF",
+   "ext": "fnspid-102337483353264",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8535,
+   "title": "3 Surprising Habits of Smart Investors",
+   "ext": "fnspid-96983428742061",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7615,
+   "title": "Dow 30 Stock Roundup: Home Depot Beats, Yellen Lifts Sentiment - Analyst Blog",
+   "ext": "fnspid-250141048106502",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8868,
+   "title": "Dan Nathan Sees Unusual Options Activity In Coca-Cola",
+   "ext": "fnspid-86803221917804",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9116,
+   "title": "FIFA Charged of Corruption: Will Sponsors Show Red Card? - Analyst Blog",
+   "ext": "fnspid-92228985268462",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8459,
+   "title": "Bank Of America Analysts Explain How To Profit From A Shift To Efficient Energy",
+   "ext": "fnspid-83654924077883",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7413,
+   "title": "FEMSA Upped to Neutral - Analyst Blog",
+   "ext": "fnspid-228841006257053",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5468,
+   "title": "AAPL and Oil and 7.5% Levels, Oh My",
+   "ext": "fnspid-77762736129481",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8172,
+   "title": "3 Companies Helping To Keep Diabetes Rates Lower",
+   "ext": "fnspid-94335192848759",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7813,
+   "title": "Sector Update: Consumers",
+   "ext": "fnspid-243610091952741",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5355,
+   "title": "World Cup Soccer Stock Portfolio",
+   "ext": "fnspid-103884632886700",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9216,
+   "title": "Dow Analyst Moves: KO",
+   "ext": "fnspid-270177379918303",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9970,
+   "title": "Consumer Sector Update for 02/05/2016: KO, PSMT",
+   "ext": "fnspid-250068178381376",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8653,
+   "title": "10 Compelling Reasons Why Big Beverage May Want To Keep Their Eyes On Celsius Holdings",
+   "ext": "fnspid-13926929139115",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9488,
+   "title": "Coca-Cola Receives Statutory Notice Of Deficiency From IRS For 2007-2009 Tax Years",
+   "ext": "fnspid-116872374242982",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8675,
+   "title": "XLP, KO, PM, CVS: Large Inflows Detected at ETF",
+   "ext": "fnspid-245193140929810",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7579,
+   "title": "Stock Market News for February 19, 2014 - Market News",
+   "ext": "fnspid-52040251019387",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8585,
+   "title": "2015 Dogs Of The Dow",
+   "ext": "fnspid-206723129455087",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7635,
+   "title": "A Comprehensive Guide to Consumer Staples ETF - ETF News And Commentary",
+   "ext": "fnspid-259644868786620",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5396,
+   "title": "Best in Class: Pepsi's Plan for Global Domination",
+   "ext": "fnspid-214831986666792",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7883,
+   "title": "Shares of Coca-Cola Now Up ~1.5% Following Private Talks Stemming from David Winters on FBN",
+   "ext": "fnspid-221575332647469",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6388,
+   "title": "Monster Joins the S&P 500 as Sara Lee Steps Down",
+   "ext": "fnspid-28873260864307",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9388,
+   "title": "Why Monster Beverage's 10% Decline Makes It The Perfect Time To Buy",
+   "ext": "fnspid-256795996305790",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8480,
+   "title": "A Look At 3 Financial ETFs Amid November's Strong Jobs Report",
+   "ext": "fnspid-256218360910727",
+   "pipe_label": "Other",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 5434,
+   "title": "BP Brand Takes Big Hit Following Spill",
+   "ext": "fnspid-199758506787815",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9889,
+   "title": "Mid-Day Market Update: Dow Surges 150 Points; Progressive Waste Shares Spike Higher",
+   "ext": "fnspid-76207499243902",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10550,
+   "title": "Healthcare accountability goes public: Cotiviti files for an IPO that could raise $500 million",
+   "ext": "fnspid-146357472376520",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8377,
+   "title": "Monster, Coca-Cola Will Amend Current Distribution Deal in US, Canada",
+   "ext": "fnspid-193956768336082",
+   "pipe_label": "Other",
+   "hand_label": "Merger/Acquisition"
+  },
+  {
+   "id": 9075,
+   "title": "Coca-Cola Discloses Letters of Intent Related to Two US Bottling Partners: Will Offer Expanded Distribution Territories to Coca-Cola Bottling Co., Clark Beverage Group",
+   "ext": "fnspid-58077195756193",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8255,
+   "title": "IWB, VZ, KO, IBM: Large Outflows Detected at ETF",
+   "ext": "fnspid-39786402200511",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7857,
+   "title": "One Put, One Call Option To Know About for Coca-Cola",
+   "ext": "fnspid-255213322280125",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10398,
+   "title": "Mid-Morning Market Update: Markets Edge Lower; Bank of America Posts Drop In Q1 Profit",
+   "ext": "fnspid-118951877881209",
+   "pipe_label": "Other",
+   "hand_label": "Macroeconomic"
+  },
+  {
+   "id": 6716,
+   "title": "6 stocks to watch in the week ahead",
+   "ext": "fnspid-253541456174095",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6838,
+   "title": "Latest Picks From Bill Gates Foundation: Buys Coca-Cola, Procter & Gamble, Wal-Mart ...",
+   "ext": "fnspid-262557929306940",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10329,
+   "title": "Kashkari: 'Too Big To Fail' Still Exists, We Need To Follow This Once And For All",
+   "ext": "fnspid-271066559086229",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 5479,
+   "title": "Stock Market News for October 20, 2010 - Market News",
+   "ext": "fnspid-146611056686316",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8524,
+   "title": "#PreMarket Movers From December 19, 2014: NQ Mobile, BlackBerry, CarMax And More",
+   "ext": "fnspid-26598851951189",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9821,
+   "title": "These 3 Companies Doubled in 2015",
+   "ext": "fnspid-172749512261091",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8639,
+   "title": "Morgan Stanley Weighs In On Semiconductor Space",
+   "ext": "fnspid-107870011865665",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 7962,
+   "title": "Dow Movers: TRV, INTC",
+   "ext": "fnspid-67114131313744",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6028,
+   "title": "Oppenheimer Maintains Outperform, $25 PT on NVIDIA",
+   "ext": "fnspid-68030686719529",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 8192,
+   "title": "Stocks Hitting 52-Week Highs",
+   "ext": "fnspid-122564492900956",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10036,
+   "title": "Close Update: Stocks Rally as Gains in Oil and Banks Snap 5-Day Losing Streak",
+   "ext": "fnspid-142793206676855",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 6713,
+   "title": "3 High-Yield Small-Caps for Income and Growth",
+   "ext": "fnspid-275627513940151",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10659,
+   "title": "Interesting November Stock Options for KO",
+   "ext": "fnspid-139384707456255",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10399,
+   "title": "Nike And Kobe Bryant Have Been Very Good For Each Other",
+   "ext": "fnspid-97422826698063",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 10435,
+   "title": "Consumer Sector Update for 04/18/2016: KO, CVS, DIS, MCD, WMT, PEP",
+   "ext": "fnspid-229605673312188",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  },
+  {
+   "id": 9537,
+   "title": "XLP, PG, KO, PM: ETF Inflow Alert",
+   "ext": "fnspid-279000874762012",
+   "pipe_label": "Other",
+   "hand_label": "Other"
+  }
+ ]
+}
