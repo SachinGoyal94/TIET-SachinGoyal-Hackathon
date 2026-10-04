@@ -1,6 +1,6 @@
 {
-  "id": "sachingoyal27/gdelt-history-fetch",
-  "title": "GDELT History Fetch",
+  "id": "sachingoyal27/fnspid-filter",
+  "title": "FNSPID Filter",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
@@ -9,5 +9,5 @@
   "dataset_sources": [],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "gdelt_history_fetch.py"
+  "code_file": "fnspid_filter.py"
 }

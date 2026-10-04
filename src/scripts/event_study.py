@@ -39,18 +39,22 @@ SECTOR_ETF = {
 MARKET_ETF = "SPY"
 
 
-def load_aligned_prices(days: int = 120) -> dict[str, tuple[list[str], list[float]]]:
+def load_aligned_prices(days: int = 120,
+                        start: str | None = None,
+                        end: str | None = None) -> dict[str, tuple[list[str], list[float]]]:
     """Daily closes (with dates) for the universe plus market/sector ETFs."""
-    name = f"event_study_prices_{days}d.json"
-    cached = _read_cache(name, 12)
+    name = f"event_study_prices_{days}d_{start}_{end}.json"
+    cached = _read_cache(name, 168)
     if cached:
         return {t: (d, c) for t, (d, c) in cached.items()}
     try:
         import yfinance as yf
 
         symbols = list(TICKERS) + [MARKET_ETF] + sorted(set(SECTOR_ETF.values()))
-        frame = yf.download(tickers=" ".join(symbols), period=f"{days}d",
-                            interval="1d", auto_adjust=True, progress=False)
+        kwargs = ({"period": f"{days}d"} if not start
+                  else {"start": start, "end": end or "2021-12-31"})
+        frame = yf.download(tickers=" ".join(symbols), interval="1d",
+                            auto_adjust=True, progress=False, **kwargs)
         closes = frame["Close"]
         data: dict[str, tuple[list[str], list[float]]] = {}
         for sym in symbols:
@@ -125,11 +129,13 @@ def sign_test(xs: list[float]) -> float:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--days", type=int, default=120)
+    parser.add_argument("--start", type=str, default=None, help="price window start (YYYY-MM-DD)")
+    parser.add_argument("--end", type=str, default=None, help="price window end")
     parser.add_argument("--source", type=str, default=None,
-                        help="filter events by first_source, e.g. gdelt_hist")
+                        help="filter events by first_source, e.g. kaggle_hist")
     args = parser.parse_args()
 
-    prices = load_aligned_prices(args.days)
+    prices = load_aligned_prices(args.days, args.start, args.end)
 
     with get_session() as s:
         stmt = select(Event).where(Event.first_entity.in_(TICKERS))
