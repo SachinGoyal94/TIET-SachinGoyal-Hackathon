@@ -1,13 +1,13 @@
 {
-  "id": "sachingoyal27/fnspid-score",
-  "title": "FNSPID Score",
+  "id": "sachingoyal27/tweets-score",
+  "title": "Tweets Score",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": ["sachingoyal27/fnspid-universe-headlines"],
+  "dataset_sources": ["sachingoyal27/stock-tweets-universe"],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "fnspid_score.py"
+  "code_file": "tweets_score.py"
 }
