@@ -37,25 +37,48 @@ def main() -> None:
     df = df[df["ticker"].isin(TICKERS)]
     log.info("rows: %d (%s)", len(df), dict(df["ticker"].value_counts()))
 
-    items = []
-    for _, row in df.iterrows():
-        items.append({
-            "text": str(row["title"]),
-            "source": "fnspid",
-            "published_at": pd.to_datetime(row["date"], utc=True).to_pydatetime(),
-            "url": None,
-            "external_id": f"fnspid-{hash((row['title'], row['date'])) & 0xFFFFFFFFFFFF}",
-            "use_model": False,
-            "extract_entities": False,
-        })
-        if args.limit and len(items) >= args.limit:
-            break
+    # resume support: drop headlines already stored from a previous run
+    from sqlalchemy import select
 
-    log.info("analyzing %d headlines...", len(items))
-    stored = [r for r in ingest_many(items) if r is not None]
-    log.info("stored %d articles (%d duplicates skipped)",
-             len(stored), len(items) - len(stored))
-    log.info("done")
+    from src.engine.db import Article, get_session
+
+    with get_session() as s:
+        stored_ids = set(s.execute(
+            select(Article.external_id).where(Article.source == "fnspid")
+        ).scalars().all())
+    df["external_id"] = [
+        f"fnspid-{hash((t, d)) & 0xFFFFFFFFFFFF}"
+        for t, d in zip(df["title"], df["date"])
+    ]
+    before = len(df)
+    df = df[~df["external_id"].isin(stored_ids)]
+    log.info("resume: %d already stored, %d to process", before - len(df), len(df))
+    if df.empty:
+        log.info("nothing to do")
+        return
+
+    # chunked batches: each chunk is scored and persisted, so an interruption
+    # only loses the current chunk
+    CHUNK = 2000
+    chunks = [df.iloc[i:i + CHUNK] for i in range(0, len(df), CHUNK)]
+    total_stored = 0
+    for n, chunk in enumerate(chunks, start=1):
+        items = []
+        for _, row in chunk.iterrows():
+            items.append({
+                "text": str(row["title"]),
+                "source": "fnspid",
+                "published_at": pd.to_datetime(row["date"], utc=True).to_pydatetime(),
+                "url": None,
+                "external_id": row["external_id"],
+                "use_model": False,
+                "extract_entities": False,
+            })
+        stored = [r for r in ingest_many(items) if r is not None]
+        total_stored += len(stored)
+        log.info("chunk %d/%d: %d stored (%d duplicates) | total %d",
+                 n, len(chunks), len(stored), len(items) - len(stored), total_stored)
+    log.info("done: %d new articles", total_stored)
 
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ def _get_pipeline():
                     "text-classification",
                     model=model_id,
                     truncation=True,
-                    max_length=512,
+                    max_length=128,
                 )
     return _pipeline
 

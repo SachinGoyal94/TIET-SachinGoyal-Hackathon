@@ -1,13 +1,13 @@
 {
-  "id": "sachingoyal27/fnspid-filter",
-  "title": "FNSPID Filter",
+  "id": "sachingoyal27/fnspid-score",
+  "title": "FNSPID Score",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
-  "enable_gpu": false,
+  "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": [],
+  "dataset_sources": ["sachingoyal27/fnspid-universe-headlines"],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "fnspid_filter.py"
+  "code_file": "fnspid_score.py"
 }

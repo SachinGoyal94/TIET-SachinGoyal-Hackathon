@@ -189,6 +189,14 @@ def main() -> None:
     sentiment_aligned = [r["sector_ar"] * np.sign(r["sentiment"]) for r in rows
                          if r["sentiment"] != 0]
 
+    def conditional_hit(threshold: float) -> float | None:
+        subset = [r for r in rows if abs(r["sentiment"]) >= threshold]
+        if len(subset) < 20:
+            return None
+        return round(float(np.mean([r["sign_agree"] for r in subset])), 3)
+
+    strong = [r for r in rows if abs(r["sentiment"]) >= 0.5]
+
     result = {
         "source_filter": args.source or "all",
         "events_matched": len(rows),
@@ -198,6 +206,9 @@ def main() -> None:
             "sign_test_p": round(sign_test(all_sector_ar), 3),
             "sentiment_direction_hit_rate": round(
                 float(np.mean([r["sign_agree"] for r in rows])), 3),
+            "hit_rate_sentiment_gt_02": conditional_hit(0.2),
+            "hit_rate_sentiment_gt_05": conditional_hit(0.5),
+            "strong_sentiment_n": len(strong),
             "impact_signal_ic": round(float(np.corrcoef(
                 [r["impact"] for r in rows],
                 [abs(r["sector_ar"]) for r in rows])[0, 1]), 3)
