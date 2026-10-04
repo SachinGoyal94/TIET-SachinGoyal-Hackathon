@@ -98,8 +98,22 @@ def _price_position(pos: dict, shocks: dict, band_scale: float = 1.0) -> float:
     return 0.0
 
 
+def spread_regime_factor(oas: float | None) -> float:
+    """Credit-conditions multiplier: tight HY spreads mean compressed risk
+    premia and a book positioned for calm - shocks hit harder. Wide spreads
+    mean stress is already partially realized (oas in %, e.g. 3.2 = 320bps)."""
+    if oas is None:
+        return 1.0
+    if oas < 3.5:
+        return 1.10
+    if oas > 6.0:
+        return 0.90
+    return 1.0
+
+
 def run_stress(portfolio: dict, event_label: str, impact: float,
-               scenario: str | None = None) -> dict:
+               scenario: str | None = None,
+               spread_oas: float | None = None) -> dict:
     """Deterministic shock scenario plus a Monte Carlo P&L distribution.
 
     Either triggered by an event (event_label + impact -> shock matrix) or by
@@ -144,6 +158,11 @@ def run_stress(portfolio: dict, event_label: str, impact: float,
     pnl = value_after - value_before
     rows.sort(key=lambda r: r["pnl"])
 
+    regime = spread_regime_factor(spread_oas)
+    if regime != 1.0:
+        shocks = {k: round(v * regime, 5) if isinstance(v, float) else v
+                  for k, v in shocks.items()}
+
     mc = _monte_carlo_positions(positions, shocks)
 
     result = {
@@ -151,6 +170,8 @@ def run_stress(portfolio: dict, event_label: str, impact: float,
         "impact_score": impact,
         "scenario": scenario,
         "shocks": shocks,
+        "spread_oas": spread_oas,
+        "spread_regime_factor": regime,
         "value_before": round(value_before, 0),
         "value_after": round(value_after, 0),
         "pnl": round(pnl, 0),

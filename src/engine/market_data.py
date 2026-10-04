@@ -128,3 +128,29 @@ def vix_regime_lookup() -> float | None:
     except Exception as exc:
         logger.warning("VIX lookup unavailable: %s", exc)
     return None
+
+
+def spread_regime_lookup() -> float | None:
+    """Latest HY OAS level from the FRED series in data/seed
+    (BAMLH0A0HYM2); None if unavailable."""
+    path = settings.seed_dir / "hy_oas_fred.csv"
+    if not path.exists():
+        return None
+    cached = _read_cache("spread_regime.json", 12)
+    if cached is not None:
+        return cached
+    try:
+        import csv as _csv
+
+        latest = None
+        with open(path, encoding="utf-8") as f:
+            for row in _csv.DictReader(f):
+                val = (row.get("BAMLH0A0HYM2") or "").strip()
+                if val and val != ".":
+                    latest = float(val)
+        if latest is not None:
+            _write_cache("spread_regime.json", latest)
+        return latest
+    except Exception as exc:
+        logger.warning("spread regime lookup failed: %s", exc)
+        return None
