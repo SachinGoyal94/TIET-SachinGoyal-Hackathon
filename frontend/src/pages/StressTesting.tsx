@@ -15,19 +15,25 @@ const CLASS_COLORS: Record<string, string> = {
 export default function StressTesting() {
   const qc = useQueryClient();
   const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
+  const [selectedScenario, setSelectedScenario] = useState<string>("");
 
   const { data: events } = useQuery({ queryKey: ["events", "stress"], queryFn: () => api.events(true, 40), refetchInterval: 15_000 });
   const { data: portfolio } = useQuery({ queryKey: ["portfolio"], queryFn: api.portfolio });
   const { data: runs } = useQuery({ queryKey: ["stressRuns"], queryFn: () => api.stressRuns(8), refetchInterval: 20_000 });
   const { data: latest } = useQuery({ queryKey: ["stressLatest"], queryFn: api.stressLatest, refetchInterval: 20_000 });
+  const { data: scenarios } = useQuery({ queryKey: ["scenarios"], queryFn: api.scenarios });
 
   const runStress = useMutation({
-    mutationFn: () => api.runStress(selectedEvent ?? undefined),
+    mutationFn: () => api.runStress(selectedEvent ?? undefined, selectedScenario || undefined),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["stressLatest"] });
       qc.invalidateQueries({ queryKey: ["stressRuns"] });
       qc.invalidateQueries({ queryKey: ["stats"] });
     },
+  });
+
+  const reverse = useMutation({
+    mutationFn: (scenario: string) => api.reverseStress(scenario),
   });
 
   const run = latest?.run;
@@ -109,11 +115,23 @@ export default function StressTesting() {
         <div className="card-title px-0 pt-0">Trigger a stress test</div>
         <div className="flex flex-wrap items-center gap-3">
           <select
-            value={selectedEvent ?? ""}
-            onChange={(e) => setSelectedEvent(e.target.value ? Number(e.target.value) : null)}
-            className="min-w-80 flex-1 rounded-lg border border-surface-700 bg-surface-850 px-4 py-2.5 text-sm text-slate-200 outline-none focus:border-accent/60"
+            value={selectedScenario}
+            onChange={(e) => { setSelectedScenario(e.target.value); setSelectedEvent(null); }}
+            className="min-w-72 flex-1 rounded-lg border border-accent/40 bg-surface-850 px-4 py-2.5 text-sm text-accent outline-none"
           >
-            <option value="">Highest-impact active event (default)</option>
+            <option value="">Scenario library (supervisory + historical)</option>
+            {scenarios?.scenarios.map((s) => (
+              <option key={s.name} value={s.name}>
+                [{s.family}] {s.name}
+              </option>
+            ))}
+          </select>
+          <select
+            value={selectedEvent ?? ""}
+            onChange={(e) => { setSelectedEvent(e.target.value ? Number(e.target.value) : null); setSelectedScenario(""); }}
+            className="min-w-72 flex-1 rounded-lg border border-surface-700 bg-surface-850 px-4 py-2.5 text-sm text-slate-200 outline-none focus:border-accent/60"
+          >
+            <option value="">Highest-impact live event (default)</option>
             {events?.events.map((ev) => (
               <option key={ev.id} value={ev.id}>
                 [{ev.max_impact.toFixed(1)}] {ev.event_label}: {ev.headline.slice(0, 70)}
@@ -128,10 +146,17 @@ export default function StressTesting() {
             {runStress.isPending ? "Running…" : "Run stress test"}
           </button>
         </div>
+        {selectedScenario && (
+          <p className="mt-2 text-xs text-slate-500">
+            {scenarios?.scenarios.find((s) => s.name === selectedScenario)?.description}
+            <span className="ml-1 text-slate-600">Source: {scenarios?.scenarios.find((s) => s.name === selectedScenario)?.source}</span>
+          </p>
+        )}
         {runStress.isError && <p className="mt-2 text-xs text-rose-400">{(runStress.error as Error).message}</p>}
         {runStress.data && (
           <p className="mt-2 text-xs text-emerald-400">
-            Run #{runStress.data.run_id} stored: {fmtPct(runStress.data.pnl_pct)} under a {runStress.data.event_label} shock.
+            Run #{runStress.data.run_id} stored: {fmtPct(runStress.data.pnl_pct)} under{" "}
+            {selectedScenario ? `scenario ${selectedScenario}` : `a ${runStress.data.event_label} shock`}.
           </p>
         )}
       </div>
@@ -165,6 +190,45 @@ export default function StressTesting() {
               <div className="mt-0.5 text-xs text-slate-500">ES {fmtMoney(d.monte_carlo.es95)} over {d.monte_carlo.draws} draws</div>
             </div>
           </div>
+
+          {d.capital && (
+            <div className={`card p-5 ${d.capital.breach ? "border-rose-500/40 bg-rose-500/5" : "border-emerald-500/30 bg-emerald-500/5"}`}>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-slate-500">CET1 capital flow (regulatory view)</div>
+                  <div className="mt-1.5 flex items-baseline gap-3">
+                    <span className="text-2xl font-semibold text-slate-100">
+                      {d.capital.ratio_start_pct.toFixed(2)}% → {d.capital.ratio_end_pct.toFixed(2)}%
+                    </span>
+                    <span className={`pill ${d.capital.breach ? "bg-rose-500/20 text-rose-300" : "bg-emerald-500/20 text-emerald-300"}`}>
+                      {d.capital.breach ? "breaches minimum" : "survives"}
+                    </span>
+                  </div>
+                  <div className="mt-0.5 text-xs text-slate-500">
+                    depletion {d.capital.depletion_bps.toFixed(0)} bps · PPNR +{fmtMoney(d.capital.ppnr)} · losses {fmtMoney(d.capital.total_losses)}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  {selectedScenario && (
+                    <button
+                      onClick={() => reverse.mutate(selectedScenario)}
+                      disabled={reverse.isPending}
+                      className="rounded-lg border border-accent/50 px-4 py-2 text-xs font-medium text-accent hover:bg-accent/10 disabled:opacity-40"
+                    >
+                      {reverse.isPending ? "Solving…" : "Reverse stress: solve for breach"}
+                    </button>
+                  )}
+                </div>
+              </div>
+              {reverse.data && (
+                <p className="mt-2 text-xs text-amber-300">
+                  {reverse.data.breach_multiple !== null
+                    ? `Breach at ${reverse.data.breach_multiple}× the ${reverse.data.scenario} shocks (CET1 ${reverse.data.cet1_ratio_at_breach_pct?.toFixed(2)}% at breach).`
+                    : reverse.data.note}
+                </p>
+              )}
+            </div>
+          )}
 
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="card p-4">

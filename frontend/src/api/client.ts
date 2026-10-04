@@ -3,6 +3,7 @@ import type {
   Health,
   Portfolio,
   RiskEvent,
+  ScenarioInfo,
   Signal,
   Stats,
   StressResult,
@@ -53,7 +54,11 @@ export const api = {
   weightHistory: (hours = 168) =>
     get<{ ticks: HistoryTick[] }>("/rebalance/history", { hours }),
   portfolio: () => get<Portfolio>("/portfolio"),
-  runStress: (eventId?: number) => post<StressResult>("/stress/run", { event_id: eventId ?? null }),
+  scenarios: () => get<{ count: number; scenarios: ScenarioInfo[] }>("/stress/scenarios"),
+  runStress: (eventId?: number, scenario?: string) =>
+    post<StressResult>("/stress/run", { event_id: eventId ?? null, scenario: scenario ?? null }),
+  reverseStress: (scenario: string) =>
+    post<{ scenario: string; breach_multiple: number | null; cet1_ratio_at_breach_pct?: number; note?: string }>("/stress/reverse", { scenario }),
   stressRuns: (limit = 20) =>
     get<{ count: number; runs: StressRunSummary[] }>("/stress/runs", { limit }),
   stressLatest: () => get<{ run: (StressRunSummary & { details: StressResult }) | null }>("/stress/latest"),

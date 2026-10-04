@@ -98,9 +98,34 @@ export interface AssetClassAgg {
   pnl_pct: number;
 }
 
+export interface ScenarioInfo {
+  name: string;
+  family: string;
+  description: string;
+  source: string;
+  shocks: {
+    equity_pct: number;
+    rates_bps: number;
+    spread_bps: number;
+    fx_pct: number;
+  };
+}
+
+export interface CapitalView {
+  cet1_start: number;
+  ppnr: number;
+  total_losses: number;
+  cet1_end: number;
+  ratio_start_pct: number;
+  ratio_end_pct: number;
+  depletion_bps: number;
+  breach: boolean;
+}
+
 export interface StressResult {
   event_label: EventLabel;
   impact_score: number;
+  scenario?: string | null;
   shocks: {
     equity_pct: number;
     rates_bps: number;
@@ -130,6 +155,7 @@ export interface StressResult {
     median_pnl: number;
     p95_pnl: number;
   };
+  capital?: CapitalView;
   run_id?: number;
   triggered_by?: string;
 }
