@@ -1,12 +1,18 @@
 from dataclasses import dataclass
 
+# v2: empirically calibrated per-name severities. Derived from 19,872 real
+# news events (FNSPID 2009-2023): mean |sector-adjusted CAR| per event label,
+# anchored to 8.5 for Credit Event (the highest-moving class). Note: these
+# are per-NAME severities - market-wide channels (geopolitical, macro) act
+# mainly through the index factor, which the sector adjustment removes; that
+# channel is covered separately by the Module B scenario library.
 BASE_SEVERITY: dict[str, float] = {
     "Credit Event": 8.5,
-    "Geopolitical": 8.0,
-    "Macroeconomic": 7.0,
-    "Merger/Acquisition": 6.0,
-    "Product Launch": 3.5,
-    "Other": 3.0,
+    "Product Launch": 7.0,
+    "Merger/Acquisition": 6.5,
+    "Macroeconomic": 6.0,
+    "Other": 6.0,
+    "Geopolitical": 5.5,
 }
 
 MIN_IMPACT, MAX_IMPACT = 1.0, 10.0

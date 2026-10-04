@@ -1,0 +1,29 @@
+{
+  "description": "Impact v2 calibration: per-name base severities re-derived from 19,872 real events (FNSPID 2009-2023), mean |sector-adjusted CAR| per label, anchored to 8.5 for the highest class.",
+  "empirical_mean_abs_car_bps": {
+    "Credit Event": 124.3,
+    "Product Launch": 103.0,
+    "Merger/Acquisition": 94.2,
+    "Macroeconomic": 87.9,
+    "Other": 87.3,
+    "Geopolitical": 84.5
+  },
+  "calibrated_base_severity": {
+    "Credit Event": 8.5,
+    "Product Launch": 7.0,
+    "Merger/Acquisition": 6.5,
+    "Macroeconomic": 6.0,
+    "Other": 6.0,
+    "Geopolitical": 5.5
+  },
+  "hand_set_prior": {
+    "Credit Event": 8.5,
+    "Geopolitical": 8.0,
+    "Macroeconomic": 7.0,
+    "Merger/Acquisition": 6.0,
+    "Product Launch": 3.5,
+    "Other": 3.0
+  },
+  "finding": "The data disagreed with the priors: firm-specific news (credit, launches, deals) moves individual names more than generic geopolitical headlines, whose market-wide effect is largely the index factor (removed by sector adjustment) and is covered separately by the Module B scenario library.",
+  "impact_ic": 0.066
+}

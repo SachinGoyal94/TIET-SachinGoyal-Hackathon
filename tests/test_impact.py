@@ -23,7 +23,7 @@ def test_unknown_label_uses_other_severity():
 
 def test_high_severity_events_score_high():
     assert score_impact("Credit Event", -0.8).score >= 8.0
-    assert score_impact("Product Launch", 0.3).score < 6.0
+    assert score_impact("Product Launch", 0.3).score < 7.0
 
 
 def test_breakdown_factors_consistent():

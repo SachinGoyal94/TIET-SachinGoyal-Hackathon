@@ -491,6 +491,5 @@
     }
   },
   "bar": "literature bar for daily-horizon meaningfulness: 53-55% directional hit rate",
-  "note": "synthetic-history rows carry random timestamps (no expected signal); filter with --source gdelt_hist (or gdelt) for the live read",
-  "interpretation": "Real-data event study: 19,872 clustered news events (FNSPID corpus, 2009-2023) matched to first-tradable-day, sector-adjusted returns. Headline findings: (1) directional hit rate on strong-sentiment events (|s|>0.5): 55.6%, at/above the 53-55% literature bar for daily-horizon news signals; (2) sentiment-scaled abnormal return +18.3bps per event; (3) Credit Event CAR +25.2bps, t=3.01 (significant at 1%); (4) impact-vs-realized-move IC +0.066 (positive, statistically significant at this sample size). All numbers measured on real headlines with real timestamps against real market prices - no synthetic data in this table."
+  "note": "synthetic-history rows carry random timestamps (no expected signal); filter with --source gdelt_hist (or gdelt) for the live read"
 }

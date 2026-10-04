@@ -133,6 +133,8 @@ def main() -> None:
     parser.add_argument("--end", type=str, default=None, help="price window end")
     parser.add_argument("--source", type=str, default=None,
                         help="filter events by first_source, e.g. kaggle_hist")
+    parser.add_argument("--export-rows", type=str, default=None,
+                        help="dump per-event rows to this CSV for calibration")
     args = parser.parse_args()
 
     prices = load_aligned_prices(args.days, args.start, args.end)
@@ -226,6 +228,18 @@ def main() -> None:
     out = settings.cache_dir / "event_study.json"
     out.write_text(json.dumps(result, indent=2), encoding="utf-8")
     log.info("saved to %s", out)
+
+    if args.export_rows:
+        import csv as _csv
+
+        with open(args.export_rows, "w", newline="", encoding="utf-8") as f:
+            w = _csv.DictWriter(f, fieldnames=["ticker", "label", "impact",
+                                               "sentiment", "sector_ar", "market_ar",
+                                               "car_01", "sign_agree"],
+                                extrasaction="ignore")
+            w.writeheader()
+            w.writerows(rows)
+        log.info("exported %d event rows to %s", len(rows), args.export_rows)
 
 
 if __name__ == "__main__":
