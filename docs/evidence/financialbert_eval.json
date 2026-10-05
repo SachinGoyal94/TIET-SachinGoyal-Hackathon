@@ -1,0 +1,14 @@
+{
+  "model": "ahmedrachid/FinancialBERT-Sentiment-Analysis",
+  "model_id": "ahmedrachid/FinancialBERT-Sentiment-Analysis",
+  "rows": 483,
+  "split": "test",
+  "evaluated_at": "2026-10-05T22:20:38.249226+00:00",
+  "accuracy": 0.9669,
+  "macro_f1": 0.9661,
+  "per_class_f1": {
+    "negative": 0.9748,
+    "neutral": 0.9735,
+    "positive": 0.95
+  }
+}

@@ -1,12 +1,13 @@
 {
   "description": "Sentiment model bake-off on the Kaggle 'Sentiment Analysis for Financial News' corpus (Malo et al. 2014). All accuracy/F1 numbers are on the identical held-out test split: 483 rows, stratified, seed 42.",
   "results": [
-    {"model": "FinBERT base (ProsusAI, 110M)", "accuracy": 0.8944, "macro_f1": 0.892, "note": "shipped in the platform"},
+    {"model": "FinancialBERT (ahmedrachid, 110M)", "accuracy": 0.9669, "macro_f1": 0.9661, "note": "bake-off winner; ships in the platform", "artifact": "docs/evidence/financialbert_eval.json"},
+    {"model": "FinBERT base (ProsusAI, 110M)", "accuracy": 0.8944, "macro_f1": 0.892, "note": "round-1 winner before the finance-domain bake-off round"},
     {"model": "FinBERT fine-tuned (3 epochs, Kaggle P100)", "accuracy": 0.8903, "macro_f1": 0.88, "note": "no gain: base already trained on this corpus"},
     {"model": "ModernBERT-large fine-tuned (395M, 3 epochs, Kaggle T4)", "accuracy": 0.8861, "macro_f1": 0.8709, "note": "newer architecture, no gain on this corpus"},
     {"model": "Jev 1.13 (closed System One model, zero-shot via hosted API)", "accuracy": 0.7686, "macro_f1": 0.7825, "note": "weak on positive class; not deployable keyless"},
     {"model": "Laya zero-shot (421M System One model)", "accuracy": 0.7314, "macro_f1": 0.7176, "note": "weak financial-tone judgment; 10x slower on CPU"}
   ],
-  "conclusion": "FinBERT base wins the bake-off and ships as the core scorer. Five models evaluated on identical data; the two fine-tuned variants land within noise of the base, and both System One decision models trail by 12-16 points. Evaluation artifacts: kaggle/ kernels, data/cache/sentiment_eval_*.json, docs/evidence/laya_spike.json, docs/evidence/jev_spike.json.",
-  "caveat": "Differences among the top three are within noise (483 rows, stderr ~1.4pp); the System One gap is real and large."
+  "conclusion": "FinancialBERT wins the bake-off and ships as the core scorer; the 78k-headline FNSPID corpus was re-scored and every downstream result re-verified with it (docs/evidence/event_study_real.json, rebalance_backtest_real.json). Six models evaluated on identical data. Evaluation artifacts: kaggle/ kernels, data/cache/sentiment_eval_*.json, docs/evidence/financialbert_eval.json, docs/evidence/laya_spike.json, docs/evidence/jev_spike.json.",
+  "caveat": "The finance-domain pretraining gap (96.7% vs 89.4%) is well outside noise (483 rows, stderr ~1.4pp); differences among the FinBERT variants are not."
 }

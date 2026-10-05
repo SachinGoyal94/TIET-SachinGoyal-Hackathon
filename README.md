@@ -18,7 +18,7 @@ The platform is built around a single AI/NLP Risk Engine. It ingests text from t
 keyless sources (live GDELT news every 15 minutes, a vendored and attributed copy of the
 Kaggle "Sentiment Analysis for Financial News" corpus, and a synthetic generator used for
 demo volume and offline fallback), and produces three structured fields per item: a
-sentiment score in [-1, 1] (FinBERT), an event classification (zero-shot NLI blended with
+sentiment score in [-1, 1] (FinancialBERT), an event classification (zero-shot NLI blended with
 a finance-specific keyword lexicon), and a 1-10 impact score (an explainable composite of
 event-type severity, sentiment extremity, and source corroboration). Related items merge
 into event clusters within a 24-hour window, so a single headline can grow into a
@@ -103,7 +103,7 @@ python -m venv .venv
 The frontend bundle is committed (`frontend/dist/`), so no Node toolchain is needed at
 runtime. To rebuild it: `cd frontend && npm install && npm run build`.
 
-Tests: `python -m pytest tests/ -q` (46 tests, hermetic, no model downloads).
+Tests: `python -m pytest tests/ -q` (47 tests, hermetic, no model downloads).
 
 Optional extras: fine-tuning (`pip install -r requirements-dev.txt` then
 `python -m src.scripts.train_sentiment`), impact validation
@@ -113,11 +113,13 @@ Optional extras: fine-tuning (`pip install -r requirements-dev.txt` then
 ## 5. Key Results & Domain Impact
 
 - **Sentiment evaluation** ([docs/sentiment_metrics.json](docs/sentiment_metrics.json)):
-  on a 483-row held-out split of the labeled Kaggle corpus, base FinBERT scores
-  **89.4% accuracy (0.892 macro F1)** and our fine-tuned variant **89.0% (0.880)**.
-  The takeaway: base FinBERT is already well-calibrated to financial headlines, so the
-  shipped image uses base weights; the full fine-tuning pipeline (Kaggle GPU kernel,
-  135s on a P100) is in the repo for recalibration on new data.
+  six models benchmarked on an identical 483-row held-out split of the labeled Kaggle
+  corpus. **FinancialBERT wins at 96.7% accuracy (0.966 macro F1)** and ships as the
+  engine's scorer ([docs/evidence/financialbert_eval.json](docs/evidence/financialbert_eval.json));
+  base FinBERT scores 89.4% (0.892) and a locally fine-tuned variant 89.0% (0.880).
+  The takeaway: finance-domain pretraining beats generic fine-tuning on this corpus,
+  so the shipped image uses FinancialBERT weights; the fine-tuning pipeline (Kaggle GPU
+  kernel, 135s on a P100) is in the repo for recalibration on new data.
 - **Impact validation** (event study): correlation between Impact Scores and realized
   1-day ticker moves - run `python -m src.scripts.validate_impact`
   (writes `data/cache/impact_validation.json`).
