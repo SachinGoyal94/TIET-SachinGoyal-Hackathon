@@ -41,7 +41,7 @@ def match_entities(text: str) -> list[EntityMatch]:
         if key not in seen:
             seen.add(key)
             matches.append(EntityMatch(ticker=ticker, sector=sector,
-                                       name=ticker or (sector or "")))
+                                       name=ticker or sector or "MARKET"))
 
     for ticker in _CASHTAG.findall(text):
         if ticker in BY_TICKER:
