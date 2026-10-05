@@ -27,28 +27,57 @@ export default function RiskEngine() {
 
   const histogram = {
     ...baseOption,
-    grid: { left: 50, right: 20, top: 30, bottom: 30 },
-    xAxis: { type: "value", name: "signals", nameTextStyle: { color: "#64748b" }, axisLabel: { color: "#94a3b8" }, splitLine: { lineStyle: { color: "#13203a" } } },
-    yAxis: { type: "category", data: [...EVENT_LABELS].reverse(), axisLabel: { color: "#94a3b8" } },
+    grid: { left: 130, right: 30, top: 20, bottom: 20, containLabel: false },
+    xAxis: {
+      type: "value",
+      minInterval: 1,
+      axisLabel: { color: "#64748b", fontSize: 11 },
+      splitLine: { lineStyle: { color: "#13203a" } },
+    },
+    yAxis: {
+      type: "category",
+      data: [...EVENT_LABELS].reverse(),
+      axisLabel: { color: "#cbd5e1", fontSize: 12 },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#1b2c4d" } },
+    },
     series: [{
       type: "bar",
+      barWidth: 14,
       data: [...EVENT_LABELS].reverse().map(
         (label) => ({
           value: (events?.events ?? []).filter((e) => e.event_label === label).length,
-          itemStyle: { color: labelColor(label) },
+          itemStyle: { color: labelColor(label), borderRadius: [0, 7, 7, 0] },
         }),
       ),
+      label: { show: true, position: "right", color: "#94a3b8", fontSize: 11 },
+      backgroundStyle: { color: "rgba(148,163,184,0.04)" },
+      showBackground: true,
     }],
   };
 
   const sentimentHist = {
     ...baseOption,
-    grid: { left: 50, right: 20, top: 20, bottom: 30 },
-    xAxis: { type: "category", data: ["<-0.6", "-0.6..-0.2", "-0.2..0.2", "0.2..0.6", ">0.6"], axisLabel: { color: "#94a3b8", fontSize: 10 }, splitLine: { show: false } },
-    yAxis: { type: "value", axisLabel: { color: "#94a3b8" }, splitLine: { lineStyle: { color: "#13203a" } } },
+    grid: { left: 16, right: 16, top: 30, bottom: 20, containLabel: true },
+    xAxis: {
+      type: "category",
+      data: ["< -0.6", "-0.6 to -0.2", "-0.2 to 0.2", "0.2 to 0.6", "> 0.6"],
+      axisLabel: { color: "#94a3b8", fontSize: 10.5, interval: 0 },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#1b2c4d" } },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      minInterval: 1,
+      axisLabel: { color: "#64748b", fontSize: 11 },
+      splitLine: { lineStyle: { color: "#13203a" } },
+    },
     series: [{
       type: "bar",
-      barWidth: "60%",
+      barWidth: "52%",
+      itemStyle: { borderRadius: [7, 7, 0, 0] },
+      label: { show: true, position: "top", color: "#94a3b8", fontSize: 11 },
       data: (() => {
         const s = rows.map((r) => r.sentiment_score);
         const buckets = [0, 0, 0, 0, 0];

@@ -59,12 +59,12 @@ demo alive).
   study of financial news headlines". License: CC BY-NC-SA 4.0 as distributed on Kaggle.
   Used verbatim with attribution ([data/seed/ATTRIBUTION.md](data/seed/ATTRIBUTION.md))
   as a labeled evaluation corpus and historical demo news.
-- **GDELT DOC 2.0 API** — live keyless global news feed, used at runtime (15-minute polls).
-- **Synthetic generator** (`src/engine/ingest/synthetic.py`) — self-generated headlines
+- **GDELT DOC 2.0 API** - live keyless global news feed, used at runtime (15-minute polls).
+- **Synthetic generator** (`src/engine/ingest/synthetic.py`) - self-generated headlines
   and social posts for demo volume, offline fallback, and guaranteed high-impact events.
-- **yfinance** — daily closes and market caps for the 14-ticker mock index (public data,
+- **yfinance** - daily closes and market caps for the 14-ticker mock index (public data,
   disk-cached so the demo survives offline).
-- **Synthetic portfolio** (`data/portfolio/portfolio.json`) — a fictional $3.9B wholesale
+- **Synthetic portfolio** (`data/portfolio/portfolio.json`) - a fictional $3.9B wholesale
   banking book with 40 positions across loans, bonds, derivatives and equities.
 
 Assumptions: event labels for the synthetic feed are generator-known; Kaggle headlines
@@ -119,10 +119,10 @@ Optional extras: fine-tuning (`pip install -r requirements-dev.txt` then
   shipped image uses base weights; the full fine-tuning pipeline (Kaggle GPU kernel,
   135s on a P100) is in the repo for recalibration on new data.
 - **Impact validation** (event study): correlation between Impact Scores and realized
-  1-day ticker moves — run `python -m src.scripts.validate_impact`
+  1-day ticker moves - run `python -m src.scripts.validate_impact`
   (writes `data/cache/impact_validation.json`).
 - **Strategy backtest**: sentiment-tilted index vs cap-weighted baseline over the demo
-  window — run `python -m src.scripts.backtest_rebalancer`
+  window - run `python -m src.scripts.backtest_rebalancer`
   (writes `data/cache/rebalance_backtest.json`).
 - The full pipeline (5,000+ items) completes in minutes on a laptop and every output is
   auditable: entity matched, sentiment, event type, and the impact breakdown.
@@ -130,19 +130,19 @@ Optional extras: fine-tuning (`pip install -r requirements-dev.txt` then
 **Domain impact:** desks and risk teams lose minutes-to-hours between news and
 structured response. This platform shows the full path in one deployable artifact:
 text in, risk signal out, positions re-tilted, book re-priced, and the P&L-at-risk
-quantified with VaR/ES — the same workflow pattern (signal → scenario → capital view)
+quantified with VaR/ES - the same workflow pattern (signal → scenario → capital view)
 used in market-risk and ICAAP/CCAR-style stress testing, scaled to a hackathon build.
 
 ## Methodology References
 
-- **Loughran-McDonald Master Dictionary** — category reference for the event-classification lexicon (Loughran & McDonald, *Journal of Finance* 2011; sraf.nd.edu)
-- **S&P Global Ratings** — "Default, Transition, and Recovery: 2024 Annual Global Corporate Default and Rating Transition Study" (transition matrix source; spglobal.com/ratings)
-- **Federal Reserve** — DFAST 2025 severely adverse scenario and stress-test results (federalreserve.gov); **EBA** — 2025 EU-wide stress test scenario (eba.europa.eu)
-- **Damodaran** — default spreads by rating (pages.stern.nyu.edu/~adamodar)
-- **Malo et al. (2014)** — Financial PhraseBank corpus (sentiment evaluation set)
-- **Sinha et al. (2022)** — SEntFiN 1.0, entity-aware financial sentiment (per-entity validation set)
-- **FNSPID** — Dong et al., 2024, financial news dataset (historical corpus; zdong104.github.io/FNSPID)
-- **Basel Committee on Banking Supervision** — IRB PD formula and LCR framework (bis.org)
+- **Loughran-McDonald Master Dictionary** - category reference for the event-classification lexicon (Loughran & McDonald, *Journal of Finance* 2011; sraf.nd.edu)
+- **S&P Global Ratings** - "Default, Transition, and Recovery: 2024 Annual Global Corporate Default and Rating Transition Study" (transition matrix source; spglobal.com/ratings)
+- **Federal Reserve** - DFAST 2025 severely adverse scenario and stress-test results (federalreserve.gov); **EBA** - 2025 EU-wide stress test scenario (eba.europa.eu)
+- **Damodaran** - default spreads by rating (pages.stern.nyu.edu/~adamodar)
+- **Malo et al. (2014)** - Financial PhraseBank corpus (sentiment evaluation set)
+- **Sinha et al. (2022)** - SEntFiN 1.0, entity-aware financial sentiment (per-entity validation set)
+- **FNSPID** - Dong et al., 2024, financial news dataset (historical corpus; zdong104.github.io/FNSPID)
+- **Basel Committee on Banking Supervision** - IRB PD formula and LCR framework (bis.org)
 
 ## Notes & Limitations
 
@@ -155,4 +155,4 @@ used in market-risk and ICAAP/CCAR-style stress testing, scaled to a hackathon b
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).

@@ -1,4 +1,4 @@
-/** Shared API types — kept in sync with src/engine/api/schemas.py. */
+/** Shared API types, kept in sync with src/engine/api/schemas.py. */
 
 export interface Health {
   status: "ok" | "initializing";

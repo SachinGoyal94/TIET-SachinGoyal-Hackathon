@@ -4,7 +4,7 @@ The DOC API supports explicit historical windows (startdatetime/enddatetime,
 coverage from Jan 2017). We query per company per day so the 250-record cap
 only truncates extraordinary news days, and feed every headline through the
 standard ingestion pipeline (dedupe, NLP, event clustering) with source
-'gdelt_hist'. The result is months of real news with real timestamps — the
+'gdelt_hist'. The result is months of real news with real timestamps - the
 input for the event study and impact calibration.
 
 Usage: python -m src.scripts.backfill_gdelt_history --days 90 [--tickers AAPL,MSFT]

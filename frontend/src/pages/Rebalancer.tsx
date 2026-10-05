@@ -36,10 +36,16 @@ export default function Rebalancer() {
 
   const currentVsAnchor = {
     ...baseOption,
-    grid: { left: 55, right: 20, top: 30, bottom: 30 },
+    grid: { left: 16, right: 16, top: 34, bottom: 8, containLabel: true },
     legend: { ...baseOption.legend, top: 0 },
-    xAxis: { type: "category", data: weights.map((w) => w.ticker), axisLabel: { color: "#94a3b8", fontSize: 10 } },
-    yAxis: { type: "value", axisLabel: { color: "#94a3b8", formatter: (v: number) => `${(v * 100).toFixed(0)}%` }, splitLine: { lineStyle: { color: "#13203a" } } },
+    xAxis: {
+      type: "category",
+      data: weights.map((w) => w.ticker),
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#1b2c4d" } },
+      axisLabel: { color: "#94a3b8", fontSize: 10.5, interval: 0, rotate: 40 },
+    },
+    yAxis: { type: "value", axisLabel: { color: "#64748b", fontSize: 11, formatter: (v: number) => `${(v * 100).toFixed(0)}%` }, splitLine: { lineStyle: { color: "#13203a" } } },
     series: [
       { name: "anchor", type: "bar", barGap: "-100%", data: weights.map((w) => w.anchor_weight), itemStyle: { color: "#334155" }, barWidth: "55%" },
       { name: "current", type: "bar", data: weights.map((w) => w.weight), itemStyle: { color: "#2dd4bf" }, barWidth: "35%" },
@@ -49,7 +55,7 @@ export default function Rebalancer() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-xl font-semibold text-slate-100">Module A — Tactical Index Rebalancer</h1>
+        <h1 className="text-xl font-semibold text-slate-100">Module A · Tactical Index Rebalancer</h1>
         <p className="mt-1 text-sm text-slate-500">
           Sentiment-driven rebalancing of a 14-name mock S&amp;P 100 index. Weights blend the
           market-cap anchor with an inverse-volatility-scaled sentiment tilt, capped at 20% per

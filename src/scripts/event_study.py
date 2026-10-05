@@ -5,7 +5,7 @@ Methodology per the event-study literature:
   after-hours) maps to the first tradable day; intraday news maps to the
   same day's close-to-close return.
 - Abnormal returns: market-adjusted (minus SPY) and sector-adjusted
-  (minus the ticker's sector proxy) — no estimation window needed at this
+  (minus the ticker's sector proxy) - no estimation window needed at this
   universe size.
 - Windows: CAR over [0,0] and [0,+1] to catch slow diffusion.
 - Statistics: cross-sectional t-test on mean CAR, nonparametric sign test,

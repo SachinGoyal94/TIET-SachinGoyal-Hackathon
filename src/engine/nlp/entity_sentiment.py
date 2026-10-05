@@ -81,7 +81,7 @@ def _worker_loop():
         text, magnitude, candidates, out_q = _jobs.get()
         try:
             out_q.put(_run_extraction(model, text, magnitude, candidates))
-        except Exception as exc:  # noqa: BLE001 — a bad job must not kill the worker
+        except Exception as exc:  # noqa: BLE001 - a bad job must not kill the worker
             logger.warning("extraction job failed: %s", exc)
             out_q.put([])
 
@@ -120,7 +120,7 @@ def extract(text: str, magnitude: float = 0.5,
     returned sentiment is direction_x_magnitude in [-1, 1]. When
     ``candidates`` (alias-matched universe names) are given, the model only
     reports for those companies or MARKET, which kills hallucinated entities.
-    Empty list on any failure — callers fall back to the shared score.
+    Empty list on any failure - callers fall back to the shared score.
     """
     if not text.strip():
         return []

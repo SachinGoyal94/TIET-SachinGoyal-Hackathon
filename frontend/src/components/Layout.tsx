@@ -136,7 +136,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <span className="pill bg-gain/10 text-gain">MOD-B</span>
               )}
             </div>
-            <div className="mt-2 font-mono text-[9px] text-slate-700">v{health?.version ?? "—"}</div>
+            <div className="mt-2 font-mono text-[9px] text-slate-700">v{health?.version ?? "0.0.0"}</div>
           </div>
         </aside>
 

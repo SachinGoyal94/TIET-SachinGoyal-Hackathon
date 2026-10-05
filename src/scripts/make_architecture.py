@@ -1,4 +1,4 @@
-"""Generates docs/architecture.png — the high-res architecture diagram.
+"""Generates docs/architecture.png - the high-res architecture diagram.
 
 Run: python -m src.scripts.make_architecture
 """

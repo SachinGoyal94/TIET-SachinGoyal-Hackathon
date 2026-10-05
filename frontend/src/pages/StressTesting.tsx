@@ -49,7 +49,8 @@ export default function StressTesting() {
       type: "pie",
       radius: ["45%", "70%"],
       center: ["50%", "45%"],
-      label: { color: "#94a3b8", fontSize: 11, formatter: (p: { name: string; percent: number }) => `${p.name} ${p.percent}%` },
+      label: { color: "#94a3b8", fontSize: 11, formatter: (p: { percent: number }) => `${p.percent}%` },
+      labelLine: { length: 12, length2: 8, lineStyle: { color: "#334155" } },
       data: Object.entries(portfolio?.by_asset_class ?? {}).map(([cls, agg]) => ({
         name: cls,
         value: agg.notional,
@@ -60,40 +61,46 @@ export default function StressTesting() {
 
   const beforeAfter = d ? {
     ...baseOption,
-    grid: { left: 60, right: 20, top: 30, bottom: 30 },
-    xAxis: { type: "category", data: ["Before", "After"], axisLabel: { color: "#94a3b8" } },
-    yAxis: { type: "value", axisLabel: { color: "#94a3b8" }, splitLine: { lineStyle: { color: "#13203a" } } },
+    grid: { left: 16, right: 16, top: 36, bottom: 8, containLabel: true },
+    xAxis: { type: "category", data: ["Before", "After"], axisTick: { show: false }, axisLine: { lineStyle: { color: "#1b2c4d" } }, axisLabel: { color: "#cbd5e1", fontSize: 12 } },
+    yAxis: { type: "value", axisLabel: { color: "#64748b", fontSize: 11 }, splitLine: { lineStyle: { color: "#13203a" } } },
     series: [{
       type: "bar",
-      barWidth: "35%",
+      barWidth: "38%",
       data: [
-        { value: d.value_before, itemStyle: { color: "#334155" } },
-        { value: d.value_after, itemStyle: { color: d.pnl < 0 ? "#f43f5e" : "#10b981" } },
+        { value: d.value_before, itemStyle: { color: "#334155", borderRadius: [7, 7, 0, 0] } },
+        { value: d.value_after, itemStyle: { color: d.pnl < 0 ? "#f43f5e" : "#10b981", borderRadius: [7, 7, 0, 0] } },
       ],
-      label: { show: true, position: "top", color: "#94a3b8", fontSize: 11, formatter: (p: { value: number }) => fmtMoney(p.value) },
+      label: { show: true, position: "top", color: "#cbd5e1", fontSize: 12, formatter: (p: { value: number }) => fmtMoney(p.value) },
     }],
   } : null;
 
   const waterfall = d ? {
     ...baseOption,
-    grid: { left: 60, right: 20, top: 30, bottom: 40 },
-    xAxis: { type: "category", data: Object.keys(d.by_asset_class), axisLabel: { color: "#94a3b8", fontSize: 11 } },
-    yAxis: { type: "value", axisLabel: { color: "#94a3b8" }, splitLine: { lineStyle: { color: "#13203a" } } },
+    grid: { left: 16, right: 16, top: 36, bottom: 8, containLabel: true },
+    xAxis: { type: "category", data: Object.keys(d.by_asset_class), axisTick: { show: false }, axisLine: { lineStyle: { color: "#1b2c4d" } }, axisLabel: { color: "#cbd5e1", fontSize: 11.5, interval: 0 } },
+    yAxis: { type: "value", axisLabel: { color: "#64748b", fontSize: 11 }, splitLine: { lineStyle: { color: "#13203a" } } },
     series: [{
       type: "bar",
       barWidth: "45%",
       data: Object.entries(d.by_asset_class).map(([, agg]) => ({
         value: Math.round(agg.pnl),
-        itemStyle: { color: agg.pnl < 0 ? "#f43f5e" : "#10b981" },
+        itemStyle: { color: agg.pnl < 0 ? "#f43f5e" : "#10b981", borderRadius: agg.pnl < 0 ? [0, 0, 7, 7] : [7, 7, 0, 0] },
       })),
-      label: { show: true, position: "bottom", color: "#94a3b8", fontSize: 10, formatter: (p: { value: number }) => fmtMoney(p.value) },
+      label: {
+        show: true,
+        position: "top",
+        color: "#94a3b8",
+        fontSize: 10.5,
+        formatter: (p: { value: number }) => (p.value === 0 ? "" : fmtMoney(p.value)),
+      },
     }],
   } : null;
 
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-xl font-semibold text-slate-100">Module B — Portfolio Stress Testing</h1>
+        <h1 className="text-xl font-semibold text-slate-100">Module B · Portfolio Stress Testing</h1>
         <p className="mt-1 text-sm text-slate-500">
           Event-driven shocks applied to a synthetic wholesale banking book. High-impact
           geopolitical events (impact &gt; 7) trigger automatically; any event can be stressed
