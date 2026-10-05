@@ -37,8 +37,9 @@ Carlo overlay reports a P&L distribution with 95% VaR and expected shortfall.
 ![Architecture](docs/architecture.png)
 
 - **Engine:** Python 3.11, FastAPI, SQLAlchemy + SQLite (WAL mode), APScheduler
-- **Models:** `ProsusAI/finbert` (sentiment), `typeform/distilbert-base-uncased-mnli`
-  (zero-shot event classification); weights are baked into the Docker image at build time
+- **Models:** `ahmedrachid/FinancialBERT-Sentiment-Analysis` (sentiment, 96.7% held-out),
+  `typeform/distilbert-base-uncased-mnli` (zero-shot event classification); weights are
+  baked into the Docker image at build time
 - **Frontend:** React 18 + TypeScript + Tailwind + ECharts, served by the same FastAPI
   process (one port for UI and API)
 - **Data flow:** sources → ingestion (dedupe, normalization) → NLP pipeline →
@@ -77,8 +78,8 @@ Runtime: **Python 3.11** (or Docker Desktop with 6 GB+ free RAM). Tested on Wind
 ### Option A: Docker (recommended)
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/SachinGoyal94/TIET-SachinGoyal-Hackathon.git
+cd TIET-SachinGoyal-Hackathon
 docker compose up --build
 ```
 
@@ -92,8 +93,8 @@ runs a one-time backfill (~2-3 minutes on GPU-equipped machines, ~9 on CPU) and 
 ### Option B: local Python (no Docker)
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/SachinGoyal94/TIET-SachinGoyal-Hackathon.git
+cd TIET-SachinGoyal-Hackathon
 python -m venv .venv
 .venv/Scripts/pip install -r requirements.txt      # Linux/Mac: .venv/bin/pip
 .venv/Scripts/python -m src.scripts.backfill       # one-time demo data bootstrap
