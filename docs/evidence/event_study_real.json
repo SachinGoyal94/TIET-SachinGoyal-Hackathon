@@ -1,495 +1,424 @@
 {
   "source_filter": "fnspid",
-  "events_matched": 19872,
+  "events_matched": 19642,
   "overall": {
     "mean_sector_ar_bps": 1.7,
-    "t_stat_sector_ar": 1.43,
-    "sign_test_p": 0.465,
-    "sentiment_direction_hit_rate": 0.326,
-    "hit_rate_sentiment_gt_02": 0.549,
-    "hit_rate_sentiment_gt_05": 0.554,
-    "strong_sentiment_n": 3555,
-    "impact_signal_ic": 0.082,
-    "sentiment_scaled_ar_bps": 18.6
+    "t_stat_sector_ar": 1.49,
+    "sign_test_p": 0.372,
+    "sentiment_direction_hit_rate": 0.12,
+    "hit_rate_sentiment_gt_02": 0.552,
+    "hit_rate_sentiment_gt_05": 0.562,
+    "strong_sentiment_n": 894,
+    "impact_signal_ic": 0.065,
+    "sentiment_scaled_ar_bps": 22.2
   },
   "by_event_label": {
     "Credit Event": {
-      "n": 850,
-      "mean_sector_ar_bps": 25.3,
-      "t_stat": 3.02,
-      "hit_rate": 0.371
+      "n": 848,
+      "mean_sector_ar_bps": 24.9,
+      "t_stat": 2.96,
+      "hit_rate": 0.088
     },
     "Geopolitical": {
-      "n": 2099,
-      "mean_sector_ar_bps": 0.4,
-      "t_stat": 0.13,
-      "hit_rate": 0.227
+      "n": 2089,
+      "mean_sector_ar_bps": 1.1,
+      "t_stat": 0.36,
+      "hit_rate": 0.085
     },
     "Macroeconomic": {
-      "n": 4670,
-      "mean_sector_ar_bps": 2.8,
-      "t_stat": 1.13,
-      "hit_rate": 0.306
+      "n": 4624,
+      "mean_sector_ar_bps": 3.1,
+      "t_stat": 1.31,
+      "hit_rate": 0.116
     },
     "Merger/Acquisition": {
-      "n": 763,
-      "mean_sector_ar_bps": 5.8,
-      "t_stat": 0.83,
-      "hit_rate": 0.215
+      "n": 761,
+      "mean_sector_ar_bps": 5.9,
+      "t_stat": 0.84,
+      "hit_rate": 0.081
     },
     "Other": {
-      "n": 10758,
-      "mean_sector_ar_bps": -0.6,
-      "t_stat": -0.38,
-      "hit_rate": 0.368
+      "n": 10592,
+      "mean_sector_ar_bps": -0.8,
+      "t_stat": -0.55,
+      "hit_rate": 0.137
     },
     "Product Launch": {
-      "n": 732,
-      "mean_sector_ar_bps": -1.2,
-      "t_stat": -0.21,
-      "hit_rate": 0.182
+      "n": 728,
+      "mean_sector_ar_bps": -0.3,
+      "t_stat": -0.06,
+      "hit_rate": 0.056
     }
   },
   "by_impact_band": {
     "2.2": {
-      "n": 1554,
-      "mean_sector_ar_bps": -3.9,
-      "t_stat": -1.05,
-      "hit_rate": 0.0
-    },
-    "2.5": {
-      "n": 813,
-      "mean_sector_ar_bps": -9.7,
-      "t_stat": -2.58,
+      "n": 2189,
+      "mean_sector_ar_bps": -3.1,
+      "t_stat": -0.95,
       "hit_rate": 0.0
     },
     "2.6": {
-      "n": 418,
-      "mean_sector_ar_bps": 6.1,
-      "t_stat": 0.82,
+      "n": 553,
+      "mean_sector_ar_bps": 0.6,
+      "t_stat": 0.09,
       "hit_rate": 0.0
     },
-    "2.7": {
-      "n": 420,
-      "mean_sector_ar_bps": -3.2,
-      "t_stat": -0.71,
-      "hit_rate": 0.0
-    },
-    "2.8": {
+    "3.1": {
       "n": 4,
-      "mean_sector_ar_bps": 19.2,
+      "mean_sector_ar_bps": 43.5,
+      "t_stat": NaN,
+      "hit_rate": 0.75
+    },
+    "3.2": {
+      "n": 2,
+      "mean_sector_ar_bps": -53.2,
       "t_stat": NaN,
       "hit_rate": 0.5
     },
-    "2.9": {
-      "n": 612,
-      "mean_sector_ar_bps": 0.7,
-      "t_stat": 0.18,
-      "hit_rate": 0.025
-    },
-    "3.0": {
-      "n": 142,
-      "mean_sector_ar_bps": -7.1,
-      "t_stat": -1.06,
-      "hit_rate": 0.465
-    },
-    "3.1": {
-      "n": 209,
-      "mean_sector_ar_bps": 3.4,
-      "t_stat": 0.39,
-      "hit_rate": 0.45
-    },
-    "3.2": {
-      "n": 433,
-      "mean_sector_ar_bps": 3.7,
-      "t_stat": 0.71,
-      "hit_rate": 0.527
-    },
     "3.3": {
-      "n": 322,
-      "mean_sector_ar_bps": 10.4,
-      "t_stat": 1.92,
-      "hit_rate": 0.528
+      "n": 2,
+      "mean_sector_ar_bps": -15.9,
+      "t_stat": NaN,
+      "hit_rate": 0.0
     },
     "3.4": {
-      "n": 450,
-      "mean_sector_ar_bps": 6.7,
-      "t_stat": 1.24,
-      "hit_rate": 0.529
+      "n": 1,
+      "mean_sector_ar_bps": 22.9,
+      "t_stat": NaN,
+      "hit_rate": 1.0
     },
     "3.5": {
-      "n": 631,
-      "mean_sector_ar_bps": 4.8,
-      "t_stat": 0.83,
-      "hit_rate": 0.521
+      "n": 2,
+      "mean_sector_ar_bps": -21.5,
+      "t_stat": NaN,
+      "hit_rate": 0.0
     },
     "3.6": {
-      "n": 1440,
-      "mean_sector_ar_bps": 9.4,
-      "t_stat": 2.82,
-      "hit_rate": 0.541
+      "n": 7,
+      "mean_sector_ar_bps": -29.0,
+      "t_stat": -0.95,
+      "hit_rate": 0.143
     },
     "3.7": {
-      "n": 2375,
-      "mean_sector_ar_bps": -6.3,
-      "t_stat": -1.64,
-      "hit_rate": 0.544
-    },
-    "3.8": {
-      "n": 407,
-      "mean_sector_ar_bps": -17.3,
-      "t_stat": -1.61,
-      "hit_rate": 0.536
+      "n": 82,
+      "mean_sector_ar_bps": 50.1,
+      "t_stat": 2.45,
+      "hit_rate": 0.634
     },
     "3.9": {
-      "n": 214,
-      "mean_sector_ar_bps": -6.9,
-      "t_stat": -0.66,
-      "hit_rate": 0.514
-    },
-    "4.0": {
-      "n": 207,
-      "mean_sector_ar_bps": 17.8,
-      "t_stat": 1.02,
-      "hit_rate": 0.556
+      "n": 1,
+      "mean_sector_ar_bps": -4.9,
+      "t_stat": NaN,
+      "hit_rate": 1.0
     },
     "4.1": {
-      "n": 119,
-      "mean_sector_ar_bps": -8.8,
-      "t_stat": -0.58,
-      "hit_rate": 0.605
+      "n": 2,
+      "mean_sector_ar_bps": 78.0,
+      "t_stat": NaN,
+      "hit_rate": 1.0
     },
     "4.2": {
-      "n": 98,
-      "mean_sector_ar_bps": -15.2,
-      "t_stat": -1.09,
-      "hit_rate": 0.541
+      "n": 1,
+      "mean_sector_ar_bps": 113.7,
+      "t_stat": NaN,
+      "hit_rate": 1.0
     },
     "4.3": {
-      "n": 91,
-      "mean_sector_ar_bps": 4.5,
-      "t_stat": 0.22,
-      "hit_rate": 0.637
+      "n": 4,
+      "mean_sector_ar_bps": 22.8,
+      "t_stat": NaN,
+      "hit_rate": 0.75
     },
     "4.4": {
       "n": 33,
-      "mean_sector_ar_bps": -19.7,
-      "t_stat": -0.9,
-      "hit_rate": 0.636
+      "mean_sector_ar_bps": 6.9,
+      "t_stat": 0.23,
+      "hit_rate": 0.485
     },
     "4.5": {
-      "n": 385,
-      "mean_sector_ar_bps": 18.8,
-      "t_stat": 1.61,
-      "hit_rate": 0.023
-    },
-    "4.6": {
-      "n": 3,
-      "mean_sector_ar_bps": -69.4,
-      "t_stat": NaN,
-      "hit_rate": 0.667
-    },
-    "4.7": {
-      "n": 10,
-      "mean_sector_ar_bps": -104.0,
-      "t_stat": -2.11,
-      "hit_rate": 0.6
-    },
-    "4.8": {
-      "n": 4,
-      "mean_sector_ar_bps": -273.6,
-      "t_stat": NaN,
-      "hit_rate": 1.0
-    },
-    "5.0": {
-      "n": 74,
-      "mean_sector_ar_bps": 17.3,
-      "t_stat": 1.09,
+      "n": 538,
+      "mean_sector_ar_bps": 10.9,
+      "t_stat": 1.22,
       "hit_rate": 0.0
     },
+    "5.0": {
+      "n": 1526,
+      "mean_sector_ar_bps": -7.6,
+      "t_stat": -2.41,
+      "hit_rate": 0.001
+    },
     "5.2": {
-      "n": 1360,
-      "mean_sector_ar_bps": 1.1,
-      "t_stat": 0.35,
+      "n": 2845,
+      "mean_sector_ar_bps": 0.6,
+      "t_stat": 0.24,
       "hit_rate": 0.0
     },
     "5.4": {
-      "n": 25,
-      "mean_sector_ar_bps": 10.0,
-      "t_stat": 0.34,
+      "n": 1649,
+      "mean_sector_ar_bps": 3.3,
+      "t_stat": 1.22,
       "hit_rate": 0.0
     },
-    "5.6": {
-      "n": 1,
-      "mean_sector_ar_bps": 78.6,
-      "t_stat": NaN,
-      "hit_rate": 1.0
-    },
-    "5.7": {
-      "n": 3,
-      "mean_sector_ar_bps": -15.2,
-      "t_stat": NaN,
-      "hit_rate": 1.0
-    },
     "5.8": {
-      "n": 469,
-      "mean_sector_ar_bps": -7.9,
-      "t_stat": -2.09,
-      "hit_rate": 0.006
+      "n": 107,
+      "mean_sector_ar_bps": -1.3,
+      "t_stat": -0.08,
+      "hit_rate": 0.0
     },
     "5.9": {
-      "n": 62,
-      "mean_sector_ar_bps": 42.1,
-      "t_stat": 1.62,
-      "hit_rate": 0.21
+      "n": 3359,
+      "mean_sector_ar_bps": 3.6,
+      "t_stat": 1.29,
+      "hit_rate": 0.001
     },
     "6.0": {
-      "n": 929,
-      "mean_sector_ar_bps": 3.8,
-      "t_stat": 0.88,
-      "hit_rate": 0.017
+      "n": 1774,
+      "mean_sector_ar_bps": 4.8,
+      "t_stat": 1.58,
+      "hit_rate": 0.006
     },
     "6.1": {
-      "n": 29,
-      "mean_sector_ar_bps": 39.0,
-      "t_stat": 1.32,
-      "hit_rate": 0.448
+      "n": 83,
+      "mean_sector_ar_bps": 2.4,
+      "t_stat": 0.14,
+      "hit_rate": 0.518
     },
     "6.2": {
-      "n": 42,
-      "mean_sector_ar_bps": 9.1,
-      "t_stat": 0.35,
-      "hit_rate": 0.5
+      "n": 101,
+      "mean_sector_ar_bps": -20.5,
+      "t_stat": -1.53,
+      "hit_rate": 0.485
     },
     "6.3": {
-      "n": 181,
-      "mean_sector_ar_bps": -15.0,
-      "t_stat": -1.98,
-      "hit_rate": 0.088
+      "n": 163,
+      "mean_sector_ar_bps": -35.8,
+      "t_stat": -2.81,
+      "hit_rate": 0.436
     },
     "6.4": {
-      "n": 307,
-      "mean_sector_ar_bps": 19.2,
-      "t_stat": 2.32,
-      "hit_rate": 0.062
+      "n": 684,
+      "mean_sector_ar_bps": 10.5,
+      "t_stat": 1.72,
+      "hit_rate": 0.102
     },
     "6.5": {
-      "n": 45,
-      "mean_sector_ar_bps": 20.8,
-      "t_stat": 0.61,
-      "hit_rate": 0.489
+      "n": 196,
+      "mean_sector_ar_bps": 3.3,
+      "t_stat": 0.35,
+      "hit_rate": 0.526
     },
     "6.6": {
-      "n": 235,
-      "mean_sector_ar_bps": -1.5,
-      "t_stat": -0.2,
-      "hit_rate": 0.064
+      "n": 471,
+      "mean_sector_ar_bps": -3.8,
+      "t_stat": -0.42,
+      "hit_rate": 0.55
     },
     "6.7": {
-      "n": 37,
-      "mean_sector_ar_bps": -19.9,
-      "t_stat": -0.68,
-      "hit_rate": 0.514
+      "n": 81,
+      "mean_sector_ar_bps": -3.4,
+      "t_stat": -0.32,
+      "hit_rate": 0.481
     },
     "6.8": {
-      "n": 107,
-      "mean_sector_ar_bps": -5.3,
-      "t_stat": -0.45,
-      "hit_rate": 0.243
+      "n": 816,
+      "mean_sector_ar_bps": -1.5,
+      "t_stat": -0.22,
+      "hit_rate": 0.517
     },
     "6.9": {
-      "n": 52,
-      "mean_sector_ar_bps": 28.8,
-      "t_stat": 1.4,
-      "hit_rate": 0.365
+      "n": 33,
+      "mean_sector_ar_bps": -16.0,
+      "t_stat": -0.7,
+      "hit_rate": 0.576
     },
     "7.0": {
-      "n": 90,
-      "mean_sector_ar_bps": -22.1,
-      "t_stat": -1.54,
-      "hit_rate": 0.411
+      "n": 179,
+      "mean_sector_ar_bps": 48.7,
+      "t_stat": 2.29,
+      "hit_rate": 0.19
     },
     "7.1": {
-      "n": 89,
-      "mean_sector_ar_bps": -16.1,
-      "t_stat": -0.88,
-      "hit_rate": 0.528
-    },
-    "7.2": {
-      "n": 178,
-      "mean_sector_ar_bps": 6.1,
-      "t_stat": 0.67,
-      "hit_rate": 0.287
-    },
-    "7.3": {
-      "n": 103,
-      "mean_sector_ar_bps": 15.8,
-      "t_stat": 0.73,
-      "hit_rate": 0.689
-    },
-    "7.4": {
-      "n": 125,
-      "mean_sector_ar_bps": -0.5,
-      "t_stat": -0.03,
-      "hit_rate": 0.56
-    },
-    "7.5": {
-      "n": 50,
-      "mean_sector_ar_bps": -26.2,
-      "t_stat": -0.45,
-      "hit_rate": 0.64
-    },
-    "7.6": {
-      "n": 67,
-      "mean_sector_ar_bps": 38.4,
-      "t_stat": 1.73,
-      "hit_rate": 0.388
-    },
-    "7.7": {
-      "n": 46,
-      "mean_sector_ar_bps": -0.6,
-      "t_stat": -0.02,
-      "hit_rate": 0.457
-    },
-    "7.8": {
-      "n": 93,
-      "mean_sector_ar_bps": -1.2,
-      "t_stat": -0.08,
-      "hit_rate": 0.366
-    },
-    "7.9": {
-      "n": 80,
-      "mean_sector_ar_bps": -13.8,
-      "t_stat": -1.02,
-      "hit_rate": 0.438
-    },
-    "8.0": {
-      "n": 96,
-      "mean_sector_ar_bps": -3.5,
-      "t_stat": -0.3,
-      "hit_rate": 0.448
-    },
-    "8.1": {
       "n": 85,
-      "mean_sector_ar_bps": 33.5,
-      "t_stat": 1.61,
+      "mean_sector_ar_bps": 19.1,
+      "t_stat": 0.84,
       "hit_rate": 0.529
     },
+    "7.2": {
+      "n": 20,
+      "mean_sector_ar_bps": -1.7,
+      "t_stat": -0.02,
+      "hit_rate": 0.6
+    },
+    "7.3": {
+      "n": 36,
+      "mean_sector_ar_bps": 40.9,
+      "t_stat": 0.89,
+      "hit_rate": 0.528
+    },
+    "7.4": {
+      "n": 79,
+      "mean_sector_ar_bps": -15.4,
+      "t_stat": -0.94,
+      "hit_rate": 0.468
+    },
+    "7.5": {
+      "n": 99,
+      "mean_sector_ar_bps": 19.0,
+      "t_stat": 1.09,
+      "hit_rate": 0.545
+    },
+    "7.6": {
+      "n": 61,
+      "mean_sector_ar_bps": -87.6,
+      "t_stat": -1.7,
+      "hit_rate": 0.295
+    },
+    "7.7": {
+      "n": 29,
+      "mean_sector_ar_bps": 7.7,
+      "t_stat": 0.34,
+      "hit_rate": 0.621
+    },
+    "7.8": {
+      "n": 140,
+      "mean_sector_ar_bps": 1.0,
+      "t_stat": 0.07,
+      "hit_rate": 0.521
+    },
+    "7.9": {
+      "n": 13,
+      "mean_sector_ar_bps": -79.2,
+      "t_stat": -1.2,
+      "hit_rate": 0.769
+    },
+    "8.0": {
+      "n": 18,
+      "mean_sector_ar_bps": -3.3,
+      "t_stat": -0.09,
+      "hit_rate": 0.556
+    },
+    "8.1": {
+      "n": 25,
+      "mean_sector_ar_bps": -10.9,
+      "t_stat": -0.43,
+      "hit_rate": 0.52
+    },
     "8.2": {
-      "n": 109,
-      "mean_sector_ar_bps": 22.3,
-      "t_stat": 1.57,
-      "hit_rate": 0.532
+      "n": 78,
+      "mean_sector_ar_bps": 10.0,
+      "t_stat": 0.45,
+      "hit_rate": 0.462
     },
     "8.3": {
-      "n": 148,
-      "mean_sector_ar_bps": -7.2,
-      "t_stat": -0.35,
-      "hit_rate": 0.5
+      "n": 34,
+      "mean_sector_ar_bps": 91.1,
+      "t_stat": 1.04,
+      "hit_rate": 0.353
     },
     "8.4": {
-      "n": 169,
-      "mean_sector_ar_bps": 10.8,
-      "t_stat": 0.53,
-      "hit_rate": 0.479
+      "n": 18,
+      "mean_sector_ar_bps": -75.9,
+      "t_stat": -1.59,
+      "hit_rate": 0.5
     },
     "8.5": {
-      "n": 373,
-      "mean_sector_ar_bps": 8.9,
-      "t_stat": 1.31,
-      "hit_rate": 0.536
+      "n": 27,
+      "mean_sector_ar_bps": -34.7,
+      "t_stat": -1.13,
+      "hit_rate": 0.333
     },
     "8.6": {
-      "n": 632,
-      "mean_sector_ar_bps": 7.7,
-      "t_stat": 1.16,
-      "hit_rate": 0.549
+      "n": 34,
+      "mean_sector_ar_bps": -46.3,
+      "t_stat": -0.92,
+      "hit_rate": 0.529
     },
     "8.7": {
-      "n": 199,
-      "mean_sector_ar_bps": -43.9,
-      "t_stat": -2.59,
-      "hit_rate": 0.578
+      "n": 809,
+      "mean_sector_ar_bps": 12.0,
+      "t_stat": 1.61,
+      "hit_rate": 0.549
     },
     "8.8": {
-      "n": 93,
-      "mean_sector_ar_bps": 25.2,
-      "t_stat": 1.46,
-      "hit_rate": 0.484
+      "n": 31,
+      "mean_sector_ar_bps": -14.3,
+      "t_stat": -0.51,
+      "hit_rate": 0.581
     },
     "8.9": {
-      "n": 91,
-      "mean_sector_ar_bps": 52.0,
-      "t_stat": 1.74,
-      "hit_rate": 0.538
+      "n": 20,
+      "mean_sector_ar_bps": 58.8,
+      "t_stat": 1.01,
+      "hit_rate": 0.65
     },
     "9.0": {
-      "n": 103,
-      "mean_sector_ar_bps": 24.7,
-      "t_stat": 1.48,
-      "hit_rate": 0.495
+      "n": 36,
+      "mean_sector_ar_bps": -32.5,
+      "t_stat": -0.44,
+      "hit_rate": 0.556
     },
     "9.1": {
-      "n": 72,
-      "mean_sector_ar_bps": 17.1,
-      "t_stat": 0.66,
-      "hit_rate": 0.472
+      "n": 8,
+      "mean_sector_ar_bps": -10.4,
+      "t_stat": -0.13,
+      "hit_rate": 0.375
     },
     "9.2": {
-      "n": 88,
-      "mean_sector_ar_bps": 1.4,
-      "t_stat": 0.08,
+      "n": 6,
+      "mean_sector_ar_bps": 155.3,
+      "t_stat": 1.24,
       "hit_rate": 0.5
     },
     "9.3": {
-      "n": 78,
-      "mean_sector_ar_bps": 27.9,
-      "t_stat": 0.86,
-      "hit_rate": 0.462
+      "n": 7,
+      "mean_sector_ar_bps": -99.0,
+      "t_stat": -1.89,
+      "hit_rate": 0.286
     },
     "9.4": {
-      "n": 106,
-      "mean_sector_ar_bps": -7.4,
-      "t_stat": -0.54,
-      "hit_rate": 0.585
+      "n": 8,
+      "mean_sector_ar_bps": 13.9,
+      "t_stat": 0.56,
+      "hit_rate": 0.75
     },
     "9.5": {
-      "n": 104,
-      "mean_sector_ar_bps": -6.8,
-      "t_stat": -0.48,
-      "hit_rate": 0.538
+      "n": 8,
+      "mean_sector_ar_bps": -211.3,
+      "t_stat": -1.44,
+      "hit_rate": 0.5
     },
     "9.6": {
-      "n": 99,
-      "mean_sector_ar_bps": 51.7,
-      "t_stat": 1.42,
-      "hit_rate": 0.586
+      "n": 9,
+      "mean_sector_ar_bps": -31.3,
+      "t_stat": -0.39,
+      "hit_rate": 0.556
     },
     "9.7": {
-      "n": 152,
-      "mean_sector_ar_bps": 2.0,
-      "t_stat": 0.17,
-      "hit_rate": 0.52
+      "n": 16,
+      "mean_sector_ar_bps": -96.4,
+      "t_stat": -1.82,
+      "hit_rate": 0.5
     },
     "9.8": {
-      "n": 164,
-      "mean_sector_ar_bps": 2.3,
-      "t_stat": 0.11,
-      "hit_rate": 0.561
+      "n": 15,
+      "mean_sector_ar_bps": -48.9,
+      "t_stat": -0.68,
+      "hit_rate": 0.6
     },
     "9.9": {
-      "n": 123,
-      "mean_sector_ar_bps": -23.4,
-      "t_stat": -1.49,
-      "hit_rate": 0.618
+      "n": 23,
+      "mean_sector_ar_bps": -105.2,
+      "t_stat": -2.07,
+      "hit_rate": 0.696
     },
     "10.0": {
-      "n": 515,
-      "mean_sector_ar_bps": 16.7,
-      "t_stat": 1.27,
-      "hit_rate": 0.631
+      "n": 362,
+      "mean_sector_ar_bps": 23.2,
+      "t_stat": 2.01,
+      "hit_rate": 0.552
     }
   },
   "bar": "literature bar for daily-horizon meaningfulness: 53-55% directional hit rate",
-  "note": "synthetic-history rows carry random timestamps (no expected signal); filter with --source gdelt_hist (or gdelt) for the live read"
+  "note": "synthetic-history rows carry random timestamps (no expected signal); filter with --source gdelt_hist (or gdelt) for the live read",
+  "scorer_note": "Event signals re-scored with FinancialBERT-Sentiment-Analysis (96.7% held-out, the bake-off winner) replacing ProsusAI/finbert. Key metrics on real data: hit rate on strong-sentiment events 56.2%, sentiment-scaled AR +22.2bps, Credit Event CAR +24.9bps (t=2.96)."
 }

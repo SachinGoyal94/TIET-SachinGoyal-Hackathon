@@ -22,7 +22,7 @@ RUN pip install -r requirements.txt
 # bake model weights into the image so the first run never downloads them
 RUN python -c "\
 from huggingface_hub import snapshot_download;\
-snapshot_download('ProsusAI/finbert');\
+snapshot_download('ahmedrachid/FinancialBERT-Sentiment-Analysis');\
 snapshot_download('typeform/distilbert-base-uncased-mnli')\
 "
 

@@ -1,13 +1,15 @@
 {
-  "id": "sachingoyal27/setfit-train",
-  "title": "SetFit Train",
+  "id": "sachingoyal27/fnspid-score-v2",
+  "title": "Fnspid Score V2",
   "language": "python",
   "kernel_type": "script",
   "is_private": true,
   "enable_gpu": true,
   "enable_internet": true,
-  "dataset_sources": ["sachingoyal27/setfit-event-train"],
+  "dataset_sources": [
+    "sachingoyal27/fnspid-universe-headlines-v2"
+  ],
   "competition_sources": [],
   "kernel_sources": [],
-  "code_file": "setfit_train.py"
+  "code_file": "fnspid_score.py"
 }

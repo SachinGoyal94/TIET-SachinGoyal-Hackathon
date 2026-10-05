@@ -25,7 +25,7 @@ class Settings(BaseSettings):
 
     models_dir: Path = REPO_ROOT / "models"
 
-    sentiment_model: str = "ProsusAI/finbert"
+    sentiment_model: str = "ahmedrachid/FinancialBERT-Sentiment-Analysis"
     event_model: str = "typeform/distilbert-base-uncased-mnli"
 
     # fine-tuned weights produced by the Kaggle training kernel; used when present

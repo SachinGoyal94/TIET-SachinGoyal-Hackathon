@@ -70,7 +70,7 @@ def main():
 
     import zipfile
 
-    srcs = glob.glob("/kaggle/input/fnspid-universe-headlines/*")
+    srcs = glob.glob("/kaggle/input/**/fnspid_universe.csv", recursive=True)
     import glob as _g
     print("input listing:", _g.glob("/kaggle/input/**/*"), flush=True)
     print("mounted inputs:", srcs, flush=True)
@@ -86,7 +86,7 @@ def main():
                 df = pd.read_csv(f)
     print(f"rows: {len(df)}", flush=True)
 
-    clf = pipeline("text-classification", model="ProsusAI/finbert",
+    clf = pipeline("text-classification", model="ahmedrachid/FinancialBERT-Sentiment-Analysis",
                    truncation=True, max_length=128, device=0 if torch.cuda.is_available() else -1)
     texts = df["title"].astype(str).tolist()
     print("scoring...", flush=True)
