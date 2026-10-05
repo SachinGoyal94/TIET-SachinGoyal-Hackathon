@@ -419,6 +419,5 @@
     }
   },
   "bar": "literature bar for daily-horizon meaningfulness: 53-55% directional hit rate",
-  "note": "synthetic-history rows carry random timestamps (no expected signal); filter with --source gdelt_hist (or gdelt) for the live read",
-  "scorer_note": "Event signals re-scored with FinancialBERT-Sentiment-Analysis (96.7% held-out, the bake-off winner) replacing ProsusAI/finbert. Key metrics on real data: hit rate on strong-sentiment events 56.2%, sentiment-scaled AR +22.2bps, Credit Event CAR +24.9bps (t=2.96)."
+  "note": "synthetic-history rows carry random timestamps (no expected signal); filter with --source gdelt_hist (or gdelt) for the live read"
 }
