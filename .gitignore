@@ -30,3 +30,10 @@ models/
 
 # ZCode session artifacts
 .zcode/
+
+# internal docs and build tooling (not jury-facing)
+docs/video_shotlist.md
+docs/build_deck.cjs
+docs/deck_build/
+docs/codebase_walkthrough.md
+data/processed/
