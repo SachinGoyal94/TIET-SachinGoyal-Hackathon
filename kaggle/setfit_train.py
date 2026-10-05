@@ -50,7 +50,7 @@ def main():
     print(f"training rows: {len(df)}", flush=True)
 
     rng = __import__("random").Random(42)
-    per_class = 850
+    per_class = 25  # few-shot: pairing grows quadratically with dataset size
     parts = []
     for lab in LABELS:
         sub = df[df["label"] == lab]

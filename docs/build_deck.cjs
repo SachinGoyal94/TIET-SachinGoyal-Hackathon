@@ -146,7 +146,8 @@ function card(slide, x, y, w, h) {
     ["Credit-event market reaction", "+25.2 bps", "t = 3.01, significant at 1%"],
     ["Impact score vs realized |moves|", "IC +0.066", "19,872 real events"],
     ["Per-entity sentiment vs shared score", "72.4% vs 59.8%", "SEntFiN human-labeled benchmark"],
-    ["Rebalancer vs cap-weight (2022 bear, net)", "+4.8 pts", "510-day walk-forward, 10bps costs"],
+    ["Rebalancer vs cap-weight (2022 bear, net of costs)", "+0.9 pts", "look-ahead-free walk-forward, 352 days"],
+    ["Vol-targeted variant (20% vol target)", "-10.5%", "vs -22.6% benchmark; realized vol 20.7%"],
   ];
   const tableRows = rows.map(([a, b, c]) => ([
     { text: a, options: { color: TEXT, fontSize: 13.5, fontFace: FONT, fill: { color: SURFACE } } },
@@ -162,7 +163,8 @@ function card(slide, x, y, w, h) {
   s.addText([
     { text: "No synthetic data in this table: 78k real articles + 10.5k real tweets with real timestamps, scored against real prices.", options: { bullet: bu(), breakLine: true } },
     { text: "Hit rate at/above the 53-55% bar the literature considers meaningful for daily news signals.", options: { bullet: bu(), breakLine: true } },
-    { text: "We report the losing configurations too (turnover study) - measured, not marketed.", options: { bullet: bu() } },
+    { text: "We report the losing configurations too (turnover regime study) - measured, not marketed.", options: { bullet: bu(), breakLine: true } },
+    { text: "Loan-book credit parameters calibrated from 1.35M real Lending Club loans.", options: { bullet: bu() } },
   ], { x: 9.2, y: 2.5, w: 3.4, h: 4.2, fontSize: 12, fontFace: FONT, color: TEXT, paraSpaceAfter: 10, margin: 0 });
 }
 
