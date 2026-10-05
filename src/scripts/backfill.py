@@ -175,7 +175,7 @@ def main() -> None:
     parser.add_argument("--force", action="store_true", help="rebuild even if data exists")
     parser.add_argument("--days", type=int, default=21)
     parser.add_argument("--per-day", type=int, default=9)
-    args = parser.parse_args()
+    args = parser.parse_args(args=None if __name__ == "__main__" else [])
 
     if args.force:
         for suffix in ("", "-wal", "-shm"):
