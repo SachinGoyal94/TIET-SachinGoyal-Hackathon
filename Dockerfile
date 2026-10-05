@@ -4,7 +4,7 @@ WORKDIR /web
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 COPY frontend/ .
-RUN npm run build
+RUN npx vite build
 
 # ---- stage 2: engine runtime with pre-baked model weights ----
 FROM python:3.11-slim AS runtime
