@@ -8,7 +8,7 @@
 
 **Demo Video Link:** https://youtu.be/QDMB95kqR0I
 
-**Slide Deck Link (if hosted externally):** [docs/presentation.pdf in this repo]
+**Slide Deck:** [docs/presentation.pdf in this repo]
 
 ## 1. Project Overview / Problem Statement & Approach
 
