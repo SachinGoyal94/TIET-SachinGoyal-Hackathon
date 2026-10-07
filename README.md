@@ -1,9 +1,9 @@
 # Financial Risk Intelligence Platform - S&P Global & Crisil Campus Hackathon
 
 **Candidate Name:** Sachin Goyal
-**College Email ID:** [your_id@thapar.edu]
+**College Email ID:** sgoyal_be23@thapar.edu
 **College / Campus:** Thapar Institute of Engineering and Technology (TIET), Patiala
-**Demo Video Link:** [YouTube / Unlisted]
+**Demo Video Link:** https://youtu.be/QDMB95kqR0I
 **Slide Deck Link (if hosted externally):** [docs/presentation.pdf in this repo]
 
 ## 1. Project Overview / Problem Statement & Approach
